@@ -14,18 +14,5 @@ private:
 	int camels;						//how many camel cards are currently in
 									//the player's herd
 public:
-	void takeTurn();				//the player gets an option to take a card, exchange
-									//cards, take camels, or sell
-	void take();					//if the player's hand is not full, a selected
-									//card from the market is added to the hand
-									//and fillMarket is then called
-	void exchange();				//the player selects a number of cards from his hand
-									//or herd and exchanges them with the same number of
-									//cards from the market
-	void getCamels();				//all the camels from the market are aded to the player's
-									//herd and fillMarket is called
-	void sell();					//the player selects a number of goods cards (of the
-									//same type) which are then discarded. the same number of
-									//goods tokens of that type are awarded to the player,
-									//and a bonus sale token if applicable
+	virtual Move getMove() = 0;		//the player gets an option to take a card, exchange
 }
