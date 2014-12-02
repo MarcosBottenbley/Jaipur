@@ -1,6 +1,7 @@
 /*  The Game class represents a game of Jaipur. This class contains
 	both players and all the elements present on the game field.
 */
+<<<<<<< HEAD
 
 #ifndef GAME_H
 #define GAME_H
@@ -10,6 +11,9 @@
 #include "Card.h"
 #include "Token.h"
 
+=======
+//Syedtesting
+>>>>>>> 94db79b5534ffb13261e67b4f0a38b717a5c7477
 class Game
 {
 private:
@@ -34,5 +38,8 @@ public:
 									//two wins, endGame() is called.
 	void endGame();					//deallocates all memory used by the current game
 }
+<<<<<<< HEAD
 
 #endif
+=======
+>>>>>>> 94db79b5534ffb13261e67b4f0a38b717a5c7477
