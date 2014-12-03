@@ -10,12 +10,13 @@
 #include <string>
 #include "Card.h"
 #include "Token.h"
+#include "Player.h"
 
 class Game
 {
 private:
-	Player player1;
-	Player player2;
+	Player* player1;
+	Player* player2;
 	Card*[5] market;				//the 5 cards that players can take or exchange
 	std::vector<Token*>[9] bank;			//vector of 9 token arrays representing the
 									//6 types of goods tokens and 3 types of bonus tokens
@@ -25,6 +26,7 @@ private:
 	void setupBank();				//sets up tokens in bank
 
 	void Game::tokenShuffle(std::vector<Token*> &bv, std::string item, int tempArr[], int numTokens);
+	int calcFinalScore(Player &p);
 
 public:
 	Game();
@@ -34,6 +36,10 @@ public:
 									//deals a hand of 5 cards to each player
 	void fillMarket();				//deals cards from the deck to fill any empty
 									//spaces in the market
+	
+	Card* takeCard(int index);					//take a card from the market
+	Card* swapCard(int index, Card* card);		//swap cards with the market
+
 	void endRound();				//tallies player scores and awards a win to the
 									//player with the most rupees. If one player has
 									//two wins, endGame() is called.

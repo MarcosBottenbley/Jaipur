@@ -1,5 +1,4 @@
-#include "Game.h"		//includes Card.h, Token.h, vector and stack
-#include "Player.h"
+#include "Game.h"		//includes Card.h, Token.h, Player.h vector and stack
 #include <iostream>
 #include <cstdlib>		//for random numbers only
 #include <ctime>
@@ -156,6 +155,19 @@ void Game::fillMarket() {
 
 }
 
+Card* Game::takeCard(int index) {
+	Card* tempCard = market[index];
+	market[index] = deck.top();
+	deck.pop();
+	return tempCard;
+}
+
+Card* Game::swapCard(int index, Card* card) {
+	Card* tempCard = market[index];
+	market[index] = card;
+	return tempCard;
+}
+
 
 void Game::printBoard() {
 
@@ -163,14 +175,38 @@ void Game::printBoard() {
 
 }
 
-void Game::endRound() {
+void Game::endRound() {		//TODO: return a bool to signify game over?
+	//Calculate winner, and increment that Player's win variable.
+	
+	//TODO: call Player methods that clean the player (deallocate all cards
+	//in hands and deallocate all tokens.)
 
+	/* Clear Deck */
+	for (int a = deck.size(); a > 0; a++) {
+		delete deck.top();
+		deck.pop(); 
+	}
 
+	/* Clear Bank */
+	for (int i = 0; i < 9; i++) {
+		for (int j = bank[i].size(); j > 0; j++) {
+			delete bank[i].back();
+			bank[i].pop_back();
+		}
+	}
+
+	//if either player has 2 wins, call endGame()
+}
+
+int Game::calcFinalScore(Player &p) {
+	//TODO: alternatively, Player can have a score variable that increments
+	//as that player collects Tokens.	
 }
 
 void Game::endGame() {
-
-
+	//deallocate memory for players.
+	delete player1;
+	delete player2;
 }
 
 
