@@ -26,7 +26,6 @@ private:
 	void setupBank();				//sets up tokens in bank
 
 	void Game::tokenShuffle(std::vector<Token*> &bv, std::string item, int tempArr[], int numTokens);
-	int calcFinalScore(Player &p);
 
 public:
 	Game();
