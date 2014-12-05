@@ -1,5 +1,9 @@
 #ifndef MOVE_H
 #define MOVE_H
+#include "Card.h"
+#include "Player.h"
+#include "Move.h"
+
 
 class Move
 {

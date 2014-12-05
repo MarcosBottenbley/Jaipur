@@ -7,7 +7,7 @@
 class Card
 {
 private:
-	string type;					//type of goods card (gold, silver, etc.)
+    std::string type;					//type of goods card (gold, silver, etc.)
 
 public:
 	Card(std::string);				//constructor for Card

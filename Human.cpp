@@ -8,6 +8,6 @@ Move::Move() {
 }
 
 Move Human::getMove() {
-	return null;
+	
 }
 
