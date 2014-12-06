@@ -10,6 +10,6 @@ class Take : public Move
 	public:
 		Take(Game *game, Player *plyr) : Move(game,plyr) {};
 		virtual ~Take();
-		void makeMove(vector<Card> &);
+		void makeMove(vector<int>, vector<int>, int);
 };
 #endif
