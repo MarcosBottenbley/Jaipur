@@ -171,6 +171,10 @@ void printDeck() {
 	cout << endl;
 }
 
+Card* Game::getCard(int index) {
+	return market[index];
+}
+
 Card* Game::takeCard(int index) {
 	Card* tempCard = market[index];
 	market[index] = deck.top();
@@ -182,6 +186,15 @@ Card* Game::swapCard(int index, Card* card) {
 	Card* tempCard = market[index];
 	market[index] = card;
 	return tempCard;
+}
+
+vector<Card*> Game::takeCamels() {
+	vector<Card*> camelVector;
+	for (int i = 0; i < 5; i++) {
+		if (market[index]->isCamel())
+			camelVector.push_back(takeCard(i));
+	}
+	return camelVector;
 }
 
 vector<Token*> Game::getTokens(string type, int number) {
@@ -233,7 +246,7 @@ void Game::printBoard() {
 
 }
 
-void Game::endRound() {		//TODO: return a bool to signify game over?
+bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherwise
 	//Determine Camel Winner
 	if (player1.camels > player2.camels)
 		player1.score += 5;
@@ -254,8 +267,8 @@ void Game::endRound() {		//TODO: return a bool to signify game over?
 		}
 	}
 
-	//TODO: call Player methods that clean the player (deallocate all cards
-	//in hands and deallocate all tokens.)
+	player1.clear();
+	player2.clear();
 
 	/* Clear Deck */
 	for (int a = deck.size(); a > 0; a++) {
@@ -270,17 +283,21 @@ void Game::endRound() {		//TODO: return a bool to signify game over?
 			bank[i].pop_back();
 		}
 	}
-
-	//if either player has 2 wins, call endGame()
+	
+	if (player1.wins == 2) {
+		cout << player1->name << " wins!";
+		return true;
+	} else if (player2.wins == 2) {
+		cout << player2->name << " wins!";
+		return true;
+	}
+	return false;
 }
 
-//TODO: add score to player. Add getScore() method to player
-
-
 void Game::endGame() {
-	//deallocate memory for players.
+	player1.clear();
+	player2.clear();
 	delete player1;
 	delete player2;
 }
-
 

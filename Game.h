@@ -14,6 +14,7 @@
 
 class Game
 {
+	friend class Move;
 private:
 	Player* player1;
 	Player* player2;
@@ -36,12 +37,13 @@ public:
 	void fillMarket();				//deals cards from the deck to fill any empty
 									//spaces in the market
 	
+	Card* getCard(int index);
 	Card* takeCard(int index);					//take a card from the market
 	Card* swapCard(int index, Card* card);		//swap cards with the market
+	std::vector<Card*> takeCamels();
 
-	void endRound();				//tallies player scores and awards a win to the
-									//player with the most rupees. If one player has
-									//two wins, endGame() is called.
+	bool endRound();				//tallies player scores and awards a win to the
+									//player with the most rupees.
 	void endGame();					//deallocates all memory used by the current game
 }
 
