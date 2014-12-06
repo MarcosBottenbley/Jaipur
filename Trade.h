@@ -15,6 +15,6 @@ class Trade : public Move
 		{};
 
 		virtual ~Trade();
-		void makeMove();
+		void makeMove(std::vector<int>,std::vector<int>,int);
 };
 #endif

@@ -8,9 +8,8 @@
 #include <vector>
 #include <stack>
 #include <string>
-#include "Card.h"
-#include "Token.h"
 #include "Player.h"
+#include "Human.h"
 
 class Game
 {
@@ -26,7 +25,7 @@ private:
 	void dealCards();				//shuffles deck, sets up market and deals cards
 	void setupBank();				//sets up tokens in bank
 
-	void Game::tokenShuffle(std::vector<Token*> &bv, std::string item, int tempArr[], int numTokens);
+	void tokenShuffle(std::vector<Token*> &bv, std::string item, int tempArr[], int numTokens);
 
 public:
 	Game();
@@ -36,13 +35,14 @@ public:
 									//deals a hand of 5 cards to each player
 	void fillMarket();				//deals cards from the deck to fill any empty
 									//spaces in the market
-
+	void printBoard();
 	void printDeck();
 	
 	Card* getCard(int index);
 	Card* takeCard(int index);					//take a card from the market
 	Card* swapCard(int index, Card* card);		//swap cards with the market
 	std::vector<Card*> takeCamels();
+	std::vector<Token*> getTokens(std::string,int);
 
 	bool endRound();				//tallies player scores and awards a win to the
 									//player with the most rupees.

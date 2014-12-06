@@ -4,6 +4,7 @@
 #include "Card.h"
 #include "Player.h"
 #include <exception>
+#include <vector>
 #include "InvalidMoveException.h"
 
 class Move
@@ -15,7 +16,7 @@ class Move
 		Move();
 		Move(Game *, Player *);
 		virtual ~Move();
-		virtual void makeMove(vector<Card*> &, vector<Card*> &, int) = 0;
+		virtual void makeMove(std::vector<int>, std::vector<int>, int) = 0;
 		//parameters in makeMove for testing purposes
 };
 #endif

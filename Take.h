@@ -10,6 +10,6 @@ class Take : public Move
 	public:
 		Take(Game *game, Player *plyr) : Move(game,plyr) {};
 		virtual ~Take();
-		void makeMove(vector<int>, vector<int>, int);
+		void makeMove(std::vector<int>, std::vector<int>, int);
 };
 #endif

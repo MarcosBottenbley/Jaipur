@@ -5,7 +5,7 @@ Token::Token() {
 	value = 0;
 }
 
-Token::Token(string s, int v) {
+Token::Token(std::string s, int v) {
 	type = s;
 	value = v;
 }

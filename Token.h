@@ -1,6 +1,8 @@
 /*	The Token class is used to represent each kind of token 
 	(bonus, camel, etc.)
 */
+#ifndef TOKEN_H
+#define TOKEN_H
 
 #include <string>
 
@@ -13,7 +15,8 @@ private:
 									//end of the round
 public:
 	Token();
-	Token(string, int);				//constructor for Token
+	Token(std::string, int);				//constructor for Token
 	std::string getType();			//returns type
 	int getValue();					//returns the rupee value of the token
 };
+#endif

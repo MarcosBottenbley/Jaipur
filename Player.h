@@ -1,9 +1,13 @@
 /*	The Player class is used to store all the data related to 
 	one of the game's players. (# of wins, cards in hand, etc.)
 */
+#ifndef PLAYER_H
+#define PLAYER_H
 
-#include "Move.h"
-#include "Game.h"
+
+//#include "Game.h"
+#include "Card.h"
+#include "Token.h"
 #include <string>
 #include <vector>
 #include <stack>
@@ -27,10 +31,11 @@ protected:
     
 public:
     Player (std::string name);
-	virtual Move getMove() = 0;  //the player gets an option to take a card, exchange
+	//virtual Move getMove() = 0;  //the player gets an option to take a card, exchange
     void printStats();
     void clear();
     void addCard(Card* card);
     void addToken(Token* token);
     int getScore(); 
 };
+#endif

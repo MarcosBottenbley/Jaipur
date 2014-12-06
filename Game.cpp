@@ -10,11 +10,11 @@ using std::cout;
 using std::endl;
 
 /* Constructor */
-void Game::Game() {
+Game::Game() {
 	std::srand(std::time(0));
 }
 
-void Game::Game(int rndSeed) {
+Game::Game(int rndSeed) {
 	std::srand(rndSeed);
 }
 
@@ -67,11 +67,11 @@ void Game::dealCards() {
 	}
 	for (i = 0; i < 5; i++) {
 		currRand = std::rand() % cardsInDeck;
-		player1.addCard(tempDeck[currRand]);
+		player1->addCard(tempDeck[currRand]);
 		tempDeck[currRand] = tempDeck[cardsInDeck--];
 
 		currRand = std::rand() % cardsInDeck;
-		player2.addCard(tempDeck[currRand]);
+		player2->addCard(tempDeck[currRand]);
 		tempDeck[currRand] = tempDeck[cardsInDeck--];
 	}
 
@@ -161,7 +161,7 @@ void printDeck() {
 	stack<Card*> tempStack;
 	for (int i = deck.size(); i > 0; i--) {
 		cout << deck.top()->type << ", ";
-		tempStack.push(deck.top));
+		tempStack.push(deck.top);
 		deck.pop();
 	}
 	for (int j = tempStack.size(); j > 0; j--) {
@@ -191,7 +191,7 @@ Card* Game::swapCard(int index, Card* card) {
 vector<Card*> Game::takeCamels() {
 	vector<Card*> camelVector;
 	for (int i = 0; i < 5; i++) {
-		if (market[index]->isCamel())
+		if (market[i]->isCamel())
 			camelVector.push_back(takeCard(i));
 	}
 	return camelVector;
@@ -214,7 +214,7 @@ vector<Token*> Game::getTokens(string type, int number) {
 		vectorNumber = 5;
 	else {
 		cout << "Invalid Token type\n";
-		return null;
+		return 0;//0 means null
 	}
 	
 	for (int i = 0; i < number; i++) {
@@ -284,10 +284,10 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 		}
 	}
 	
-	if (player1.wins == 2) {
+	if (player1->wins == 2) {
 		cout << player1->name << " wins!";
 		return true;
-	} else if (player2.wins == 2) {
+	} else if (player2->wins == 2) {
 		cout << player2->name << " wins!";
 		return true;
 	}
