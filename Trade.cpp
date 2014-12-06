@@ -1,29 +1,22 @@
 #include "Trade.h"
 
-void Trade::makeMove()
+void Trade::makeMove(vector<int> &mcards,vector<int> &pcards, int camels)
 {
-	int *mrktIs = player.selectMarketCards();
-	int *handIs = player.selectHandCards();
-	int camels = player.selectCamels();
-	int i = 0;
-	int size = (sizeof(handIs)/sizeof(*handIs)) + camels;
-	int size2 = (sizeof(mrktIs)/sizeof(*mrktIs));
-	if(size != size2)
-		throw exception;//TODO:make exception
+	int size = mcards.size();
+	int size2 = pcards.size() + camels;
 
-	for(i; i < camels; i++)
+	if(size != size2)
+		throw InvalidMoveException;
+
+	if (camels + pcards > 7)
+		throw InvalidMoveException;
+
+	for(int i = 0; i < camels; i++)
 	{
-		if(hand.size() < 7)
-			hand.add(market.remove(i));
-		market.add(herd.pop());
+		player->addCard(game->swapCard(mcards[i], player->camelCards.top()));
+		player->camelCards.pop();
 	}
-	if(handIs != 0)
-	{
-		for(int x = 0; x < size2; x++)
-		{
-			hand.add(market.remove(i));
-			market.add(hand.remove(x));
-			i++;
-		}
+	for (int j = 0; j < pcards.size(); j++) {
+		player->hand[pcards[j]] = game->swapCard(mcards[j+camels], player->hand[mcards[j]]);
 	}
 }

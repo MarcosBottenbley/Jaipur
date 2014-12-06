@@ -8,12 +8,9 @@
 
 class Trade : public Move
 {
-	private:
-		std::vector<Card> marketCards;
-		std::vector<Card> playerCards;
 	public:
 		Trade();
-		Trade(Card * c, Player *p)
+		Trade(Game * c, Player *p)
 		: Move(c,p)
 		{};
 

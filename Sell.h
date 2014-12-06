@@ -12,7 +12,7 @@ class Sell : public Move
 		std::vector<Card> playerCards;
 	public:
 		Sell();
-		Sell(Card *c, Player *p)
+		Sell(Game *c, Player *p)
 		: Move(c,p)
 		{};
 		virtual ~Sell();

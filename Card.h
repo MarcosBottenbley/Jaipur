@@ -1,17 +1,11 @@
-/*	The Card class encapsulates both goods cards and camels, using the 
-	int value isCamel. 
-*/
-
-#include <string>
+#ifndef CARD_H
+#define CARD_H
 
 class Card
 {
-private:
-    std::string type;					//type of goods card (gold, silver, etc.)
-
-public:
-	Card(std::string);				//constructor for Card
-
-	std::string getType();			//returns type
-	bool isCamel();					//returns true if camel, false otherwise
-}
+	private:
+		std::string type;
+	public:
+		std::string getType();
+};
+#endif

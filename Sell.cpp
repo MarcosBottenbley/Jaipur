@@ -2,26 +2,21 @@
 
 #include <string>
 
-void Sell::makeMove()
+void Sell::makeMove(vector<int> mcards,vector<int> pcards,int)
 {
-	Card *handcards = player.selectHandCards();
-	int size = (sizeof(handcards)/sizeof(*handcards));
-	std::string initType = handcards[0]->getType();
-	if(initType == "gold" || initType->getType() == "silver"){
+	int size = pcards.size();
+	std::string initType = player.hand[pcards[0]]->getType();
+	if(initType == "Gold" || initType == "Silver" || initType == "Diamond"){
 		if(size < 2)
-			throw exception;//TODO:make exeption
-	} else {
-		for(int x = 1; x < size-1; x++){
-			if(handcards[x]->getType() != initType)
-				throw exception;//TODO:make exception
-		}
+			throw InvalidMoveException;
+	}
+	for(int x = 1; x < size-1; x++){
+		std::string currType = player.hand[pcards[x]]->getType();
+		if(currType != initType)
+			throw InvalidMoveException;
 	}
 	//may need a bank class
-	player.addTokens(bank.getTokens(initType,size));
-	if(size == 3)
-		player.addTokens(bank.getBonusToken(3));//TODO:add or change
-	else if(size == 4)
-		player.addTokens(bank.getBonusToken(4));//TODO:add or change
-	else if(size >= 5)
-		player.addTokens(bank.getBonusToken(5));//TODO:add or change
+	vector<Token*> tokens = game->getTokens();
+	for(int x = 0; x < tokens.size(); x++)
+		player.tokens.push_back(tokens[x]);
 }
