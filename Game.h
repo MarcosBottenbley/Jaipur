@@ -18,8 +18,8 @@ class Game
 private:
 	Player* player1;
 	Player* player2;
-	Card*[5] market;				//the 5 cards that players can take or exchange
-	std::vector<Token*>[9] bank;			//vector of 9 token arrays representing the
+	Card* market[5];				//the 5 cards that players can take or exchange
+	std::vector<Token*> bank[9];			//vector of 9 token arrays representing the
 									//6 types of goods tokens and 3 types of bonus tokens
 	std::stack<Card*> deck;				//the deck of cards
 
@@ -36,6 +36,8 @@ public:
 									//deals a hand of 5 cards to each player
 	void fillMarket();				//deals cards from the deck to fill any empty
 									//spaces in the market
+
+	void printDeck();
 	
 	Card* getCard(int index);
 	Card* takeCard(int index);					//take a card from the market
@@ -45,6 +47,6 @@ public:
 	bool endRound();				//tallies player scores and awards a win to the
 									//player with the most rupees.
 	void endGame();					//deallocates all memory used by the current game
-}
+};
 
 #endif

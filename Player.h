@@ -12,7 +12,7 @@ class Player
 {
     friend class Game;
     friend class Move;
-private:
+protected:
 	std::string name;					//the player's name
     std::vector<Card*> hand;     //goods cards held by player; max 7
     std::stack<Card*> camelCards;

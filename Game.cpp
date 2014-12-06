@@ -93,45 +93,45 @@ void Game::setupBank() {
 	//	and pop_back to remove
 	int i;
 	for (i = 0; i < 2; i++) {
-        bank[0].push_back(new Token("Diamond", 5);
-        bank[1].push_back(new Token("Gold", 5);
-        bank[2].push_back(new Token("Silver", 5);
+        bank[0].push_back(new Token("Diamond", 5));
+        bank[1].push_back(new Token("Gold", 5));
+        bank[2].push_back(new Token("Silver", 5));
 	}
 	for (i = 0; i < 3; i++) {
-		bank[0].push_back(new Token("Diamond", 7);
-        bank[1].push_back(new Token("Gold", 6);
-        bank[2].push_back(new Token("Silver", 5);
+		bank[0].push_back(new Token("Diamond", 7));
+        bank[1].push_back(new Token("Gold", 6));
+        bank[2].push_back(new Token("Silver", 5));
 	}
 
-	bank[3].push_back(new Token("Cloth", 1);
-	bank[3].push_back(new Token("Cloth", 1);
-	bank[3].push_back(new Token("Cloth", 2);
-	bank[3].push_back(new Token("Cloth", 2);
-	bank[3].push_back(new Token("Cloth", 3);
-	bank[3].push_back(new Token("Cloth", 3);
-	bank[3].push_back(new Token("Cloth", 5);
+	bank[3].push_back(new Token("Cloth", 1));
+	bank[3].push_back(new Token("Cloth", 1));
+	bank[3].push_back(new Token("Cloth", 2));
+	bank[3].push_back(new Token("Cloth", 2));
+	bank[3].push_back(new Token("Cloth", 3));
+	bank[3].push_back(new Token("Cloth", 3));
+	bank[3].push_back(new Token("Cloth", 5));
 
-	bank[4].push_back(new Token("Spice", 1);
-	bank[4].push_back(new Token("Spice", 1);
-	bank[4].push_back(new Token("Spice", 2);
-	bank[4].push_back(new Token("Spice", 2);
-	bank[4].push_back(new Token("Spice", 3);
-	bank[4].push_back(new Token("Spice", 3);
-	bank[4].push_back(new Token("Spice", 5);
+	bank[4].push_back(new Token("Spice", 1));
+	bank[4].push_back(new Token("Spice", 1));
+	bank[4].push_back(new Token("Spice", 2));
+	bank[4].push_back(new Token("Spice", 2));
+	bank[4].push_back(new Token("Spice", 3));
+	bank[4].push_back(new Token("Spice", 3));
+	bank[4].push_back(new Token("Spice", 5));
 
 	for (i = 0; i < 6; i++) {
-		bank[5].push_back(new Token("Leather", 1);
+		bank[5].push_back(new Token("Leather", 1));
 	}
-	bank[5].push_back(new Token("Leather", 2);
-	bank[5].push_back(new Token("Leather", 3);
-	bank[5].push_back(new Token("Leather", 4);
+	bank[5].push_back(new Token("Leather", 2));
+	bank[5].push_back(new Token("Leather", 3));
+	bank[5].push_back(new Token("Leather", 4));
 
-	int tempArr[7] = {1, 1, 2, 2, 2, 3, 3}
+	int tempArr[7] = {1, 1, 2, 2, 2, 3, 3};
 	tokenShuffle(bank[6], "3 Bonus", tempArr, 7);			//TODO: might need to be &tempArr
-	tempArr = {4, 4, 5, 5, 6, 6};				//TODO: reassignment might not work
-	tokenShuffle(bank[7], "4 Bonus", tempArr, 6);
-	tempArr = {8, 8, 9, 10, 10};
-	tokenShuffle(bank[8], "5 Bonus", tempArr, 5);
+	int tempArr2[6] = {4, 4, 5, 5, 6, 6};				//TODO: reassignment might not work
+	tokenShuffle(bank[7], "4 Bonus", tempArr2, 6);
+	int tempArr3[5] = {8, 8, 9, 10, 10};
+	tokenShuffle(bank[8], "5 Bonus", tempArr3, 5);
 }
 
 /**
@@ -248,27 +248,27 @@ void Game::printBoard() {
 
 bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherwise
 	//Determine Camel Winner
-	if (player1.camels > player2.camels)
-		player1.score += 5;
-	else if (player2.camels > player1.camels)
-		player2.score += 5;
+	if (player1->camels > player2->camels)
+		player1->score += 5;
+	else if (player2->camels > player1->camels)
+		player2->score += 5;
 
-	if (player1.score > player2.score)
-		player1.wins++;
-	else if (player2.score > player1.score)
-		player2.wins++;
+	if (player1->score > player2->score)
+		player1->wins++;
+	else if (player2->score > player1->score)
+		player2->wins++;
 	else {		//if score tied...
-		if (player1.tokens.size() > player2.tokens.size())
-			player1.wins++;
-		else if (player2.tokens.size() > player1.tokens.size())
-			player2.wins++;
+		if (player1->tokens.size() > player2->tokens.size())
+			player1->wins++;
+		else if (player2->tokens.size() > player1->tokens.size())
+			player2->wins++;
 		else {
 			//result in draw
 		}
 	}
 
-	player1.clear();
-	player2.clear();
+	player1->clear();
+	player2->clear();
 
 	/* Clear Deck */
 	for (int a = deck.size(); a > 0; a++) {
@@ -295,8 +295,8 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 }
 
 void Game::endGame() {
-	player1.clear();
-	player2.clear();
+	player1->clear();
+	player2->clear();
 	delete player1;
 	delete player2;
 }

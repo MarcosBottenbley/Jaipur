@@ -12,7 +12,8 @@ private:
 	int value;						//how many rupees the token will yield at the
 									//end of the round
 public:
+	Token();
 	Token(string, int);				//constructor for Token
 	std::string getType();			//returns type
 	int getValue();					//returns the rupee value of the token
-}
+};
