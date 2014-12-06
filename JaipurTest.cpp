@@ -8,13 +8,11 @@
 int main()
 {
     Game newGame(600120);
-    newGame.startGame();
-    newGame.startRound();
+    //newGame.startGame();
+    //newGame.startRound();
     //check that both players have 5 cards
-    //(newGame->player1).printStats();
-    //(newGame->player2).printStats();
-    newGame.printDeck();
-    newGame.printBoard();
+    //newGame.printDeck();
+    //newGame.printBoard();
     //check that the tokens are good somehow
 
     //Take m1(newGame.market, newGame.player1);
@@ -33,7 +31,7 @@ int main()
     //m4.makeMove();
     //(newGame->player1).printStats();
 
-    newGame.endRound();
+    //newGame.endRound();
     //(newGame->player1).printStats();
-    newGame.endGame();
+    //newGame.endGame();
 }
