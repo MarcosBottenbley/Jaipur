@@ -1,11 +1,11 @@
 #include "Move.h"
 
-Move::Move() : market(0), player(0)
+Move::Move() : game(0), player(0)
 {}
 
-Move::Move(Card *c, Player *p)
+Move::Move(Game *g, Player *p)
 {
-	market = c;
+	game = g;
 	player = p;
 }
 

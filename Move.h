@@ -9,7 +9,7 @@
 class Move
 {
 	protected:
-		Card *market;
+		Game *game;
 		Player *player;
 	public:
 		Move();
