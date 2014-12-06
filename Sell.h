@@ -16,6 +16,6 @@ class Sell : public Move
 		: Move(c,p)
 		{};
 		virtual ~Sell();
-		void makeMove();
+		void makeMove(vector<int>, vector<int>, int);
 };
 #endif
