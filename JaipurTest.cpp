@@ -2,17 +2,18 @@
 */
 
 #include "Game.h"
-#include "Player.h"
-#include "Move.h"
+//#include "Player.h"
+//#include "Move.h"
 
 int main()
 {
     Game newGame(600120);
-    //newGame.startGame();
-    //newGame.startRound();
-    //check that both players have 5 cards
-    //newGame.printDeck();
-    //newGame.printBoard();
+    newGame.startGame();
+    newGame.startRound();
+
+    newGame.printDeck();
+    newGame.printBoard();
+    newGame.printPlayers();
     //check that the tokens are good somehow
 
     //Take m1(newGame.market, newGame.player1);

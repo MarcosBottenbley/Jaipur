@@ -11,35 +11,43 @@
 #include <cstdlib>
 #include <cstdio>
 #include <string>
-#include "Card.h"
 
 using std::string;
 
 using std::endl;
 using std::cerr;
 
+Player::Player() {
+    name = "Player";
+    score = 0;
+    wins = 0;
+    camels = 0;
+}
+
 Player::Player(string pname){
     name = pname;
     score = 0;
     wins = 0;
     camels = 0;
-    
+
 }
+
+Player::~Player()
+{}
 
 void Player:: printStats()
 {
-    std::cout<< name << " 's stats: ";
-    
-    std::cout<< "hand size: " << handSize;
-    std::cout<< "Wins: " << wins;
-    std::cout<< "Camels: " << camels;
+    std::cout<< name << " 's stats: " << std::endl;
+
+    std::cout<< "hand size: " << hand.size() << std::endl;
+    std::cout<< "Wins: " << wins << std::endl;
+    std::cout<< "Camels: " << camels << std::endl;
     std::cout<<  "hand: ";
-    for(int i = 0; i<hand.size(); i++)
+    for(unsigned int i = 0; i<hand.size(); i++)
     {
-        std::cout << hand[i]->getType();
-        
+        std::cout << hand[i]->getType() << ", ";
     }
-    
+    std::cout << std::endl;
 }
 
 void Player:: clear()
@@ -61,11 +69,12 @@ void Player:: addCard(Card* card)
     if(card->isCamel())
     {
         camelCards.push(card);
+        camels++;
         return;
     }
-    
+
     hand.push_back(card);
-    
+
 }
 
 void Player:: addToken(Token* token)

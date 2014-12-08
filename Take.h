@@ -8,7 +8,8 @@ class Take : public Move
 	private:
 		void takeCamels();
 	public:
-		Take(Game *game, Player *plyr) : Move(game,plyr) {};
+		Take();
+		//Take(Game *game, Player *plyr) : Move(game,plyr) {};
 		virtual ~Take();
 		void makeMove(std::vector<int>, std::vector<int>, int);
 };

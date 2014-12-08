@@ -2,13 +2,15 @@
 #define HUMAN_H
 #include "Move.h"
 #include "Player.h"
-
+#include <string>
 
 
 class Human : public Player {
 public:
 	Human();
-	Move getMove();
+	Human(std::string name);
+	virtual ~Human();
+	Move* getMove();
 };
 
 #endif

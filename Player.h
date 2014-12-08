@@ -1,4 +1,4 @@
-/*	The Player class is used to store all the data related to 
+/*	The Player class is used to store all the data related to
 	one of the game's players. (# of wins, cards in hand, etc.)
 */
 #ifndef PLAYER_H
@@ -6,6 +6,7 @@
 
 
 //#include "Game.h"
+#include "Move.h"
 #include "Card.h"
 #include "Token.h"
 #include <string>
@@ -27,15 +28,17 @@ protected:
     int camels;                 //how many camel cards are currently in
                                     //the player's herd
     int score;
-    
-    
+
+
 public:
+    Player();
     Player (std::string name);
-	//virtual Move getMove() = 0;  //the player gets an option to take a card, exchange
+    virtual ~Player();
+	virtual Move* getMove() = 0;  //the player gets an option to take a card, exchange
     void printStats();
     void clear();
     void addCard(Card* card);
     void addToken(Token* token);
-    int getScore(); 
+    int getScore();
 };
 #endif

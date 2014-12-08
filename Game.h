@@ -30,14 +30,15 @@ private:
 public:
 	Game();
 	Game(int rndSeed);				//constructs game with a seed for the RNG
-	void startGame();				
+	void startGame();
 	void startRound();				//resets the deck, market, and token piles, and
 									//deals a hand of 5 cards to each player
 	void fillMarket();				//deals cards from the deck to fill any empty
 									//spaces in the market
 	void printBoard();
 	void printDeck();
-	
+	void printPlayers();
+
 	Card* getCard(int index);
 	Card* takeCard(int index);					//take a card from the market
 	Card* swapCard(int index, Card* card);		//swap cards with the market

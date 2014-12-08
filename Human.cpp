@@ -7,7 +7,17 @@ Human::Human() {
 	camels = 0;
 }
 
-Move Human::getMove() {
-	return null;
+Human::Human(std::string hname) {
+    name = hname;
+    score = 0;
+    wins = 0;
+    camels = 0;
+}
+
+Human::~Human()
+{}
+
+Move* Human::getMove() {
+	return NULL;
 }
 

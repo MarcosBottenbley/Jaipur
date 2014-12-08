@@ -41,7 +41,7 @@ void Game::startRound() {
 void Game::dealCards() {
 	Card* tempDeck[52];
 	int i;
-	
+
 	/* Create cards */
 	for (i = 0; i < 6; i++) {
 		tempDeck[i] = new Card("Diamond");
@@ -63,19 +63,19 @@ void Game::dealCards() {
 	for (i = 0; i < 40; i++) {
 		currRand = std::rand() % cardsInDeck;			//pick random card from list
 		deck.push(tempDeck[currRand]);					//push that card onto deck
-		tempDeck[currRand] = tempDeck[cardsInDeck--];	//remove the card from the list
+		tempDeck[currRand] = tempDeck[--cardsInDeck];	//remove the card from the list
 	}
 	for (i = 0; i < 5; i++) {
 		currRand = std::rand() % cardsInDeck;
 		player1->addCard(tempDeck[currRand]);
-		tempDeck[currRand] = tempDeck[cardsInDeck--];
+		tempDeck[currRand] = tempDeck[--cardsInDeck];
 
 		currRand = std::rand() % cardsInDeck;
 		player2->addCard(tempDeck[currRand]);
-		tempDeck[currRand] = tempDeck[cardsInDeck--];
+		tempDeck[currRand] = tempDeck[--cardsInDeck];
 	}
 
-	//set other two cards as market cards. Add 3 camels to market.	
+	//set other two cards as market cards. Add 3 camels to market.
 	market[0] = tempDeck[0];
 	market[1] = tempDeck[1];
 	for (i = 2; i < 5; i++) {
@@ -157,11 +157,11 @@ void Game::fillMarket() {
 }
 
 //TODO: remove for final game (?)
-void printDeck() {
+void Game::printDeck() {
 	stack<Card*> tempStack;
 	for (int i = deck.size(); i > 0; i--) {
-		cout << deck.top()->type << ", ";
-		tempStack.push(deck.top);
+		cout << (deck.top())->getType() << ", ";
+		tempStack.push(deck.top());
 		deck.pop();
 	}
 	for (int j = tempStack.size(); j > 0; j--) {
@@ -169,6 +169,12 @@ void printDeck() {
 		tempStack.pop();
 	}
 	cout << endl;
+}
+
+void Game::printPlayers() {
+    player1->printStats();
+    cout << endl;
+    player2->printStats();
 }
 
 Card* Game::getCard(int index) {
@@ -214,16 +220,17 @@ vector<Token*> Game::getTokens(string type, int number) {
 		vectorNumber = 5;
 	else {
 		cout << "Invalid Token type\n";
-		return 0;//0 means null
+		vector<Token*> empty;
+		return empty;//0 means null
 	}
-	
+
 	for (int i = 0; i < number; i++) {
 		if (bank[vectorNumber].size() == 0)	//if no more tokens left...
 			break;
 		tokenList.push_back(bank[vectorNumber].back());
 		bank[vectorNumber].pop_back();
 	}
-	
+
 	if (number == 3) {			//bonus tokens
 		tokenList.push_back(bank[6].back());
 		bank[6].pop_back();
@@ -240,10 +247,9 @@ vector<Token*> Game::getTokens(string type, int number) {
 
 void Game::printBoard() {
 	for (int i = 0; i < 5; i++) {
-		cout << "[" << market[i]->type << "] ";
+		cout << "[" << (market[i])->getType() << "] ";
 	}
 	cout << endl;
-
 }
 
 bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherwise
@@ -273,7 +279,7 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 	/* Clear Deck */
 	for (int a = deck.size(); a > 0; a++) {
 		delete deck.top();
-		deck.pop(); 
+		deck.pop();
 	}
 
 	/* Clear Bank */
@@ -283,7 +289,7 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 			bank[i].pop_back();
 		}
 	}
-	
+
 	if (player1->wins == 2) {
 		cout << player1->name << " wins!";
 		return true;
