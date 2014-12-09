@@ -39,23 +39,19 @@ void Player:: printStats()
 {
     std::cout<< name << " 's stats: " << std::endl;
 
-    std::cout<< "hand size: " << hand.size() << std::endl;
+    std::cout<< "hand size: " << hand.handSize() << std::endl;
     std::cout<< "Wins: " << wins << std::endl;
     std::cout<< "Camels: " << camels << std::endl;
     std::cout<<  "hand: ";
-    for(unsigned int i = 0; i<hand.size(); i++)
-    {
-        std::cout << hand[i]->getType() << ", ";
-    }
+    hand.printHand();
     std::cout << std::endl;
 }
 
 void Player:: clear()
 {
-    for(int i = hand.size(); i>0; i--)
+    for(int i = hand.handSize(); i>0; i--)
     {
-        delete hand.back();
-        hand.pop_back();
+        hand.removeCard(i);
     }
     for(int k = camelCards.size(); k>0; k--)
     {
@@ -73,7 +69,7 @@ void Player:: addCard(Card* card)
         return;
     }
 
-    hand.push_back(card);
+    hand.addCard(card);
 
 }
 

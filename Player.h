@@ -9,6 +9,7 @@
 #include "Move.h"
 #include "Card.h"
 #include "Token.h"
+#include "Hand.h"
 #include <string>
 #include <vector>
 #include <stack>
@@ -19,10 +20,8 @@ class Player
     friend class Move;
 protected:
 	std::string name;					//the player's name
-    std::vector<Card*> hand;     //goods cards held by player; max 7
+    Hand hand;     //goods cards held by player; max 7
     std::stack<Card*> camelCards;
-	int handSize;					//how many goods cards are currently in
-									//the player's hand
     std::vector<Token*> tokens;			//tokens currently owned by player
 	int wins;						//number of seals of excellence player has
     int camels;                 //how many camel cards are currently in
