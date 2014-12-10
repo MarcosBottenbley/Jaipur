@@ -76,10 +76,10 @@ void Game::dealCards() {
 	}
 
 	//set other two cards as market cards. Add 3 camels to market.
-	market[0] = tempDeck[0];
-	market[1] = tempDeck[1];
+	market.addCard(0, tempDeck[0]);
+	market.addCard(1, tempDeck[1]);
 	for (i = 2; i < 5; i++) {
-		market[i] = new Card("Camel");
+		market.addCard(i, new Card("Camel"));
 	}
 }
 
@@ -181,7 +181,7 @@ Card* Game::getCard(int index) {
 	return market[index];
 }
 
-Card* Game::takeCard(int index) {
+/*Card* Game::takeCard(int index) {
 	Card* tempCard = market[index];
 	market[index] = deck.top();
 	deck.pop();
@@ -192,12 +192,13 @@ Card* Game::swapCard(int index, Card* card) {
 	Card* tempCard = market[index];
 	market[index] = card;
 	return tempCard;
-}
+}*/
+//these methods are currently in Market
 
 vector<Card*> Game::takeCamels() {
 	vector<Card*> camelVector;
 	for (int i = 0; i < 5; i++) {
-		if (market[i]->isCamel())
+		if (market.getCard(i)->isCamel())
 			camelVector.push_back(takeCard(i));
 	}
 	return camelVector;
@@ -247,7 +248,7 @@ vector<Token*> Game::getTokens(string type, int number) {
 
 void Game::printBoard() {
 	for (int i = 0; i < 5; i++) {
-		cout << "[" << (market[i])->getType() << "] ";
+		cout << "[" << (market.getCard(i))->getType() << "] ";
 	}
 	cout << endl;
 }
@@ -306,4 +307,3 @@ void Game::endGame() {
 	delete player1;
 	delete player2;
 }
-
