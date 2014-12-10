@@ -7,8 +7,8 @@ Card* Market::getCard(int index) {
 
 Card* Market::takeCard(int index) {
         Card* tempCard = mktCards[index];
-//        mktCards[index] = deck.top();         we need an included deck class for this, we can't just access
-//        deck.pop();                           the deck without a specific game instance
+        mktCards[index] = (parent->deck).top();
+        (parent->deck).pop();
         return tempCard;
 }
 
@@ -18,3 +18,6 @@ Card* Market::swapCard(int index, Card* card) {
         return tempCard;
 }
 
+void Market::addCard(int index, Card* card) {
+        mktCards[index] = card;
+}
