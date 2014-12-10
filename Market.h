@@ -10,7 +10,7 @@ public:
 	Card* getCard(int index);
 	Card* takeCard(int index);
 	Card* swapCard(int index, Card* card);
-
+	void addCard(int index, Card* card);
 };
 
 #endif
