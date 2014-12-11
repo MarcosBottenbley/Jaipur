@@ -39,6 +39,14 @@ unsigned int Hand::handSize()
 	return hand.size();
 }
 
+Card* Hand::cardAt(int index) {
+	Card* temp = 0;
+	if (index < 0 || index >= handSize()) {		//if index out of bounds...
+		return temp;
+	}
+	return hand[index];
+}
+
 Card* Hand::removeCard(int index)
 {
 	Card * temp = 0;

@@ -1,11 +1,3 @@
-//
-//  Player.cpp
-//  pg7
-//
-//  Created by Syed Hossain on 12/3/14.
-//  Copyright (c) 2014 syed. All rights reserved.
-//
-
 #include "Player.h"
 #include <iostream>
 #include <cstdlib>
@@ -63,7 +55,7 @@ void Player:: clear()
 void Player:: addCard(Card* card)
 {
     if(card->isCamel())
-    {
+    
         camelCards.push(card);
         camels++;
         return;

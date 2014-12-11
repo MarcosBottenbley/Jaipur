@@ -6,11 +6,8 @@
 class Game;
 
 class Market {
-
-private:
 	Card* mktCards[5];
 	Game* parent;
-
 public:
 	Market();
 	Market(Game*);
@@ -18,6 +15,7 @@ public:
 	Card* takeCard(int index);
 	Card* swapCard(int index, Card* card);
 	void addCard(int index, Card* card);
+	void printMarket();
 };
 
 #endif

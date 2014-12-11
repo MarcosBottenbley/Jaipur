@@ -19,12 +19,10 @@ class Player
     friend class Game;
     friend class Move;
 protected:
-	std::string name;					//the player's name
-    Hand hand;     //goods cards held by player; max 7
-    std::stack<Card*> camelCards;
-    std::vector<Token*> tokens;			//tokens currently owned by player
+	std::string name;				//the player's name
+    Hand hand;						//all cards held by player; max 7
+    std::vector<Token*> tokens;		//tokens currently owned by player
 	int wins;						//number of seals of excellence player has
-    int camels;                 //how many camel cards are currently in
                                     //the player's herd
     int score;
 
@@ -33,7 +31,7 @@ public:
     Player();
     Player (std::string name);
     virtual ~Player();
-	virtual Move* getMove() = 0;  //the player gets an option to take a card, exchange
+	virtual Move* getMove(Market*) = 0;  //the player gets an option to take a card, exchange
     void printStats();
     void clear();
     void addCard(Card* card);

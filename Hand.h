@@ -16,6 +16,7 @@ class Hand
 		~Hand();
 		bool addCard(Card *);
 		unsigned int handSize();
+		Card* cardAt(int);	//card at given index
 		Card* removeCard(int);
 		void printHand();
 		bool isEmpty();
