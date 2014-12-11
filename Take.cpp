@@ -5,16 +5,13 @@ Take::Take(Market &m, Hand &h, int i):
 {}
 int Take::makeMove()
 {
-	int camelsTaken = 0;
 	if (market.getCard(index)->isCamel()) {	//if taking camels...
 		for (int x = 0; x < 5; x++) {
 			if (market.getCard()->isCamel()) {		//if card is a camel,
 				hand.addCard(market.takeCard(x));	//take camel from market
-				camelsTaken++;
 			}
 		}
-		if (camelsTaken == 0)	//if no camels in market...
-			throw InvalidMoveException;	
+		return 0;
 	}
 
 	//for(unsigned int x = 0; x < mCards.size(); x++) {
@@ -22,7 +19,7 @@ int Take::makeMove()
 	//	throw InvalidMoveException;
 	//}
 
-	hand.addCard(market.takeCard(x));	//Error checking for this in Player.getMove()
+	hand.addCard(market.takeCard(index));	//Error checking for this in Player.getMove()
 
 	return 0;
 }
