@@ -1,5 +1,9 @@
 #include "Market.h"
-//#include "Game.h"		//only for deck. If deck is a class, we won't need this.
+#include "Game.h"
+
+Market::Market(Game* g) {
+    parent = g;
+}
 
 Card* Market::getCard(int index) {
         return mktCards[index];

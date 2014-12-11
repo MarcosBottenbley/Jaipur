@@ -10,15 +10,19 @@
 #include <string>
 #include "Player.h"
 #include "Human.h"
+#include "Bank.h"
+
+class Market;
 
 class Game
 {
 	friend class Move;
+	friend class Market;
 private:
 	Player* player1;
 	Player* player2;
-	Market market[5];				//the 5 cards that players can take or exchange
-	std::vector<Token*> bank[9];			//vector of 9 token arrays representing the
+	Market* market;				//the 5 cards that players can take or exchange
+	Bank* bank;			//vector of 9 token arrays representing the
 									//6 types of goods tokens and 3 types of bonus tokens
 	std::stack<Card*> deck;				//the deck of cards
 
@@ -40,10 +44,10 @@ public:
 	void printPlayers();
 
 	Card* getCard(int index);
-	//Card* takeCard(int index);					//take a card from the market
-	//Card* swapCard(int index, Card* card);		//swap cards with the market
+	//Card* takeCard(int index);					//take a card from the market (currently part of Market class)
+	//Card* swapCard(int index, Card* card);		//swap cards with the market (currently part of Market class)
 	std::vector<Card*> takeCamels();
-	std::vector<Token*> getTokens(std::string,int);
+	//std::vector<Token*> getTokens(std::string,int);       (currently part of Bank class)
 
 	bool endRound();				//tallies player scores and awards a win to the
 									//player with the most rupees.
