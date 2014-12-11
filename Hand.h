@@ -3,18 +3,24 @@
 
 #include "Card.h"
 #include <vector>
+#include <stack>
 #define MAX_SIZE 7
 
 class Hand
 {
 	private:
 		std::vector<Card *> hand;
+		std::stack<Card *> herd;
 	public:
 		Hand();
+		~Hand();
 		bool addCard(Card *);
 		unsigned int handSize();
-		bool removeCard(int);
+		Card* removeCard(int);
 		void printHand();
 		bool isEmpty();
+		bool isHerdEmpty();
+		Card* getCamel();
+		unsigned int herdSize();
 };
 #endif

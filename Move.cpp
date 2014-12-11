@@ -1,13 +1,7 @@
 #include "Move.h"
 
-Move::Move()// : game(0), player(0)
+Move::Move(Market &m,Hand &h): market(m), hand(h)
 {}
-
-//Move::Move(Game *g, Player *p)
-//{
-//	game = g;
-//	player = p;
-//}
 
 Move::~Move()
 {}

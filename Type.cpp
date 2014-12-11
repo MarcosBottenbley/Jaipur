@@ -7,6 +7,7 @@ Type::Type()
 Type::Type(std::string s) : s_type(s)
 {
 	value = fromString(s);
+	e = fromString(s);
 }
 
 Type::Enum Type::fromString(std::string s)
@@ -52,3 +53,4 @@ std::string Type::toString(Type::Enum t)
 	}
 	return "INVALIDTYPE";
 }
+

@@ -21,6 +21,16 @@ Bank::Bank(int seed)
 	initBank();
 }
 
+Bank::~Bank()
+{
+	for(int x = 0; x < 9; x++) {
+		while(!bank[x].empty()) {
+			delete bank[x].top();
+			bank[x].pop();
+		}
+	}
+}
+
 void Bank::initBank()
 {
 	Type t;

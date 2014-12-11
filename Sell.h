@@ -2,19 +2,17 @@
 #define SELL_H
 
 #include "Move.h"
-#include "Card.h"
-#include <vector>
+#include "Bank.h"
 
 class Sell : public Move
 {
 	private:
-		std::vector<Card> playerCards;
+		vector<Card> pCards;
+		Bank &bank;
 	public:
 		Sell();
-//		Sell(Game *c, Player *p)
-//		: Move(c,p)
-//		{};
+		Sell(Market &, Hand &, Bank &, vector<Card*>)
 		virtual ~Sell();
-		void makeMove(std::vector<int>, std::vector<int>, int);
+		int makeMove();
 };
 #endif

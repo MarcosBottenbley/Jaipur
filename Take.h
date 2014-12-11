@@ -6,11 +6,10 @@
 class Take : public Move
 {
 	private:
-		void takeCamels();
+		vector<Card*> mCards;
 	public:
-		Take();
-		//Take(Game *game, Player *plyr) : Move(game,plyr) {};
+		Take(Market &, Hand &, vector<Card*>);
 		virtual ~Take();
-		void makeMove(std::vector<int>, std::vector<int>, int);
+		int makeMove();
 };
 #endif

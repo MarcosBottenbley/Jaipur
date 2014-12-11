@@ -5,10 +5,6 @@
 
 class Type
 {
-	private:
-		std::string s_type;
-		int value;
-
 	public:
 		enum Enum
 		{
@@ -27,8 +23,13 @@ class Type
 		Type();
 		Type(std::string);
 		int getValue();
+		Enum getEnum();
 		std::string getString();
-		Enum fromString(std::string);   //      I moved these two to public because they return/take Enum values
-		std::string toString(Enum);     //      and there's no way to forward declare enums in C++ (as far as I know)
+	private:
+		std::string s_type;
+		int value;
+		Enum e;
+		Enum fromString(std::string);
+		std::string toString(Enum);
 };
 #endif

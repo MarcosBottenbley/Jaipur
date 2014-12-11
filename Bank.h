@@ -17,6 +17,7 @@ class Bank
 	public:
 		Bank();
 		Bank(int);
+		~Bank();
 		std::stack<Token*> getTokens(Type::Enum,int);
 		void printBank();
 };

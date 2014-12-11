@@ -2,18 +2,15 @@
 #define TRADE_H
 
 #include "Move.h"
-#include "Card.h"
-#include <vector>
 
 class Trade : public Move
 {
+	private:
+		vector<Card*> pCards;
+		vector<Card*> mCards;
 	public:
-		Trade();
-//		Trade(Game * c, Player *p)
-//		: Move(c,p)
-//		{};
-
+		Trade(Market &, Hand &, vector<Card*>, vector<Card*>);
 		virtual ~Trade();
-		void makeMove(std::vector<int>,std::vector<int>,int);
+		int makeMove();
 };
 #endif

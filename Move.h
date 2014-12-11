@@ -2,23 +2,23 @@
 #define MOVE_H
 
 #include "Card.h"
+#include "Hand.h"
+#include "Market.h"
 #include <exception>
 #include <vector>
-//#include "InvalidMoveException.h"
+#include "InvalidMoveException"
 
-class Game;
+using std::vector;
 
 class Move
 {
 	protected:
-		//Game *game;
-		//Player *player;
+		Market &market;
+		Hand &hand;
 	public:
-		Move();
-		//Move(Game *, Player *);
+		Move(Market &,Hand &);
 		virtual ~Move();
-		virtual void makeMove(std::vector<int>, std::vector<int>, int) = 0;
-		//parameters in makeMove for testing purposes
+		virtual int makeMove() = 0;
 };
 #endif
-
+	
