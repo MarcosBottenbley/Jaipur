@@ -13,18 +13,20 @@
 #include "Bank.h"
 
 class Market;
+class Deck;
 
 class Game
 {
 	friend class Move;
 	friend class Market;
+	friend class Deck;
 private:
 	Player* player1;
 	Player* player2;
 	Market* market;				//the 5 cards that players can take or exchange
 	Bank* bank;			//vector of 9 token arrays representing the
 									//6 types of goods tokens and 3 types of bonus tokens
-	std::stack<Card*> deck;				//the deck of cards
+	Deck* deck;				//the deck of cards
 
 	void dealCards();				//shuffles deck, sets up market and deals cards
 	void setupBank();				//sets up tokens in bank

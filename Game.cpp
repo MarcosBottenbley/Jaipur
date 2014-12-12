@@ -1,5 +1,6 @@
 #include "Game.h"		//includes Card.h, Token.h, Player.h vector and stack
 #include "Market.h"
+#include "Deck.h"
 #include <iostream>
 #include <cstdlib>		//for random numbers only
 #include <ctime>
@@ -24,6 +25,7 @@ void Game::startGame() {
 	player1 = new Human("Player1");		//for now, the names can be hard coded
 	player2 = new Human("Player2");
 	market = new Market(this);
+	deck = new Deck(this);
 }
 
 void Game::startRound() {
@@ -41,48 +43,7 @@ void Game::startRound() {
  * sets up the deck.
  */
 void Game::dealCards() {
-	Card* tempDeck[52];
-	int i;
-
-	/* Create cards */
-	for (i = 0; i < 6; i++) {
-		tempDeck[i] = new Card("Diamond");
-		tempDeck[i+6] = new Card("Gold");
-		tempDeck[i+12] = new Card("Silver");
-	}
-	for (i = 0; i < 8; i++) {
-		tempDeck[i+18] = new Card("Cloth");
-		tempDeck[i+26] = new Card("Spice");
-		tempDeck[i+34] = new Card("Camel");
-	}
-	for (i = 42; i < 52; i++) {
-		tempDeck[i] = new Card("Leather");
-	}
-
-	/* Shuffle & Deal */
-	int cardsInDeck = 52;
-	int currRand;
-	for (i = 0; i < 40; i++) {
-		currRand = std::rand() % cardsInDeck;			//pick random card from list
-		deck.push(tempDeck[currRand]);					//push that card onto deck
-		tempDeck[currRand] = tempDeck[--cardsInDeck];	//remove the card from the list
-	}
-	for (i = 0; i < 5; i++) {
-		currRand = std::rand() % cardsInDeck;
-		player1->addCard(tempDeck[currRand]);
-		tempDeck[currRand] = tempDeck[--cardsInDeck];
-
-		currRand = std::rand() % cardsInDeck;
-		player2->addCard(tempDeck[currRand]);
-		tempDeck[currRand] = tempDeck[--cardsInDeck];
-	}
-
-	//set other two cards as market cards. Add 3 camels to market.
-	market->addCard(0, tempDeck[0]);
-	market->addCard(1, tempDeck[1]);
-	for (i = 2; i < 5; i++) {
-		market->addCard(i, new Card("Camel"));
-	}
+	deck->deal();
 }
 
 /**
@@ -117,17 +78,7 @@ void Game::fillMarket() {
 
 //TODO: remove for final game (?)
 void Game::printDeck() {
-	stack<Card*> tempStack;
-	for (int i = deck.size(); i > 0; i--) {
-		cout << (deck.top())->getType() << ", ";
-		tempStack.push(deck.top());
-		deck.pop();
-	}
-	for (int j = tempStack.size(); j > 0; j--) {
-		deck.push(tempStack.top());
-		tempStack.pop();
-	}
-	cout << endl << endl;
+	deck->printDeck();
 }
 
 void Game::printPlayers() {
@@ -219,7 +170,7 @@ void Game::printBoard() {
 
 bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherwise
 	//Determine Camel Winner
-	if (player1->camels > player2->camels)
+	/*if (player1->camels > player2->camels)
 		player1->score += 5;
 	else if (player2->camels > player1->camels)
 		player2->score += 5;
@@ -236,16 +187,18 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 		else {
 			//result in draw
 		}
-	}
+	}*/
+	//need to fix this since camels are in hand now
 
 	player1->clear();
 	player2->clear();
 
 	/* Clear Deck */
-	for (int a = deck.size(); a > 0; a++) {
+	/*for (int a = deck.size(); a > 0; a++) {
 		delete deck.top();
 		deck.pop();
-	}
+	}*/
+	//deck needs its own clear method/destructor
 
 	/* Clear Bank */
 	/*for (int i = 0; i < 9; i++) {
