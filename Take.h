@@ -7,7 +7,7 @@ class Take : public Move
 {
 	private:
 		//vector<Card*> mCards;
-		int index;		//index of card to take, -1 if camels requested
+		int index;		//index of card to take
 	public:
 		Take(Market &, Hand &, int);
 		virtual ~Take();

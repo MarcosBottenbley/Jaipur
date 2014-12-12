@@ -6,10 +6,11 @@
 class Trade : public Move
 {
 	private:
-		std::vector<Card*> pCards;
-		std::vector<Card*> mCards;
+		bool pCards[7];
+		bool mCards[5];
+		int nextTrue(bool[], int);
 	public:
-		Trade(Market &, Hand &, std::vector<Card*>, std::vector<int>);
+		Trade(Market &, Hand &, bool[], bool[]);
 		virtual ~Trade();
 		int makeMove();
 };

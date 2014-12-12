@@ -6,7 +6,7 @@
 #include "Market.h"
 #include <exception>
 #include <vector>
-#include "InvalidMoveEx.h"
+#include "InvalidMoveEx.h"	//TODO: do we need to change this back?
 
 using std::vector;
 
@@ -15,6 +15,7 @@ class Move
 	protected:
 		Market &market;
 		Hand &hand;
+		int numElements(bool[], int);	//returns the number of trues in the given array
 	public:
 		Move(Market &,Hand &);
 		virtual ~Move();

@@ -67,9 +67,9 @@ Move* Human::getMove(Market& market) {
 	Trade* trade() {
 		int inputI;
 		int numCamels = 0;
-		bool mktCards[5];
-		bool plrCards[7];
-		
+		bool mktCards[5] {0};		//initializes to false
+		bool plrCards[7] {0};
+
 		cout << "Enter items from the market (integers, space separated)";
 		cout << endl << "Enter 0 to finish, 9 to see your selections: ";
 		while (1) {
@@ -128,7 +128,7 @@ Move* Human::getMove(Market& market) {
 	
 	Sell* sell() {
 		int inputI;
-		bool plrCards[7];
+		bool plrCards[7] {0};
 		
 		cout << "Enter items from your hand (integers, space separated)";
 		cout << endl << "Enter 0 to finish, 9 to see your selections: ";
