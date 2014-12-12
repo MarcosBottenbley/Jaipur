@@ -11,15 +11,13 @@
 #include "Player.h"
 #include "Human.h"
 #include "Bank.h"
-
-class Market;
-class Deck;
+#include "Market.h"
+#include "Deck.h"
 
 class Game
 {
 	friend class Move;
-	friend class Market;
-	friend class Deck;
+
 private:
 	Player* player1;
 	Player* player2;

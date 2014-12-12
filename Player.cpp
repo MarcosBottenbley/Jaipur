@@ -41,23 +41,15 @@ void Player:: clear()
     {
         hand.removeCard(i);
     }
-    for(int k = camelCards.size(); k>0; k--)
+    for(int k = hand.herdSize(); k>0; k--)
     {
-        delete camelCards.top();
-        camelCards.pop();
+        hand.getCamel();
     }
 }
 
 void Player:: addCard(Card* card)
 {
-    if(card->isCamel()) {
-        camelCards.push(card);
-        camels++;
-        return;
-    }
-
     hand.addCard(card);
-
 }
 
 void Player:: addToken(Token* token)

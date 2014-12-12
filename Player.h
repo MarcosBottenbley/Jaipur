@@ -10,6 +10,7 @@
 #include "Card.h"
 #include "Token.h"
 #include "Hand.h"
+#include "Bank.h"
 #include <string>
 #include <vector>
 #include <stack>
@@ -31,7 +32,7 @@ public:
     Player();
     Player (std::string name);
     virtual ~Player();
-	virtual Move* getMove(Market&) = 0;  //the player gets an option to take a card, exchange
+	virtual Move* getMove(Market&, Bank&) = 0;  //the player gets an option to take a card, exchange
     void printStats();
     void clear();
     void addCard(Card* card);

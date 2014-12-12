@@ -1,6 +1,9 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 #include "Move.h"
+#include "Take.h"
+#include "Trade.h"
+#include "Sell.h"
 #include "Player.h"
 #include <string>
 
@@ -11,7 +14,14 @@ public:
 	Human();
 	Human(std::string name);
 	virtual ~Human();
-	Move* getMove(Market &market);
+	Move* getMove(Market &market, Bank &bank);
+
+private:
+    Take* take(Market &market);
+    Trade* trade(Market &market);
+    Sell* sell(Market &market, Bank &bank);
+    void printMktSelections(Market& market, bool arr[]);
+    void printPlrSelections(Market& market, bool arr[], int camels);
 };
 
 #endif
