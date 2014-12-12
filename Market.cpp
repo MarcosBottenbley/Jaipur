@@ -5,13 +5,21 @@
 Market::Market(Deck &d):
  deck(d)
 {
-    for(int i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++)
     {
         mktCards[i] = new Card("Camel");
     }
 
 	mktCards[3] = d.getCard();
 	mktCards[4] = d.getCard();
+}
+
+Market::~Market()
+{
+    for (int i = 0; i < 5, i++)
+    {
+        delete mktCards[i];
+    }
 }
 
 Card* Market::getCard(int index) {

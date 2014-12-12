@@ -12,6 +12,7 @@ private:
 
 public:
     Deck();
+    ~Deck();
     void initDeck();
     void deal(Hand &,Hand &);
     Card * getCard();
