@@ -2,22 +2,19 @@
 #define MARKET_H
 
 #include "Card.h"
-
-class Game;
+#include "Deck.h"
 
 class Market {
 
 private:
 	Card* mktCards[5];
-	Game* parent;
+	Deck &deck;
 
 public:
-	Market();
-	Market(Game*);
-	Card* getCard(int index);
-	Card* takeCard(int index);
-	Card* swapCard(int index, Card* card);
-	void addCard(int index, Card* card);
+	Market(Deck&);
+	Card* getCard(int index);//checks card at index
+	Card* takeCard(int index);//automatically replaces card
+	Card* swapCard(int index, Card* card);//for trades
 	void printMarket();
 };
 

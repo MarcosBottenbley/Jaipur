@@ -2,14 +2,12 @@
 #include <iostream> //just for printDeck
 #include "Deck.h"
 #include "Market.h"
-#include "Game.h"
 
 using std::cout; // for printDeck method
 using std::endl; //
 
-Deck::Deck(Game * g)
+Deck::Deck()
 {
-    parent = g;
     initDeck();
 }
 
@@ -48,17 +46,14 @@ void Deck::initDeck()
     }
 }
 
-void Deck::deal()
+void Deck::deal(Hand &h1, Hand &h2)
 {
     int i;
     for (i = 0; i < 5; i++)
     {
-        (parent->player1)->addCard(getCard());
-        (parent->player2)->addCard(getCard());
+        h1.addCard(getCard());
+        h2.addCard(getCard());
     }
-
-    (parent->market)->addCard(0, getCard());
-    (parent->market)->addCard(1, getCard());
 }
 
 Card* Deck::getCard()
@@ -72,7 +67,7 @@ Card* Deck::getCard()
 void Deck::printDeck() {
 	std::stack<Card*> tempStack;
 	for (int i = cards.size(); i > 0; i--) {
-		cout << (cards.top())->getType() << ", ";
+		cout << (cards.top())->getType() << endl;
 		tempStack.push(cards.top());
 		cards.pop();
 	}

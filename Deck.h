@@ -3,19 +3,17 @@
 
 #include <stack>
 #include "Card.h"
-
-class Game;
+#include "Hand.h"
 
 class Deck {
 
 private:
     std::stack<Card*> cards;
-    Game * parent;
 
 public:
-    Deck(Game * g);
+    Deck();
     void initDeck();
-    void deal();
+    void deal(Hand &,Hand &);
     Card * getCard();
     void printDeck();
 };

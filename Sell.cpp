@@ -4,7 +4,12 @@
 #include <stack>
 
 Sell::Sell(Market &m, Hand &h, Bank &b, std::vector<Card*> p):
- Move(m,h), bank(b), pCards(p)
+ Move(m,h), bank(b)
+{
+	pCards = p;
+}
+
+Sell::~Sell()
 {}
 
 int Sell::makeMove()

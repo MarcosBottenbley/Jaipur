@@ -4,6 +4,9 @@ Trade::Trade(Market &m, Hand &h, std::vector<Card*> pc, std::vector<int> mc):
  Move(m,h), pCards(pc), mCards(mc)
 {}
 
+Trade::~Trade()
+{}
+
 int Trade::makeMove()
 {
 	int size = mCards.size();

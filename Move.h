@@ -6,7 +6,7 @@
 #include "Market.h"
 #include <exception>
 #include <vector>
-#include "InvalidMoveException.h"
+#include "InvalidMoveEx.h"
 
 using std::vector;
 

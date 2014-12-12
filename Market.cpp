@@ -1,13 +1,17 @@
 #include "Market.h"
-#include "Game.h"
 #include "Deck.h"
+#include <iostream>
 
-Market::Market(Game* g) {
-    parent = g;
-    for(int i = 2; i <= 4; i++)
+Market::Market(Deck &d):
+ deck(d)
+{
+    for(int i = 0; i < 3; i++)
     {
         mktCards[i] = new Card("Camel");
     }
+
+	mktCards[3] = d.getCard();
+	mktCards[4] = d.getCard();
 }
 
 Card* Market::getCard(int index) {
@@ -16,7 +20,7 @@ Card* Market::getCard(int index) {
 
 Card* Market::takeCard(int index) {
         Card* tempCard = mktCards[index];
-        mktCards[index] = (parent->deck)->getCard();
+        mktCards[index] = deck.getCard();
         return tempCard;
 }
 
@@ -26,15 +30,11 @@ Card* Market::swapCard(int index, Card* card) {
         return tempCard;
 }
 
-void Market::addCard(int index, Card* card) {
-        mktCards[index] = card;
-}
-
 void Market::printMarket() {
 	for (int i = 0; i < 5; i++) {
                 std::cout << i+1 << ". [" << mktCards[i]->getType() << "] ";
 		//std::cout << i+1 << ". [" << Type.toString(mktCards[i]->getType()) << "] ";
 	}
-	std::cout << endl;
+	std::cout << std::endl;
 }
 
