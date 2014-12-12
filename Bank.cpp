@@ -113,3 +113,16 @@ void Bank::printBank()
 		}
 	}
 }
+
+bool Bank::gameOver() {
+	int emptyStacks = 0;
+	for (int i = 0; i < 6; i++) {
+		if (bank[i].empty())
+			emptyStacks++;
+	}
+
+	if (emptyStacks >= 3)
+		return true;
+	return false;
+}
+

@@ -9,6 +9,16 @@ using std::endl; //
 Deck::Deck()
 {
     initDeck();
+    emptyFlag = false;
+}
+
+Deck::~Deck()
+{
+    for (int i = cards.size(); i > 0; i--)
+    {
+		delete cards.top();
+		cards.pop();
+    }
 }
 
 void Deck::initDeck()
@@ -58,6 +68,11 @@ void Deck::deal(Hand &h1, Hand &h2)
 
 Card* Deck::getCard()
 {
+    if (cards.empty()) {
+        emptyFlag = true;
+        return 0;
+    }
+
     Card * temp = cards.top();
     cards.pop();
     return temp;
@@ -77,3 +92,8 @@ void Deck::printDeck() {
 	}
 	cout << endl << endl;
 }
+
+bool Deck::gameOver() {
+	return emptyFlag;
+}
+

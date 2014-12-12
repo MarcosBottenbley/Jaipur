@@ -20,6 +20,7 @@ class Bank
 		~Bank();
 		std::stack<Token*> getTokens(Type::Enum,int);
 		void printBank();
+		bool gameOver();
 };
 #endif
 

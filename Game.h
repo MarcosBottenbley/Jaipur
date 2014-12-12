@@ -26,12 +26,14 @@ private:
 									//6 types of goods tokens and 3 types of bonus tokens
 	Deck* deck;				//the deck of cards
 
+	bool executeMove();
 public:
 	Game();
 	Game(int rndSeed);				//constructs game with a seed for the RNG
 	void startGame();
 	void startRound();				//resets the deck, market, and token piles, and
 									//deals a hand of 5 cards to each player
+	void playGame();
 	void printBoard();
 	void printPlayers();
 

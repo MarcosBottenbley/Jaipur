@@ -35,6 +35,28 @@ void Game::startRound() {
 	deck->deal(player1->hand, player2->hand);
 }
 
+void Game::playGame() {
+	Move* movePtr;
+
+	while(1) {
+		movePtr = player1.getMove();
+		if (executeMove(movePtr))	//if round is over, return
+			return;
+		movePtr = player2.getMove();
+		if (executeMove(movePtr))
+			return;
+	}
+}
+
+bool Game::executeMove(Move* mp) {
+	movePtr->makeMove();
+	delete movePtr;
+
+	if (deck->gameOver() || bank->gameOver())
+		return true;
+	return false;
+}
+
 void Game::printPlayers() {
     player1->printStats();
     cout << endl;

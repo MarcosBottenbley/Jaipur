@@ -124,7 +124,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			return 0;
 		}
 
-		return new Trade(market, hand, plrCards, mktCards);
+		return new Trade(market, hand, plrCards, mktCards, numCamels);
 	}
 
 	Sell* Human::sell(Market &market, Bank &bank) {
