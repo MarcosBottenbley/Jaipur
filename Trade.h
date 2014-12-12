@@ -6,11 +6,11 @@
 class Trade : public Move
 {
 	private:
-		bool pCards[7];
-		bool mCards[5];
-		int nextTrue(bool[], int);
+		bool *pCards;
+		bool *mCards;
+		int camels;
 	public:
-		Trade(Market &, Hand &, bool[], bool[]);
+		Trade(Market &, Hand &, bool *, bool *, int);
 		virtual ~Trade();
 		int makeMove();
 };

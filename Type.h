@@ -5,6 +5,9 @@
 
 class Type
 {
+	private:
+		std::string s_type;
+		int value;
 	public:
 		enum Enum
 		{
@@ -26,9 +29,6 @@ class Type
 		Enum getEnum();
 		std::string getString();
 	private:
-		std::string s_type;
-		int value;
-		Enum e;
 		Enum fromString(std::string);
 		std::string toString(Enum);
 };

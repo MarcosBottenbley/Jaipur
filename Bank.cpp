@@ -11,7 +11,7 @@ using std::endl;
 
 Bank::Bank()
 {
-	srand(time(0));
+	//srand(time(0));
 	initBank();
 }
 

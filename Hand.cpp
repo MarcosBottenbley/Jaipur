@@ -25,6 +25,7 @@ bool Hand::addCard(Card *c)
 		return true;
 	}
 	else if(hand.size() == MAX_SIZE) {
+		delete c;
 		return false;
 	}
 	else {

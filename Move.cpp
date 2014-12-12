@@ -6,12 +6,13 @@ Move::Move(Market &m,Hand &h): market(m), hand(h)
 Move::~Move()
 {}
 
-int numElements(bool arr[], int size) {
-	int n = 0;
+vector<int> Move::getIndexes(bool *arr, int size) {
+	vector<int> indexes;
 	for (int i = 0; i < size; i++) {
-		if (arr[i])
-			n++;
+		if (arr[i]){
+			indexes.push_back(i);
+		}
 	}
-	return n;
+	return indexes;
 }
 

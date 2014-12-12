@@ -3,15 +3,16 @@
 
 #include "Move.h"
 #include "Bank.h"
+#include "Type.h"
 
 class Sell : public Move
 {
 	private:
-		vector<Card*> pCards;
+		bool *pCards;
 		Bank &bank;
 	public:
 		Sell();
-		Sell(Market &, Hand &, Bank &, vector<Card*>);
+		Sell(Market &, Hand &, Bank &, bool *);
 		virtual ~Sell();
 		int makeMove();
 };

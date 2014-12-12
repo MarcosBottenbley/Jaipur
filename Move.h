@@ -15,7 +15,7 @@ class Move
 	protected:
 		Market &market;
 		Hand &hand;
-		int numElements(bool[], int);	//returns the number of trues in the given array
+		vector<int> getIndexes(bool *, int);
 	public:
 		Move(Market &,Hand &);
 		virtual ~Move();
