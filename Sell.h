@@ -7,11 +7,11 @@
 class Sell : public Move
 {
 	private:
-		vector<Card> pCards;
+		vector<Card*> pCards;
 		Bank &bank;
 	public:
 		Sell();
-		Sell(Market &, Hand &, Bank &, vector<Card*>)
+		Sell(Market &, Hand &, Bank &, vector<Card*>);
 		virtual ~Sell();
 		int makeMove();
 };

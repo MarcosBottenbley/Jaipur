@@ -41,7 +41,7 @@ unsigned int Hand::handSize()
 
 Card* Hand::cardAt(int index) {
 	Card* temp = 0;
-	if (index < 0 || index >= handSize()) {		//if index out of bounds...
+	if (index < 0 || index >= (int)handSize()) {		//if index out of bounds...
 		return temp;
 	}
 	return hand[index];

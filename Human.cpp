@@ -7,14 +7,12 @@ using std::endl;
 
 Human::Human() {
 	wins = 0;
-	camels = 0;
 }
 
 Human::Human(std::string hname) {		//TODO: is this stuff necessary? it's in Player.cpp already
     name = hname;
     score = 0;
     wins = 0;
-    camels = 0;
 }
 
 Human::~Human()
@@ -27,6 +25,7 @@ Move* Human::getMove(Market& market) {
 	int inputI2;
 	std::vector<int> mktCards;	//market cards to take in an exchange
 	std::vector<int> plrCards;	//player cards to give in an exchange, or to sell
+	std::string str;
 
 	int numCamels;
 
@@ -106,21 +105,30 @@ Move* Human::getMove(Market& market) {
 		} else if (inputC == 'S') {
 			cout << "How many items would you like to sell?: ";
 			cin >> inputI;
+
+			if (inputI == -1)
+				continue;
+			if (inputI > (int)hand.handSize() || inputI < 1) {
+				cout << "Invalid number of items." << endl;
+				continue;
+			}
+
 			cout << "Enter items from your hand (integers, space separated): ";
 			for (int k = 0; k < inputI; k++) {
 				cin >> inputI2;
 				if (inputI2 == -1)
 					break;
-				if (inputI2 < 0 || inputI2 >= hand.handSize()) {
+				if (inputI2 < 0 || inputI2 >= (int)hand.handSize()) {
 					cout << "Invalid index." << endl;
 					k--;
 					continue;
 				}
-				plrCards.pushBack(inputI);
+				plrCards.push_back(inputI);
 			}
 
 			if (inputI2 == -1)
 				continue;
+
 			return new Sell(market, hand, plrCards);
 
 		} else {

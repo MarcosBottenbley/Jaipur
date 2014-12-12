@@ -4,7 +4,7 @@
 #include <stack>
 
 Sell::Sell(Market &m, Hand &h, Bank &b, std::vector<Card*> p):
- Move(m,h), Bank(b), pCards(p)
+ Move(m,h), bank(b), pCards(p)
 {}
 
 int Sell::makeMove()
@@ -27,7 +27,7 @@ int Sell::makeMove()
 	//now that everything is checked it gets the tokens
 	Type t(initType);
 	Type::Enum e = t.getEnum();
-	std::stack<Token*> tokens = b.getTokens(e,size);
+	std::stack<Token*> tokens = bank.getTokens(e,size);
 	int points = 0;
 	while(!tokens.empty()) {
 		points += tokens.top()->getValue();

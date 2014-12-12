@@ -29,3 +29,12 @@ Card* Market::swapCard(int index, Card* card) {
 void Market::addCard(int index, Card* card) {
         mktCards[index] = card;
 }
+
+void Market::printMarket() {
+	for (int i = 0; i < 5; i++) {
+                std::cout << i+1 << ". [" << mktCards[i]->getType() << "] ";
+		//std::cout << i+1 << ". [" << Type.toString(mktCards[i]->getType()) << "] ";
+	}
+	std::cout << endl;
+}
+

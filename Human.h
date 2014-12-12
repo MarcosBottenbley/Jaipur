@@ -10,7 +10,7 @@ public:
 	Human();
 	Human(std::string name);
 	virtual ~Human();
-	Move* getMove();
+	Move* getMove(Market &market);
 };
 
 #endif

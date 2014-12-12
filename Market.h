@@ -18,6 +18,7 @@ public:
 	Card* takeCard(int index);
 	Card* swapCard(int index, Card* card);
 	void addCard(int index, Card* card);
+	void printMarket();
 };
 
 #endif
