@@ -40,21 +40,40 @@ void Game::playGame() {
 
 	while(1) {
 		movePtr = player1.getMove();
-		if (executeMove(movePtr))	//if round is over, return
-			return;
-		movePtr = player2.getMove();
-		if (executeMove(movePtr))
-			return;
+		if (executeMove(movePtr))	//if invalid move, player1 tries again
+			continue;
+		if (checkGameOver())
+			break;
+
+		while (1) {
+			movePtr = player2.getMove();
+			if (executeMove(movePtr))	//if invalid move, player2 tries again
+				continue;
+			if (checkGameOver())
+				return;
+			break;
+		}
 	}
 }
 
+// returns false on error, true if successful
 bool Game::executeMove(Move* mp) {
-	movePtr->makeMove();
+	try {
+		movePtr->makeMove();
+	} catch (InvalidMoveException) {
+		cout << "Invalid Move" << endl;
+		delete movePtr;
+		return false;
+	}
+	
 	delete movePtr;
+	return true;
+}
 
-	if (deck->gameOver() || bank->gameOver())
-		return true;
-	return false;
+bool Game::checkGameOver() {
+        if (deck->gameOver() || bank->gameOver())
+                return true;
+        return false;
 }
 
 void Game::printPlayers() {

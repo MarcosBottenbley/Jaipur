@@ -21,7 +21,7 @@ private:
     Trade* trade(Market &market);
     Sell* sell(Market &market, Bank &bank);
     void printMktSelections(Market& market, bool arr[]);
-    void printPlrSelections(Market& market, bool arr[], int camels);
+    void printPlrSelections(bool arr[], int camels);
 };
 
 #endif

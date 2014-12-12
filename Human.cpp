@@ -106,7 +106,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			if (inputI == 9) {
 				hand.printHand();
 				printMktSelections(market, mktCards);
-				printPlrSelections(market, plrCards, numCamels);
+				printPlrSelections(plrCards, numCamels);
 			}
 			if (inputI == 8 && numCamels < (int)hand.herdSize())
 				numCamels++;
@@ -141,7 +141,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 				break;
 			if (inputI == 9) {
 				hand.printHand();
-				printPlrSelections(market, plrCards, 0);
+				printPlrSelections(plrCards, 0);
 			}
 			else if (inputI < 0 || inputI > (int)hand.handSize()) {
 				cout << "Invalid input" << endl;
@@ -156,21 +156,21 @@ Move* Human::getMove(Market& market, Bank& bank) {
 	void Human::printMktSelections(Market& market, bool arr[]) {
 		cout << "You've selected these market cards: ";
 		for (int i = 0; i < 5; i++)
-        {
+		{
 			if (arr[i])
 				cout << "[" << market.getCard(i)->getType() << "] ";
-        }
-            cout << endl;
+		}
+		cout << endl;
 	}
 
-	void Human::printPlrSelections(Market& market, bool arr[], int camels) {
+	void Human::printPlrSelections(bool arr[], int camels) {
 		int size = (int)hand.handSize();
 		cout << "You've selected these cards from your hand: ";
 		for (int i = 0; i < size; i++)
-        {
+		{
 			if (arr[i])
 				cout << "[" << hand.cardAt(i)->getType() << "] ";
-        }
+		}
 		if (camels != 0)
 			cout << "and " << camels << " camels.";
 		cout << endl;
