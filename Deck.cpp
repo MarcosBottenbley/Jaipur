@@ -11,6 +11,15 @@ Deck::Deck()
     initDeck();
 }
 
+Deck::~Deck()
+{
+    for (int i = cards.size(); i > 0; i--)
+    {
+		delete cards.top();
+		cards.pop();
+    }
+}
+
 void Deck::initDeck()
 {
     Card* tempDeck[52];
