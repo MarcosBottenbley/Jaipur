@@ -6,6 +6,7 @@
 
 
 class Human : public Player {
+	void sortVector(std::vector<int>);
 public:
 	Human();
 	Human(std::string name);

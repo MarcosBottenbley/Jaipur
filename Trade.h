@@ -6,10 +6,10 @@
 class Trade : public Move
 {
 	private:
-		vector<Card*> pCards;
-		vector<Card*> mCards;
+		std::vector<Card*> pCards;
+		std::vector<Card*> mCards;
 	public:
-		Trade(Market &, Hand &, vector<Card*>, vector<Card*>);
+		Trade(Market &, Hand &, std::vector<Card*>, std::vector<int>);
 		virtual ~Trade();
 		int makeMove();
 };

@@ -1,6 +1,6 @@
 #include "Trade.h"
 
-Trade::Trade(Market &m, Hand &h, vector<Card*> pc, vector<Card*> mc):
+Trade::Trade(Market &m, Hand &h, std::vector<Card*> pc, std::vector<int> mc):
  Move(m,h), pCards(pc), mCards(mc)
 {}
 
@@ -8,6 +8,7 @@ int Trade::makeMove()
 {
 	int size = mCards.size();
 	int size2 = pCards.size();
+	Card* temp = 0;
 
 	if(size != size2)
 		throw InvalidMoveException;
@@ -15,8 +16,8 @@ int Trade::makeMove()
 		throw InvalidMoveException;
 
 	for(int x = 0; x < size; x++) {
-		market.add(pCards[x]);
-		hand.addCard(mCards[x]);
+		temp = market.swapCard(mc[x], pc[x]);
+		hand.addCard(temp);
 	}
 
 	return 0;
