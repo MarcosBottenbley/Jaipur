@@ -29,7 +29,6 @@ void Player:: printStats()
 
     std::cout<< "hand size: " << hand.handSize() << std::endl;
     std::cout<< "Wins: " << wins << std::endl;
-    std::cout<< "Camels: " << hand.herdSize() << std::endl;
     std::cout<<  "hand: ";
     hand.printHand();
     std::cout << std::endl;

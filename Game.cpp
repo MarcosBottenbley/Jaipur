@@ -39,14 +39,14 @@ void Game::playGame() {
 	Move* movePtr;
 
 	while(1) {
-		movePtr = player1.getMove();
+	  movePtr = player1->getMove(*market, *bank);
 		if (executeMove(movePtr))	//if invalid move, player1 tries again
 			continue;
 		if (checkGameOver())
 			break;
 
 		while (1) {
-			movePtr = player2.getMove();
+		  movePtr = player2->getMove(*market, *bank);
 			if (executeMove(movePtr))	//if invalid move, player2 tries again
 				continue;
 			if (checkGameOver())
@@ -59,14 +59,14 @@ void Game::playGame() {
 // returns false on error, true if successful
 bool Game::executeMove(Move* mp) {
 	try {
-		movePtr->makeMove();
-	} catch (InvalidMoveException) {
+		mp->makeMove();
+	} catch (InvalidMoveEx) {
 		cout << "Invalid Move" << endl;
-		delete movePtr;
+		delete mp;
 		return false;
 	}
 	
-	delete movePtr;
+	delete mp;
 	return true;
 }
 

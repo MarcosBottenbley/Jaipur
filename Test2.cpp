@@ -1,3 +1,6 @@
+//Tests the Market, Hand, and Deck classes,
+//as well as the Sell, Take, and Trade functionality.
+
 #include "Market.h"
 #include "Hand.h"
 #include "Card.h"
@@ -16,7 +19,7 @@ using std::endl;
 
 int main() {
 	//std::srand(std::time(0));
-	std::srand(80085);
+	std::srand(600120);
 	
 	Deck* d = new Deck();
 	Market* m = new Market(*d);
