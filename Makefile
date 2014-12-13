@@ -13,5 +13,8 @@ Test2:	Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Deck.cpp Market.cpp Move.cp
 Test3:	Game.cpp Player.cpp Market.cpp Deck.cpp Bank.cpp Human.cpp Card.cpp Token.cpp Hand.cpp Type.cpp Move.cpp Take.cpp Trade.cpp Sell.cpp Test3.cpp
 		$(CC) $(CCFLAGS) Game.cpp Player.cpp Market.cpp Deck.cpp Bank.cpp Human.cpp Card.cpp Token.cpp Hand.cpp Type.cpp Move.cpp Take.cpp Trade.cpp Sell.cpp Test3.cpp -o Test3
 
+PlayerTest: HumanTest.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp
+		$(CC) $(CCFLAGS) HumanTest.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o PlayerTest
+
 clean:
 		rm Test Test2 Test3
