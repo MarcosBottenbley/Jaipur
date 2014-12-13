@@ -19,7 +19,7 @@ int Trade::makeMove()
 
 	if(size != size2+camels)
 		throw ime;
-	else if(size > 5)
+	else if(size > 5 || size < 2)
 		throw ime;
 
 	Card * temp = 0;

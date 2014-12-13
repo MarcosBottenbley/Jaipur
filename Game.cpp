@@ -40,14 +40,14 @@ void Game::playGame() {
 
 	while(1) {
 		movePtr = player1->getMove(*market, *bank);
-		if (executeMove(movePtr))	//if invalid move, player1 tries again
+		if (!executeMove(movePtr))	//if invalid move, player1 tries again
 			continue;
 		if (checkGameOver())
 			break;
 
 		while (1) {
 			movePtr = player2->getMove(*market, *bank);
-			if (executeMove(movePtr))	//if invalid move, player2 tries again
+			if (!executeMove(movePtr))	//if invalid move, player2 tries again
 				continue;
 			if (checkGameOver())
 				return;

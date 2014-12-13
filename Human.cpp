@@ -50,7 +50,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			if (inputI == -1)
 				return 0;
 			if (inputI < 0 || inputI > 5) {
-				cout << "Invalid entry";
+				cout << "Invalid entry" << endl;
 				continue;
 			}
 			if (hand.handSize() == 7 && !(market.getCard(inputI)->isCamel())) {
@@ -121,19 +121,10 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			plrCards[inputI-1] = !(plrCards[inputI-1]);
 		}
 
-		if (hand.handSize() + numCamels > 7) {
+		/*if (hand.handSize() + numCamels > 7) {
 			cout << "This exchange would result in you having too many goods (7 max)." << endl;
 			return 0;
-		}
-
-		//cout << endl << endl;
-
-		/*for (int i = 0; i < 5; i++)
-			cout << mktCards[i] << " ";
-		cout << endl;
-		for (int j = 0; j < 7; j++)
-			cout << plrCards[j] << " ";
-		cout << endl;*/		//TODO: remove these
+		}*/
 
 		return new Trade(market, hand, plrCards, mktCards, numCamels);
 	}

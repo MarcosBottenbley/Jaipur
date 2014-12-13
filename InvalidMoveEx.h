@@ -3,13 +3,23 @@
 
 #include <iostream>
 #include <exception>
+#include <string>
 
 class InvalidMoveEx: public std::exception
 {
+	std::string errMessage;
 public:
+	InvalidMoveEx() {
+		errMessage = "ERROR: Invalid move";
+	}
+
+	InvalidMoveEx(std::string str) {
+		errMessage = str;
+	}
+
 	virtual const char* what() const throw()
 	{
-		return "ERROR: Invalid move";
+		return errMessage;
 	}
 
 };
