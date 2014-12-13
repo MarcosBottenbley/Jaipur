@@ -6,7 +6,8 @@
 class Trade : public Move
 {
 	private:
-		bool *pCards;
+		std::vector<int> pIndexes;
+		std::vector<int> mIndexes;
 		bool *mCards;
 		int camels;
 	public:

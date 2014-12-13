@@ -104,12 +104,17 @@ Move* Human::getMove(Market& market, Bank& bank) {
 				hand.printHand();
 				printMktSelections(market, mktCards);
 				printPlrSelections(plrCards, numCamels);
+				continue;
 			}
-			if (inputI == 8 && numCamels < (int)hand.herdSize())
+			if (inputI == 8 && numCamels < (int)hand.herdSize()) {
 				numCamels++;
-			else if (inputI == -8 && numCamels > 0)
+				continue;
+			}
+			if (inputI == -8 && numCamels > 0) {
 				numCamels--;
-			else if (inputI < 0 || inputI > (int)hand.handSize()) {
+				continue;
+			}
+			if (inputI < 0 || inputI > (int)hand.handSize()) {
 				cout << "Invalid input" << endl;
 				continue;
 			}
@@ -120,6 +125,15 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			cout << "This exchange would result in you having too many goods (7 max)." << endl;
 			return 0;
 		}
+
+		//cout << endl << endl;
+
+		/*for (int i = 0; i < 5; i++)
+			cout << mktCards[i] << " ";
+		cout << endl;
+		for (int j = 0; j < 7; j++)
+			cout << plrCards[j] << " ";
+		cout << endl;*/		//TODO: remove these
 
 		return new Trade(market, hand, plrCards, mktCards, numCamels);
 	}
@@ -139,6 +153,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			if (inputI == 9) {
 				hand.printHand();
 				printPlrSelections(plrCards, 0);
+				continue;
 			}
 			else if (inputI < 0 || inputI > (int)hand.handSize()) {
 				cout << "Invalid input" << endl;

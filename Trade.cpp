@@ -1,8 +1,11 @@
 #include "Trade.h"
 
 Trade::Trade(Market &m, Hand &h, bool *pc, bool *mc, int c):
- Move(m,h), pCards(pc), mCards(mc), camels(c)
-{}
+ Move(m,h), camels(c)
+{
+	pIndexes = getIndexes(pc, 7);
+	mIndexes = getIndexes(mc, 5);
+}
 
 Trade::~Trade()
 {}
@@ -10,8 +13,6 @@ Trade::~Trade()
 int Trade::makeMove()
 {
 	InvalidMoveEx ime;
-	vector<int> pIndexes = getIndexes(pCards, 7);
-	vector<int> mIndexes = getIndexes(mCards, 5);
 
 	int size = mIndexes.size();
 	int size2 = pIndexes.size();
