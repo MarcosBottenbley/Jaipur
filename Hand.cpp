@@ -60,12 +60,15 @@ Card* Hand::removeCard(int index)
 void Hand::printHand() 
 {
 	unsigned int x;
+	std::cout << "Hand:  ";
+	if (isEmpty())
+		std::cout << " No Goods Cards";
 	for(x = 0; x < hand.size(); x++)
-		std::cout << hand[x]->getType() << std::endl;
+		std::cout << " " << x+1 << ". [" << hand[x]->getType() << "]";
 	if(herdSize() == 1)
-		std::cout << herdSize() << " camel in herd." << std::endl;
+		std::cout << ", " << herdSize() << " camel in herd." << std::endl;
 	else
-		std::cout << herdSize() << " camels in herd." << std::endl;
+		std::cout << ", " << herdSize() << " camels in herd." << std::endl;
 }
 
 bool Hand::isEmpty()

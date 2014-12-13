@@ -25,31 +25,34 @@ Player::~Player()
 
 void Player:: printStats()
 {
-    std::cout<< name << " 's stats: " << std::endl;
+    std::cout<< name << "'s stats: ";
 
-    std::cout<< "hand size: " << hand.handSize() << std::endl;
-    std::cout<< "Wins: " << wins << std::endl;
-    std::cout<< "Camels: " << hand.herdSize() << std::endl;
-    std::cout<<  "hand: ";
+    std::cout << "Hand size: " << hand.handSize();
+    std::cout << ", Camels: " << hand.herdSize();
+    std::cout << ", Score: " << getScore();
+    std::cout << ", Wins: " << wins << std::endl;
     hand.printHand();
-    std::cout << std::endl;
 }
 
 void Player:: clear()
 {
     for(int i = hand.handSize(); i>0; i--)
     {
-        hand.removeCard(i);
+        delete hand.removeCard(i);
     }
     for(int k = hand.herdSize(); k>0; k--)
     {
-        hand.getCamel();
+        delete hand.getCamel();
     }
 }
 
 void Player:: addCard(Card* card)
 {
     hand.addCard(card);
+}
+
+Hand* Player::getHand() {
+	return &hand;
 }
 
 void Player:: addToken(Token* token)

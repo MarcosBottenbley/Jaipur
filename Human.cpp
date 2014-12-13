@@ -5,14 +5,10 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-Human::Human() {
-	wins = 0;
+Human::Human() : Player(){
 }
 
-Human::Human(std::string hname) {		//TODO: is this stuff necessary? it's in Player.cpp already
-    name = hname;
-    score = 0;
-    wins = 0;
+Human::Human(std::string hname) : Player(hname) {	//TODO: is this stuff necessary? it's in Player.cpp already
 }
 
 Human::~Human()
@@ -53,7 +49,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			cin >> inputI;
 			if (inputI == -1)
 				return 0;
-			if (inputI < 0 || inputI >= 5) {
+			if (inputI < 0 || inputI > 5) {
 				cout << "Invalid entry";
 				continue;
 			}
@@ -61,7 +57,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 				cout << "You've already reached the maximum hand size" << endl;
 				continue;
 			}
-			return new Take(market, hand, inputI);
+			return new Take(market, hand, inputI-1);
 		}
 	}
 
