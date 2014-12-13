@@ -1,9 +1,10 @@
 #include "AI.h"
-#include <string>
 #include <iostream>
 
 using std::cout;
 using std::endl;
+
+AI::AI(std::string name) : Player(name) {}
 
 Move* AI::getMove(Market& market, Bank& bank)
 {	
@@ -37,7 +38,7 @@ Move* AI::take(Market& market)
 //you find that isn't a valuable card (gold, silver, diamond)
 Move* AI::sellOne(Market& market, Bank& bank)
 {
-	int i;
+	unsigned int i;
 	std::string type;
 	bool playerCards[7] {0};
 	
@@ -46,7 +47,7 @@ Move* AI::sellOne(Market& market, Bank& bank)
 		type = hand.cardAt(i)->getType();
 		if (type != "Diamond" && type != "Gold" && type != "Silver")
 		{
-			playerCards[i - 1] = !(playerCards[i - 1])
+			playerCards[i - 1] = !(playerCards[i - 1]);
 			cout << name << " sells a " << type << " card." << endl;
 			return new Sell(market, hand, bank, playerCards);
 		}
@@ -59,8 +60,9 @@ Move* AI::sellOne(Market& market, Bank& bank)
 //and sells them
 Move* AI::sellTwo(Market& market, Bank& bank)
 {
-	int i,j;
+	unsigned int i,j;
 	std::string type1, type2;
+	bool playerCards[7] {0};
 	
 	for (i = 0; i < hand.handSize(); i++)
 	{
@@ -81,4 +83,5 @@ Move* AI::sellTwo(Market& market, Bank& bank)
 			}
 		}
 	}
+	return 0;
 }

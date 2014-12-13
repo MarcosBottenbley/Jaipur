@@ -30,7 +30,7 @@ void Game::startGame() {
 
 	cout << "Player 2, Enter your name: ";
 	cin >> str;
-	player2 = new Human(str);
+	player2 = new AI(str);
 }
 
 void Game::startRound() {

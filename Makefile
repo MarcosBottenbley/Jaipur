@@ -4,8 +4,8 @@ GCOV = -fprofile-arcs -ftest-coverage
 
 all: JaipurMain
 
-JaipurMain: JaipurMain.cpp Game.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp
-		$(CC) $(CCFLAGS) JaipurMain.cpp Game.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o JaipurMain
+JaipurMain: JaipurMain.cpp Game.cpp Human.cpp Player.cpp AI.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp
+		$(CC) $(CCFLAGS) JaipurMain.cpp Game.cpp Human.cpp Player.cpp AI.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o JaipurMain
 
 Test:	Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp
 		$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp -o Test
