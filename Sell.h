@@ -8,7 +8,7 @@
 class Sell : public Move
 {
 	private:
-		bool *pCards;
+		std::vector<int> pIndexes;
 		Bank &bank;
 	public:
 		Sell();

@@ -5,8 +5,10 @@
 #include <iostream>
 
 Sell::Sell(Market &m, Hand &h, Bank &b, bool *p):
- Move(m,h),pCards(p),bank(b)
-{}
+ Move(m,h),bank(b)
+{
+	pIndexes = getIndexes(p, 7);
+}
 
 Sell::~Sell()
 {}
@@ -15,10 +17,9 @@ int Sell::makeMove()
 {
 	InvalidMoveEx ime;
 	//checks: if "precious metal" that there are at least 2 cards
-	vector<int> indexes = getIndexes(pCards,7);
-	int size = indexes.size();
+	int size = pIndexes.size();
 
-	std::string initType = hand.cardAt(indexes[0])->getType();
+	std::string initType = hand.cardAt(pIndexes[0])->getType();
 	if(initType == "Gold" || initType == "Silver" || initType == "Diamond"){
 		if(size < 2)
 			throw ime;
@@ -27,7 +28,7 @@ int Sell::makeMove()
 	//checks to see if all cards are of the same type
 	std::string currType;
 	for(int x = 1; x < size; x++){
-		currType = hand.cardAt(indexes[x])->getType();
+		currType = hand.cardAt(pIndexes[x])->getType();
 		if(currType != initType)
 			throw ime;
 	}
@@ -44,7 +45,7 @@ int Sell::makeMove()
 	}
 	
 	for(int i = size-1; i >= 0; i--) {
-		hand.removeCard(indexes[i]);
+		hand.removeCard(pIndexes[i]);
 	}
 
 	return points;

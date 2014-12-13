@@ -8,7 +8,6 @@ class Trade : public Move
 	private:
 		std::vector<int> pIndexes;
 		std::vector<int> mIndexes;
-		bool *mCards;
 		int camels;
 	public:
 		Trade(Market &, Hand &, bool *, bool *, int);
