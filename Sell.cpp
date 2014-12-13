@@ -26,7 +26,7 @@ int Sell::makeMove()
 
 	//checks to see if all cards are of the same type
 	std::string currType;
-	for(int x = 1; x < size-1; x++){
+	for(int x = 1; x < size; x++){
 		currType = hand.cardAt(indexes[x])->getType();
 		if(currType != initType)
 			throw ime;
