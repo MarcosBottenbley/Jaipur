@@ -35,16 +35,16 @@ void Bank::initBank()
 {
 	Type t;
 
-	int arr1[5] = {7,7,5,5,5};
+	int arr1[5] = {5,5,5,7,7};
 	addTokens(arr1,5,Type::DIAMOND,"Diamond");
-	int arr2[5] = {6,6,5,5,5};
+	int arr2[5] = {5,5,5,6,6};
 	addTokens(arr2,5,Type::GOLD,"Gold");
 	int arr3[5] = {5,5,5,5,5};
 	addTokens(arr3,5,Type::SILVER,"Silver");
-	int arr4[7] = {5,3,3,2,2,1,1};
+	int arr4[7] = {1,1,2,2,3,3,5};
 	addTokens(arr4,7,Type::CLOTH,"Cloth");
 	addTokens(arr4,7,Type::SPICE,"Spice");
-	int arr6[9] = {4,3,2,1,1,1,1,1,1};
+	int arr6[9] = {1,1,1,1,1,1,2,3,4};
 	addTokens(arr6,9,Type::LEATHER,"Leather");
 
 	int arr7[7] = {3,3,2,2,2,1,1};

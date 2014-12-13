@@ -78,12 +78,13 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			if (inputI == 9) {
 				market.printMarket();
 				printMktSelections(market, mktCards);
+				continue;
 			}
 			else if (inputI < -1 || inputI > 5) {
 				cout << "Invalid input" << endl;
 				continue;
 			}
-			if (market.getCard(inputI)->isCamel()) {
+			if (market.getCard(inputI-1)->isCamel()) {
 				cout << "You cannot exchange for camels from the market." << endl;
 				continue;
 			}

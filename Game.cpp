@@ -60,7 +60,7 @@ void Game::playGame() {
 bool Game::executeMove(Move* mp) {
 	try {
 		mp->makeMove();
-	} catch (InvalidMoveException& ime) {
+	} catch (InvalidMoveEx) {
 		cout << "Invalid Move" << endl;
 		delete mp;
 		return false;

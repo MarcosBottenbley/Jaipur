@@ -1,3 +1,5 @@
+// Tests the Token, Card, Hand, and Bank classes.
+
 #include "Token.h"
 #include "Card.h"
 #include "Hand.h"
