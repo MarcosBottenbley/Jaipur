@@ -2,7 +2,10 @@ CC = g++
 CCFLAGS = -std=c++11 -pedantic -Wall -Wextra -O -g
 GCOV = -fprofile-arcs -ftest-coverage
 
-all: Test Test2
+all: JaipurMain
+
+JaipurMain: JaipurMain.cpp Game.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp
+		$(CC) $(CCFLAGS) JaipurMain.cpp Game.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o JaipurMain
 
 Test:	Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp
 		$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp -o Test
@@ -17,4 +20,4 @@ PlayerTest: HumanTest.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take
 		$(CC) $(CCFLAGS) HumanTest.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o PlayerTest
 
 clean:
-		rm Test Test2 Test3
+		rm JaipurMain Test Test2 Test3 PlayerTest

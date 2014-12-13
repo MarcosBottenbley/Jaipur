@@ -7,13 +7,13 @@
 
 class InvalidMoveEx: public std::exception
 {
-	std::string errMessage;
+	const char* errMessage;
 public:
 	InvalidMoveEx() {
 		errMessage = "ERROR: Invalid move";
 	}
 
-	InvalidMoveEx(std::string str) {
+	InvalidMoveEx(const char* str) {
 		errMessage = str;
 	}
 

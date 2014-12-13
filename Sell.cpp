@@ -15,14 +15,15 @@ Sell::~Sell()
 
 int Sell::makeMove()
 {
-	InvalidMoveEx ime;
+	InvalidMoveEx ime1("ERROR: You must sell at least two of a precious metal\n");
+	InvalidMoveEx ime2("ERROR: All cards you sell must be of the same type\n");
 	//checks: if "precious metal" that there are at least 2 cards
 	int size = pIndexes.size();
 
 	std::string initType = hand.cardAt(pIndexes[0])->getType();
 	if(initType == "Gold" || initType == "Silver" || initType == "Diamond"){
 		if(size < 2)
-			throw ime;
+			throw ime1;
 	}
 
 	//checks to see if all cards are of the same type
@@ -30,7 +31,7 @@ int Sell::makeMove()
 	for(int x = 1; x < size; x++){
 		currType = hand.cardAt(pIndexes[x])->getType();
 		if(currType != initType)
-			throw ime;
+			throw ime2;
 	}
 
 	//now that everything is checked it gets the tokens

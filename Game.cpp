@@ -6,10 +6,11 @@
 #include <ctime>
 
 using std::vector;
-using std::stack;		//TODO: necessary?
 using std::string;
 using std::cout;
 using std::endl;
+using std::cerr;
+using std::cin;
 
 /* Constructor */
 Game::Game() {
@@ -22,9 +23,14 @@ Game::Game(int rndSeed) {
 
 /* Class Methods */
 void Game::startGame() {
-	player1 = new Human("Player1");		//for now, the names can be hard coded
-	player2 = new Human("Player2");
+	string str;
+	cout << "Welcome to Jaipur!" << endl << "Player 1, Enter your name: ";
+	cin >> str;
+	player1 = new Human(str);
 
+	cout << "Player 2, Enter your name: ";
+	cin >> str;
+	player2 = new Human(str);
 }
 
 void Game::startRound() {
@@ -60,8 +66,8 @@ void Game::playGame() {
 bool Game::executeMove(Move* mp) {
 	try {
 		mp->makeMove();
-	} catch (InvalidMoveEx) {
-		cout << "Invalid Move" << endl;
+	} catch (InvalidMoveEx e) {
+		cerr << e.what() << endl;
 		delete mp;
 		return false;
 	}
