@@ -1,49 +1,83 @@
 #include "AI.h"
 #include <string>
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 Move* AI::getMove(Market& market, Bank& bank)
 {	
+	Move* movePtr;
+	
 	//if hand is not full, take the first card in the market
 	//(if the card is a camel, makeMove will take all camels)
 	if(hand.handSize() != 7)
-		return new Take(market, hand, 1);
+		movePtr =  take(market);
 	else
 	{
-		int i;
-		std::string type1, type2;
-		bool playerCards[7] {0};
+		movePtr = sellOne(market, bank);
 		
-		//if hand is full, go through the hand and sell the first card
-		//you find that isn't a valuable card (gold, silver, diamond)
-		for (i = 0; i < hand.handSize(); i++)
+		if (movePtr == 0)
+			movePtr = sellTwo(market, bank);
+	}
+	return movePtr;
+}
+	
+Move* AI::take(Market& market)
+{
+	if(market.getCard(1)->getType() == "Camel")
+		cout << name << " takes the camels." << endl;
+	else
+		cout << name << " takes a " << market.getCard(1)->getType() << " card." << endl;
+		
+	return new Take(market, hand, 1);
+}
+
+//if hand is full, go through the hand and sell the first card
+//you find that isn't a valuable card (gold, silver, diamond)
+Move* AI::sellOne(Market& market, Bank& bank)
+{
+	int i;
+	std::string type;
+	bool playerCards[7] {0};
+	
+	for (i = 0; i < hand.handSize(); i++)
+	{
+		type = hand.cardAt(i)->getType();
+		if (type != "Diamond" && type != "Gold" && type != "Silver")
 		{
-			type1 = hand.cardAt(i)->getType();
-			if (type1 != "Diamond" && type1 != "Gold" && type1 != "Silver")
-			{
-				playerCards[i - 1] = !(playerCards[i - 1])
-				return new Sell(market, hand, bank, playerCards);
-			}
+			playerCards[i - 1] = !(playerCards[i - 1])
+			cout << name << " sells a " << type << " card." << endl;
+			return new Sell(market, hand, bank, playerCards);
 		}
-		
-		//this code will only execute if the AI has a full hand of only valuables,
-		//loops through every combination of two cards until it finds a valid one
-		//and sells them
-		for (i = 0; i < hand.handSize(); i++)
+	}
+	return 0;
+}
+
+//this code will only execute if the AI has a full hand of only valuables,
+//it loops through every combination of two cards until it finds a valid one
+//and sells them
+Move* AI::sellTwo(Market& market, Bank& bank)
+{
+	int i,j;
+	std::string type1, type2;
+	
+	for (i = 0; i < hand.handSize(); i++)
+	{
+		for (j = 0; j < hand.handSize(); j++)
 		{
-			for (int j = 0; j < hand.handSize(); j++)
-			{
-				if (i == j)
-					continue;
-					
-				type1 = hand.cardAt(i)->getType();
-				type2 = hand.cardAt(j)->getType();
+			if (i == j)
+				continue;
 				
-				if(type1 == type2)
-				{
-					playerCards[i - 1] = !(playerCards[i - 1]);
-					playerCards[j - 1] = !(playerCards[j - 1]);
-					return new Sell(market, hand, bank, playerCards);
-				}
+			type1 = hand.cardAt(i)->getType();
+			type2 = hand.cardAt(j)->getType();
+			
+			if(type1 == type2)
+			{
+				playerCards[i - 1] = !(playerCards[i - 1]);
+				playerCards[j - 1] = !(playerCards[j - 1]);
+				cout << name << " sells two " << type1 << " cards." << endl;
+				return new Sell(market, hand, bank, playerCards);
 			}
 		}
 	}
