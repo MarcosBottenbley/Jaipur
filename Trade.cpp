@@ -12,15 +12,16 @@ Trade::~Trade()
 
 int Trade::makeMove()
 {
-	InvalidMoveEx ime;
+	InvalidMoveEx ime1("ERROR: Did not pick an equal amount of cards from the market and the hand\n");
+	InvalidMoveEx ime2("ERROR: Did not pick the right amount of cards\n");
 
 	int size = mIndexes.size();
 	int size2 = pIndexes.size();
 
-	if(size != size2+camels)
-		throw ime;
-	else if(size > 5 || size < 2)
-		throw ime;
+	if(size != size2+camels)//checks to see if amount of cards are equal
+		throw ime1;
+	else if(size > 5 || size < 2) //checks to see that they didn't pick either too many or too little cards
+		throw ime2;
 
 	Card * temp = 0;
 
