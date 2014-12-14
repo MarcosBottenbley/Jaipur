@@ -9,9 +9,12 @@ Take::~Take()
 
 int Take::makeMove()
 {
-	InvalidMoveEx ime;
+	InvalidMoveEx ime1("ERROR: invalid selection");
+	InvalidMoveEx ime2("ERROR: hand is full. The hand is limited to 7 cards");
 	if(index > 4)
-		throw ime;
+		throw ime1;
+	if(hand.handSize() == 7)
+		throw ime2;
 
 	if (market.getCard(index)->isCamel()) {	//if taking camels...
 		for (int x = 0; x < 5; x++) { //finds camels
@@ -22,9 +25,7 @@ int Take::makeMove()
 		return 0;
 	}
 
-	if(!hand.addCard(market.takeCard(index))) {
-		throw ime;
-	}
+	hand.addCard(market.takeCard(index));
 
 	return 0;
 }

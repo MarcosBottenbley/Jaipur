@@ -11,7 +11,6 @@ using std::endl;
 
 Bank::Bank()
 {
-	//srand(time(0));
 	initBank();
 }
 
@@ -36,33 +35,49 @@ void Bank::initBank()
 	Type t;
 
 	int arr1[5] = {5,5,5,7,7};
-	addTokens(arr1,5,Type::DIAMOND,"Diamond");
-	int arr2[5] = {5,5,5,6,6};
-	addTokens(arr2,5,Type::GOLD,"Gold");
-	int arr3[5] = {5,5,5,5,5};
-	addTokens(arr3,5,Type::SILVER,"Silver");
-	int arr4[7] = {1,1,2,2,3,3,5};
-	addTokens(arr4,7,Type::CLOTH,"Cloth");
-	addTokens(arr4,7,Type::SPICE,"Spice");
-	int arr6[9] = {1,1,1,1,1,1,2,3,4};
-	addTokens(arr6,9,Type::LEATHER,"Leather");
+	t = "Diamond";
+	addTokens(arr1,5,t);
 
+	int arr2[5] = {5,5,5,6,6};
+	t = "Gold";
+	addTokens(arr2,5,t);
+
+	int arr3[5] = {5,5,5,5,5};
+	t = "Silver";
+	addTokens(arr3,5,t);
+
+	int arr4[7] = {1,1,2,2,3,3,5};
+	t = "Cloth";
+	addTokens(arr4,7,t);
+
+	t = "Spice";
+	addTokens(arr4,7,t);
+
+	int arr6[9] = {1,1,1,1,1,1,2,3,4};
+	t = "Leather";
+	addTokens(arr6,9,t);
+
+	//BONUS TOKENS
 	int arr7[7] = {3,3,2,2,2,1,1};
-	addTokens(arr7,7,Type::BONUS3,"Bonus3");
+	t = "Bonus3";
+	addTokens(arr7,7,t);
+
 	int arr8[6] = {6,6,5,5,4,4};
-	addTokens(arr8,6,Type::BONUS4,"Bonus4");
+	t = "Bonus4";
+	addTokens(arr8,6,t);
+
 	int arr9[5] = {10,10,9,8,8};
-	addTokens(arr9,5,Type::BONUS5,"Bonus5");
+	t = "Bonus5";
+	addTokens(arr9,5,t);
 }
 
-void Bank::addTokens(int *arr, int size, Type::Enum e, string t)
+void Bank::addTokens(int *arr, int size, Type t)
 {
-	if(e == Type::BONUS3 || e == Type::BONUS4 || e == Type::BONUS5)
+	if(t.isBonus())
 		shuffle(arr,size);
-
-	//string s_type = t.toString(e);
+		
 	for(int x = 0; x < size; x++) {
-		bank[e].push(new Token(t,arr[x]));
+		bank[t.getEnum()].push(new Token(t.getString(),arr[x]));
 	}
 }
 

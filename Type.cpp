@@ -5,9 +5,7 @@ Type::Type()
 {}
 
 Type::Type(std::string s) : s_type(s)
-{
-	value = fromString(s);
-}
+{}
 
 Type::Enum Type::fromString(std::string s)
 {
@@ -56,4 +54,43 @@ std::string Type::toString(Type::Enum t)
 Type::Enum Type::getEnum()
 {
 	return fromString(s_type);
+}
+
+std::string Type::getString()
+{
+	return s_type;
+}
+
+void Type::operator= (const std::string &s)
+{
+	s_type = s;
+}
+
+void Type::operator= (const Type::Enum e)
+{
+	s_type = toString(e);
+}
+
+bool Type::operator== (const std::string &s) const
+{
+	return (s_type == s);
+}
+
+bool Type::operator== (const Type::Enum e)
+{
+	return (s_type == toString(e));
+}
+
+bool Type::isBonus()
+{
+	if(s_type == "Bonus3" || s_type == "Bonus4" || s_type == "Bonus5")
+		return true;
+	return false;
+}
+
+bool Type::isPrecious()
+{	
+	if(s_type == "Gold" || s_type == "Silver" || s_type == "Diamond")
+		return true;
+	return false;
 }
