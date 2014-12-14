@@ -13,7 +13,7 @@ class Bank
 		std::stack<Token*> bank[9];
 		void initBank();
 		void shuffle(int *,int);
-		void addTokens(int *,int,Type::Enum,std::string);
+		void addTokens(int *,int,Type);
 	public:
 		Bank();
 		Bank(int);
