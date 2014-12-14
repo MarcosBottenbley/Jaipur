@@ -4,7 +4,12 @@
 Hand::Hand()
 {}
 
-Hand:: ~Hand()
+Hand::~Hand()
+{
+	clear();
+}
+
+void Hand::clear()
 {
 	unsigned int x;
 	for(x = 0; x < handSize(); x++)

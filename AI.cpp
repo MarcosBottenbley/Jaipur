@@ -2,6 +2,7 @@
 #include <iostream>
 
 using std::cout;
+using std::cin;
 using std::endl;
 
 AI::AI(std::string name) : Player(name) {}
@@ -10,6 +11,9 @@ Move* AI::getMove(Market& market, Bank& bank)
 {	
 	Move* movePtr;
 	
+	market.printMarket();
+	hand.printHand();
+
 	//if hand is not full, take the first card in the market
 	//(if the card is a camel, makeMove will take all camels)
 	if(hand.handSize() != 7)
@@ -26,12 +30,12 @@ Move* AI::getMove(Market& market, Bank& bank)
 	
 Move* AI::take(Market& market)
 {
-	if(market.getCard(1)->getType() == "Camel")
+	if(market.getCard(0)->getType() == "Camel")
 		cout << name << " takes the camels." << endl;
 	else
-		cout << name << " takes a " << market.getCard(1)->getType() << " card." << endl;
-		
-	return new Take(market, hand, 1);
+		cout << name << " takes a " << market.getCard(0)->getType() << " card." << endl;
+		pause();
+	return new Take(market, hand, 0);
 }
 
 //if hand is full, go through the hand and sell the first card
@@ -47,8 +51,9 @@ Move* AI::sellOne(Market& market, Bank& bank)
 		type = hand.cardAt(i)->getType();
 		if (type != "Diamond" && type != "Gold" && type != "Silver")
 		{
-			playerCards[i - 1] = !(playerCards[i - 1]);
+			playerCards[i] = !(playerCards[i]);
 			cout << name << " sells a " << type << " card." << endl;
+			pause();
 			return new Sell(market, hand, bank, playerCards);
 		}
 	}
@@ -76,12 +81,19 @@ Move* AI::sellTwo(Market& market, Bank& bank)
 			
 			if(type1 == type2)
 			{
-				playerCards[i - 1] = !(playerCards[i - 1]);
-				playerCards[j - 1] = !(playerCards[j - 1]);
+				playerCards[i] = !(playerCards[i]);
+				playerCards[j] = !(playerCards[j]);
 				cout << name << " sells two " << type1 << " cards." << endl;
+				pause();
 				return new Sell(market, hand, bank, playerCards);
 			}
 		}
 	}
 	return 0;
+}
+
+void AI::pause()
+{
+	cout << "Press ENTER to continue:" << endl;
+	cin.get();
 }

@@ -85,17 +85,19 @@ stack<Token*> Bank::getTokens(Type::Enum t, int num)
 	stack<Token*> tokens;
 
 	for(int x = 0; x < num; x++) {
-		tokens.push(bank[t].top());
-		bank[t].pop();
+		if(!bank[t].empty()) {
+			tokens.push(bank[t].top());
+			bank[t].pop();
+		}
 	}
 
-	if(num == 3) {
+	if(num == 3 && !bank[Type::BONUS3].empty()) {
 		tokens.push(bank[Type::BONUS3].top());
 		bank[Type::BONUS3].pop();
-	} else if(num == 4) {
+	} else if(num == 4 && !bank[Type::BONUS4].empty()) {
 		tokens.push(bank[Type::BONUS4].top());
 		bank[Type::BONUS4].pop();
-	} else if(num >= 5) {
+	} else if(num >= 5 && !bank[Type::BONUS5].empty()) {
 		tokens.push(bank[Type::BONUS5].top());
 		bank[Type::BONUS5].pop();
 	}
@@ -105,12 +107,21 @@ stack<Token*> Bank::getTokens(Type::Enum t, int num)
 
 void Bank::printBank()
 {
+	std::stack<Token*> tempStack;
+	
 	for(int x = 0; x < 9; x++) {
 		while(!bank[x].empty()) {
 			std::cout << bank[x].top()->getType() << " ";
 			std::cout << bank[x].top()->getValue() << std::endl;
+			tempStack.push(bank[x].top());
 			bank[x].pop();
 		}
+
+		while(!tempStack.empty()) {
+			bank[x].push(tempStack.top());
+			tempStack.pop();
+		}
+		cout << endl;
 	}
 }
 

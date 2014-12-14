@@ -15,6 +15,7 @@ private:
 	Move* take(Market& market);
 	Move* sellOne(Market& market, Bank& bank);
 	Move* sellTwo(Market& market, Bank& bank);
+	void pause();
 };
 
 #endif

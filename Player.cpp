@@ -36,14 +36,8 @@ void Player:: printStats()
 
 void Player:: clear()
 {
-    for(int i = hand.handSize(); i>0; i--)
-    {
-        delete hand.removeCard(i);
-    }
-    for(int k = hand.herdSize(); k>0; k--)
-    {
-        delete hand.getCamel();
-    }
+    hand.clear();
+	score = 0;
 }
 
 void Player:: addCard(Card* card)

@@ -1,7 +1,7 @@
 #include "Game.h"
 
 int main() {
-	Game game;
+	Game game(80085);
 	game.startGame();		//get player names.
 
 	for (int i = 0; i < 3; i++) {

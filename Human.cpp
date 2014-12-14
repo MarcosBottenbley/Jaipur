@@ -36,8 +36,10 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			cout << "Invalid Selection" << endl;
 		}
 
-		if (movePtr != 0)
+		if (movePtr != 0) {
+			cin.ignore(256, '\n');
 			return movePtr;
+		}
 	}
 }
 

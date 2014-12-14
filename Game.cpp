@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>		//for random numbers only
 #include <ctime>
+#include <climits>
 
 using std::vector;
 using std::string;
@@ -26,11 +27,13 @@ void Game::startGame() {
 	string str;
 	cout << "Welcome to Jaipur!" << endl << "Player 1, Enter your name: ";
 	cin >> str;
-	player1 = new Human(str);
+	player1 = new AI(str);
 
 	cout << "Player 2, Enter your name: ";
 	cin >> str;
 	player2 = new AI(str);
+
+	cin.ignore(256, '\n');
 }
 
 void Game::startRound() {
@@ -44,13 +47,14 @@ void Game::startRound() {
 void Game::playGame() {
 	Move* movePtr;
 
+	cout << "Starting new round!" << endl;
+
 	while(1) {
 		movePtr = player1->getMove(*market, *bank);
 		if (!executeMove(movePtr))	//if invalid move, player1 tries again
 			continue;
 		if (checkGameOver())
 			break;
-
 		while (1) {
 			movePtr = player2->getMove(*market, *bank);
 			if (!executeMove(movePtr))	//if invalid move, player2 tries again
@@ -106,11 +110,15 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 	else if ((player2->hand).herdSize() > (player1->hand).herdSize())
 		player2->score += 5;
 
-	if (player1->score > player2->score)
+	if (player1->score > player2->score) {
 		player1->wins++;
-	else if (player2->score > player1->score)
+		cout << "Player 1 wins!" << endl << endl;
+	}
+	else if (player2->score > player1->score) {
 		player2->wins++;
-	else {		//if score tied...
+		cout << "Player 2 wins!" << endl << endl;
+	}
+	/*else {		//if score tied...
 		if (player1->tokens.size() > player2->tokens.size())
 			player1->wins++;
 		else if (player2->tokens.size() > player1->tokens.size())
@@ -118,8 +126,7 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 		else {
 			//result in draw
 		}
-	}
-	//need to fix this since camels are in hand now
+	}*/
 
 	player1->clear();
 	player2->clear();
