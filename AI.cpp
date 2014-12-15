@@ -13,7 +13,6 @@ Move* AI::getMove(Market& market, Bank& bank)
 	
 	printStats();
 	market.printMarket();
-	bank.printBank();
 	cout << endl;
 
 	//if hand is not full, take the first card in the market

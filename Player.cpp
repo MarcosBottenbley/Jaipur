@@ -60,16 +60,3 @@ int Player:: getScore()
 {
     return score;
 }
-
-void Player::pause()
-{
-    char c;
-    cin.ignore(INT_MAX, '\n');
-    while(1)
-    {
-        std::cout << "Input Q to quit or C to continue: ";
-        cin.get(c);
-        if (tolower(c) == 'c')
-            break;
-    }
-}

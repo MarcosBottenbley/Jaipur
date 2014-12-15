@@ -29,13 +29,13 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			cout << "Enter -1 at any time to cancel and pick a new move.";
 		cout << endl;
 
-		if (inputC == 'T') {
+		if (tolower(inputC) == 't') {
 			movePtr = take(market);
-		} else if (inputC == 'E') {
+		} else if (tolower(inputC) == 'e') {
 			movePtr = trade(market);
-		} else if (inputC == 'S') {
+		} else if (tolower(inputC) == 's') {
 			movePtr = sell(market, bank);
-		} else if (inputC == 'P') {
+		} else if (tolower(inputC)  == 'p') {
 			printStats();
 			market.printMarket();
 			bank.printBank();
@@ -58,6 +58,13 @@ Move* Human::getMove(Market& market, Bank& bank) {
 		while (1) {
 			cout << "Which card do you want to take? (integer selection): ";
 			cin >> inputI;
+			if (cin.fail()) {
+				cout << "Your selection was not an integer." << endl;
+				cin.clear();
+				cin.ignore(10, '\n');
+				continue;
+			}
+			
 			if (inputI == -1)
 				return 0;
 			if (inputI < 0 || inputI > 5) {

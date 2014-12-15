@@ -51,8 +51,6 @@ void Game::startGame() {
         case 2: player2 = new AI(str);
             break;
     }
-
-	cin.ignore(256, '\n');
 }
 
 void Game::startRound() {
@@ -72,7 +70,7 @@ void Game::playGame() {
 	while(1) {
 		movePtr = player1->getMove(*market, *bank);
 		retVal = executeMove(movePtr);
-		player1->pause();
+		pause();
 		if (retVal == -1)	//if invalid move, player1 tries again
 			continue;
 		else
@@ -82,7 +80,7 @@ void Game::playGame() {
 		while (1) {
 			movePtr = player2->getMove(*market, *bank);
 			retVal = executeMove(movePtr);
-			player2->pause();
+			pause();
 			if (retVal == -1)	//if invalid move, player2 tries again
 				continue;
 			else
@@ -96,27 +94,32 @@ void Game::playGame() {
 
 void Game::pause()
 {
-    char c;
-    cin.ignore(INT_MAX, '\n');
-    while(1)
-    {
-        std::cout << "Input Q to quit or C to continue: ";
-        cin.get(c);
-        if (tolower(c) == 'c')
-            break;
-	if (tolower(c) == 'q')
+	char ch;
+	while(1)
 	{
-	    cout << "Do you really want to quit? [Y/N]";
-	    cin.get(c);
-	    if (tolower(c) == 'y')
-	    {
-	        delete bank;
-	        delete market;
-	        delete deck;
-		endGame();
-	    }
+		cout << "Input C to continue, B to see the board or Q to quit the game: ";
+		cin >> ch;
+
+		if (tolower(ch) == 'c')
+			break;
+		if (tolower(ch) == 'b')
+		{
+			market->printMarket();
+			bank->printBank();
+		}
+		if (tolower(ch) == 'q')
+		{
+			cout << "Do you really want to quit? [Y/N]";
+			cin >> ch;
+			if (tolower(ch) == 'y')
+			{
+				delete bank;
+				delete market;
+				delete deck;
+				endGame();
+			}
+		}
 	}
-    }
 }
 
 
@@ -204,4 +207,5 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 void Game::endGame() {
 	delete player1;
 	delete player2;
+	exit(1);
 }
