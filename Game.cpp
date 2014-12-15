@@ -25,13 +25,32 @@ Game::Game(int rndSeed) {
 /* Class Methods */
 void Game::startGame() {
 	string str;
+    int p1, p2;
 	cout << "Welcome to Jaipur!" << endl << "Player 1, Enter your name: ";
 	cin >> str;
-	player1 = new AI(str);
+    cout << "Is Player 1 a Human(1) or AI(2)?";
+    cin >> p1;
+    switch(p1)
+    {
+        case 1: player1 = new Human(str);
+            break;
+        case 2: player1 = new AI(str);
+            break;
+    }
+    
+	
 
 	cout << "Player 2, Enter your name: ";
 	cin >> str;
-	player2 = new AI(str);
+    cout << "Is Player 2 a Human(1) or AI(2)?";
+    cin >> p2;
+    switch(p2)
+    {
+        case 1: player2 = new Human(str);
+            break;
+        case 2: player2 = new AI(str);
+            break;
+    }
 
 	cin.ignore(256, '\n');
 }
