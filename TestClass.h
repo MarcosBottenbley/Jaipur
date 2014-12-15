@@ -7,20 +7,15 @@
 
 class TestClass 
 {
-	private:
-		Bank bank;
-		Deck deck;
-		Market market(d);
-		Hand hand;
-		Hand hand2;
 	public:
 		TestClass();
 		~TestClass();
-		void TestBank();
-		void TestDeck();
-		void TestMarket();
-		void TestHand();
-		void TestTake();
-		void TestSell();
-		void TestTrade();
-}
+		void testBank();
+		void testDeck();
+		void testMarket();
+		void testHand();
+		void testTake();
+		void testSell();
+		void testTrade();
+};
+#endif
