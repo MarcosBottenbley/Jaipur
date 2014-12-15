@@ -39,7 +39,7 @@ int Sell::makeMove()
 	std::stack<Token*> tokens = bank.getTokens(t.getEnum(),size);
 	int points = 0;
 	while(!tokens.empty()) {
-		std::cout << tokens.top()->getValue() << std::endl;
+	//	std::cout << tokens.top()->getValue() << std::endl;
 		points += tokens.top()->getValue();
 		delete tokens.top();
 		tokens.pop();

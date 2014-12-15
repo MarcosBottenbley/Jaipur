@@ -27,7 +27,7 @@ private:
 									//6 types of goods tokens and 3 types of bonus tokens
 	Deck* deck;				//the deck of cards
 
-	bool executeMove(Move*);
+	int executeMove(Move*);
 	bool checkGameOver();
 public:
 	Game();

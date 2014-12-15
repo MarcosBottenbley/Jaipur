@@ -16,15 +16,18 @@ Human::~Human()
 
 Move* Human::getMove(Market& market, Bank& bank) {
 	char inputC;
-	Move* movePtr;
+	Move* movePtr = 0;
+
+	hand.printHand();
+	market.printMarket();
 
 	while (1) {
-		market.printMarket();
-		hand.printHand();
-		cout << name << ", pick a move: (T)ake, (E)xchange, (S)ell: ";
+		cout << name << ", pick a move: (T)ake, (E)xchange, (S)ell, (P)rint Board: ";
 		cin >> inputC;
 
-		cout << "Enter -1 at any time to cancel and pick a new move." << endl << endl;
+		if (inputC != 'P')
+			cout << "Enter -1 at any time to cancel and pick a new move.";
+		cout << endl;
 
 		if (inputC == 'T') {
 			movePtr = take(market);
@@ -32,6 +35,12 @@ Move* Human::getMove(Market& market, Bank& bank) {
 			movePtr = trade(market);
 		} else if (inputC == 'S') {
 			movePtr = sell(market, bank);
+		} else if (inputC == 'P') {
+			printStats();
+			market.printMarket();
+			bank.printBank();
+			cout << endl;
+			continue;
 		} else {
 			cout << "Invalid Selection" << endl;
 		}

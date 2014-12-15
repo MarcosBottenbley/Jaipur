@@ -36,7 +36,7 @@ public:
     void printStats();
     void clear();
     void addCard(Card* card);
-    void addToken(Token* token);
+    void addPoints(int points);
     Hand* getHand();
     int getScore();
 };

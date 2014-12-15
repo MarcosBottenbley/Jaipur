@@ -25,7 +25,7 @@ Player::~Player()
 
 void Player:: printStats()
 {
-    std::cout<< name << "'s stats: ";
+    std::cout<< name << "'s Stats" << endl;
 
     std::cout << "Hand size: " << hand.handSize();
     std::cout << ", Camels: " << hand.herdSize();
@@ -49,10 +49,9 @@ Hand* Player::getHand() {
 	return &hand;
 }
 
-void Player:: addToken(Token* token)
+void Player:: addPoints(int points)
 {
-    tokens.push_back(token);
-    score+=token->getValue();
+    score+=points;
 }
 
 int Player:: getScore()
