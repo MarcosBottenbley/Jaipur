@@ -1,5 +1,6 @@
 #include "Bank.h"
 #include <iostream>
+#include <iomanip>
 
 using std::stack;
 using std::string;
@@ -8,6 +9,8 @@ using std::time;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::setw;
+using std::left;
 
 Bank::Bank()
 {
@@ -120,25 +123,29 @@ stack<Token*> Bank::getTokens(Type::Enum t, int num)
 	return tokens;
 }
 
-void Bank::printBank()
-{
-	std::stack<Token*> tempStack;
-	
-	for(int x = 0; x < 9; x++) {
-		while(!bank[x].empty()) {
-			std::cout << bank[x].top()->getType() << " ";
-			std::cout << bank[x].top()->getValue() << std::endl;
-			tempStack.push(bank[x].top());
-			bank[x].pop();
-		}
+void Bank::printBank() {
+	stack<Token*> tempStack;
 
-		while(!tempStack.empty()) {
-			bank[x].push(tempStack.top());
+	cout << "Bank Tokens:" << endl;
+	for (int i = 0; i < 6; i++) {
+		if (bank[i].size() != 0)
+			cout << setw(10) << left << bank[i].top()->getType();
+		for (int j = bank[i].size(); j > 0; j--) {	//print a pile of tokens
+			tempStack.push(bank[i].top());
+			cout << tempStack.top()->getValue() << " ";
+			bank[i].pop();
+		}
+		if (tempStack.size() != 0)
+			cout << endl;
+
+		for (int k = tempStack.size(); k > 0; k--) {	//restore bank
+			bank[i].push(tempStack.top());
 			tempStack.pop();
 		}
-		cout << endl;
 	}
 }
+
+
 
 bool Bank::gameOver() {
 	int emptyStacks = 0;

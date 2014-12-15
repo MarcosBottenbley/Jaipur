@@ -65,19 +65,26 @@ void Game::startRound() {
 
 void Game::playGame() {
 	Move* movePtr;
+	int retVal;
 
 	cout << "Starting new round!" << endl;
 
 	while(1) {
 		movePtr = player1->getMove(*market, *bank);
-		if (!executeMove(movePtr))	//if invalid move, player1 tries again
+		retVal = executeMove(movePtr);
+		if (retVal == -1)	//if invalid move, player1 tries again
 			continue;
+		else
+			player1->addPoints(retVal);
 		if (checkGameOver())
 			break;
 		while (1) {
 			movePtr = player2->getMove(*market, *bank);
-			if (!executeMove(movePtr))	//if invalid move, player2 tries again
+			retVal = executeMove(movePtr);
+			if (retVal == -1)	//if invalid move, player2 tries again
 				continue;
+			else
+				player2->addPoints(retVal);
 			if (checkGameOver())
 				return;
 			break;
@@ -85,18 +92,20 @@ void Game::playGame() {
 	}
 }
 
-// returns false on error, true if successful
-bool Game::executeMove(Move* mp) {
+// returns -1 on error, points earned if successful
+int Game::executeMove(Move* mp) {
+	int points;
+
 	try {
-		mp->makeMove();
+		points = mp->makeMove();
 	} catch (InvalidMoveEx e) {
 		cerr << e.what() << endl;
 		delete mp;
-		return false;
+		return -1;
 	}
 	
 	delete mp;
-	return true;
+	return points;
 }
 
 bool Game::checkGameOver() {
@@ -131,11 +140,11 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 
 	if (player1->score > player2->score) {
 		player1->wins++;
-		cout << "Player 1 wins!" << endl << endl;
+		cout << player1->name << " wins the round!" << endl << endl;
 	}
 	else if (player2->score > player1->score) {
 		player2->wins++;
-		cout << "Player 2 wins!" << endl << endl;
+		cout << player2->name << " wins the round!" << endl << endl;
 	}
 	/*else {		//if score tied...
 		if (player1->tokens.size() > player2->tokens.size())
@@ -151,14 +160,14 @@ bool Game::endRound() {		//returns true if a player reaches 2 wins, false otherw
 	player2->clear();
 
 	delete deck;
-    delete market;
+	delete market;
 	delete bank;
 
 	if (player1->wins == 2) {
-		cout << player1->name << " wins!";
+		cout << player1->name << " wins the game!" << endl;
 		return true;
 	} else if (player2->wins == 2) {
-		cout << player2->name << " wins!";
+		cout << player2->name << " wins the game!" << endl;
 		return true;
 	}
 	return false;
