@@ -2,11 +2,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
+#include <climits>
 #include <string>
 
 using std::string;
 using std::endl;
 using std::cerr;
+using std::cin;
 
 Player::Player() {
     name = "Player";
@@ -57,4 +59,17 @@ void Player:: addPoints(int points)
 int Player:: getScore()
 {
     return score;
+}
+
+void Player::pause()
+{
+    char c;
+    cin.ignore(INT_MAX, '\n');
+    while(1)
+    {
+        std::cout << "Input Q to quit or C to continue: ";
+        cin.get(c);
+        if (tolower(c) == 'c')
+            break;
+    }
 }

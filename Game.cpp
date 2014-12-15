@@ -53,6 +53,7 @@ void Game::playGame() {
 	while(1) {
 		movePtr = player1->getMove(*market, *bank);
 		retVal = executeMove(movePtr);
+		player1->pause();
 		if (retVal == -1)	//if invalid move, player1 tries again
 			continue;
 		else
@@ -62,6 +63,7 @@ void Game::playGame() {
 		while (1) {
 			movePtr = player2->getMove(*market, *bank);
 			retVal = executeMove(movePtr);
+			player2->pause();
 			if (retVal == -1)	//if invalid move, player2 tries again
 				continue;
 			else
@@ -72,6 +74,32 @@ void Game::playGame() {
 		}
 	}
 }
+
+void Game::pause()
+{
+    char c;
+    cin.ignore(INT_MAX, '\n');
+    while(1)
+    {
+        std::cout << "Input Q to quit or C to continue: ";
+        cin.get(c);
+        if (tolower(c) == 'c')
+            break;
+	if (tolower(c) == 'q')
+	{
+	    cout << "Do you really want to quit? [Y/N]";
+	    cin.get(c);
+	    if (tolower(c) == 'y')
+	    {
+	        delete bank;
+	        delete market;
+	        delete deck;
+		endGame();
+	    }
+	}
+    }
+}
+
 
 // returns -1 on error, points earned if successful
 int Game::executeMove(Move* mp) {

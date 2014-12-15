@@ -29,6 +29,7 @@ private:
 
 	int executeMove(Move*);
 	bool checkGameOver();
+	void pause();
 public:
 	Game();
 	Game(int rndSeed);				//constructs game with a seed for the RNG

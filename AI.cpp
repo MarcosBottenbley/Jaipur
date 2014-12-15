@@ -36,7 +36,6 @@ Move* AI::take(Market& market)
 		cout << name << " takes the camels." << endl;
 	else
 		cout << name << " takes a " << market.getCard(0)->getType() << " card." << endl;
-		pause();
 	return new Take(market, hand, 0);
 }
 
@@ -55,7 +54,6 @@ Move* AI::sellOne(Market& market, Bank& bank)
 		{
 			playerCards[i] = !(playerCards[i]);
 			cout << name << " sells a " << type << " card." << endl;
-			pause();
 			return new Sell(market, hand, bank, playerCards);
 		}
 	}
@@ -86,16 +84,9 @@ Move* AI::sellTwo(Market& market, Bank& bank)
 				playerCards[i] = !(playerCards[i]);
 				playerCards[j] = !(playerCards[j]);
 				cout << name << " sells two " << type1 << " cards." << endl;
-				pause();
 				return new Sell(market, hand, bank, playerCards);
 			}
 		}
 	}
 	return 0;
-}
-
-void AI::pause()
-{
-	cout << "Press ENTER to continue:" << endl;
-	cin.get();
 }

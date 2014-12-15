@@ -39,5 +39,6 @@ public:
     void addPoints(int points);
     Hand* getHand();
     int getScore();
+    void pause();
 };
 #endif
