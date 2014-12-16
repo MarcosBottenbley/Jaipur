@@ -105,7 +105,6 @@ void Game::pause()
 	{
 		cout << endl << "Input C to continue, B to see the board or Q to quit the game: ";
 		cin >> ch;
-		cout << endl;
 
 		if (tolower(ch) == 'c')
 			break;
