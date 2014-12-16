@@ -19,7 +19,7 @@ Move* AI::getMove(Market& market, Bank& bank)
 	
 	//printStats();
 	//market.printMarket();
-	//cout << endl;
+	cout << endl;
 
 	//if hand is not full, take the first card in the market
 	//(if the card is a camel, makeMove will take all camels)
@@ -37,7 +37,6 @@ Move* AI::getMove(Market& market, Bank& bank)
 	
 Move* AI::take(Market& market)
 {
-	cout << endl;
 	if(market.getCard(0)->getType() == "Camel")
 		cout << name << " takes the camels." << endl;
 	else
