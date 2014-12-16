@@ -103,8 +103,9 @@ void Game::pause()
 	char ch;
 	while(1)
 	{
-		cout << "Input C to continue, B to see the board or Q to quit the game: ";
+		cout << endl << "Input C to continue, B to see the board or Q to quit the game: ";
 		cin >> ch;
+		cout << endl;
 
 		if (tolower(ch) == 'c')
 			break;
