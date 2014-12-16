@@ -1,3 +1,9 @@
+/**
+ * Intermediate Programming Final Project
+ * David Miller, Syed Hossain, Marcos Bottenbley, Andrew Zhu
+ * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
+ */
+
 #ifndef pg7_AI_h
 #define pg7_AI_h
 #include "Player.h"

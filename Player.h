@@ -1,3 +1,9 @@
+/**
+ * Intermediate Programming Final Project
+ * David Miller, Syed Hossain, Marcos Bottenbley, Andrew Zhu
+ * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
+ */
+
 /*	The Player class is used to store all the data related to
 	one of the game's players. (# of wins, cards in hand, etc.)
 */

@@ -1,3 +1,9 @@
+/**
+ * Intermediate Programming Final Project
+ * David Miller, Syed Hossain, Marcos Bottenbley, Andrew Zhu
+ * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
+ */
+
 #ifndef TESTCLASS_H
 #define TESTCLASS_H
 

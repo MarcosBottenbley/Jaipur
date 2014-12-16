@@ -1,3 +1,7 @@
+# Intermediate Programming Final Project
+# David Miller, Syed Hossain, Marcos Bottenbley, Andrew Zhu
+# dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
+
 CC = g++
 CCFLAGS = -std=c++11 -pedantic -Wall -Wextra -O -g
 GCOV = -fprofile-arcs -ftest-coverage

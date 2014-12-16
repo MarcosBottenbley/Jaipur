@@ -1,3 +1,8 @@
+Intermediate Programming Final Project README
+David Miller, Syed Hossain, Marcos Bottenbley, Andrew Zhu
+dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
+
+
 The testing doesn't exactly work for what we have written so far, however, we are making good progress and are nearly to the point 
 where the testing will work. Please note that in the move class there is a function called make move which is responsible for all 
 of the game logic. Each move is seperated into it's own class, and because the makeMove function is a pure virtual function and the 
