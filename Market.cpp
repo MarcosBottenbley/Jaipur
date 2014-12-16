@@ -14,6 +14,14 @@ Market::Market(Deck &d):
 	mktCards[4] = d.getCard();
 }
 
+Market::~Market()
+{
+    for (int i = 0; i < 5; i++)
+    {
+        delete mktCards[i];
+    }
+}
+
 Card* Market::getCard(int index) {
         return mktCards[index];
 }

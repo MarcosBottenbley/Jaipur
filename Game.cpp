@@ -28,7 +28,7 @@ void Game::startGame() {
     int p1, p2;
 	cout << "Welcome to Jaipur!" << endl << "Player 1, Enter your name: ";
 	cin >> str;
-    cout << "Is Player 1 a Human(1) or AI(2)?";
+    cout << "Is Player 1 a Human(1) or AI(2)?: ";
     cin >> p1;
     switch(p1)
     {
@@ -42,7 +42,7 @@ void Game::startGame() {
 
 	cout << "Player 2, Enter your name: ";
 	cin >> str;
-    cout << "Is Player 2 a Human(1) or AI(2)?";
+    cout << "Is Player 2 a Human(1) or AI(2)?: ";
     cin >> p2;
     switch(p2)
     {
@@ -109,7 +109,7 @@ void Game::pause()
 		}
 		if (tolower(ch) == 'q')
 		{
-			cout << "Do you really want to quit? [Y/N]";
+			cout << "Do you really want to quit? [Y/N]: ";
 			cin >> ch;
 			if (tolower(ch) == 'y')
 			{

@@ -18,6 +18,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 	char inputC;
 	Move* movePtr = 0;
 
+	cout << endl;
 	hand.printHand();
 	market.printMarket();
 
