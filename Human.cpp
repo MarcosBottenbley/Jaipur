@@ -25,7 +25,7 @@ Move* Human::getMove(Market& market, Bank& bank) {
 		cout << name << ", pick a move: (T)ake, (E)xchange, (S)ell, (P)rint Board: ";
 		cin >> inputC;
 
-		if (inputC != 'P')
+		if (tolower(inputC) != 'p')
 			cout << "Enter -1 at any time to cancel and pick a new move.";
 		cout << endl;
 
