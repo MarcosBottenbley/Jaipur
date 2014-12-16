@@ -89,6 +89,13 @@ Move* Human::getMove(Market& market, Bank& bank) {
 		cout << endl << "Enter 0 to finish, 9 to see your selections: ";
 		while (1) {
 			cin >> inputI;
+			if (cin.fail()) {
+				cout << "Your selection was not an integer." << endl;
+				cin.clear();
+				cin.ignore(10, '\n');
+				continue;
+			}
+			
 			if (inputI == -1)
 				return 0;
 			if (inputI == 0)
@@ -114,6 +121,13 @@ Move* Human::getMove(Market& market, Bank& bank) {
 		cout << endl << "Enter 0 to finish, 9 to see your selections: ";
 		while (1) {
 			cin >> inputI;
+			if (cin.fail()) {
+				cout << "Your selection was not an integer." << endl;
+				cin.clear();
+				cin.ignore(10, '\n');
+				continue;
+			}
+			
 			if (inputI == -1)
 				return 0;
 			if (inputI == 0)
@@ -155,6 +169,13 @@ Move* Human::getMove(Market& market, Bank& bank) {
 		cout << endl << "Enter 0 to finish, 9 to see your selections: ";
 		while (1) {
 			cin >> inputI;
+			if (cin.fail()) {
+				cout << "Your selection was not an integer." << endl;
+				cin.clear();
+				cin.ignore(10, '\n');
+				continue;
+			}
+			
 			if (inputI == -1)
 				return 0;
 			if (inputI == 0)
