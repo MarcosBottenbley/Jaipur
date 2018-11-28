@@ -13,13 +13,13 @@
 
 class Sell : public Move
 {
-	private:
-		std::vector<int> pIndexes;
-		Bank &bank;
-	public:
-		Sell();
-		Sell(Market &, Hand &, Bank &, bool *);
-		virtual ~Sell();
-		int makeMove();
+    private:
+        std::vector<int> pIndexes;
+        Bank &bank;
+    public:
+        Sell();
+        Sell(Market &, Hand &, Bank &, bool *);
+        virtual ~Sell();
+        int makeMove();
 };
 #endif

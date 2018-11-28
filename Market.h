@@ -13,16 +13,16 @@
 class Market {
 
 private:
-	Card* mktCards[5];
-	Deck &deck;
+    Card* mktCards[5];
+    Deck &deck;
 
 public:
-	Market(Deck&);
-	~Market();
-	Card* getCard(int index);//checks card at index
-	Card* takeCard(int index);//automatically replaces card
-	Card* swapCard(int index, Card* card);//for trades
-	void printMarket();
+    Market(Deck&);
+    ~Market();
+    Card* getCard(int index);//checks card at index
+    Card* takeCard(int index);//automatically replaces card
+    Card* swapCard(int index, Card* card);//for trades
+    void printMarket();
 };
 
 #endif

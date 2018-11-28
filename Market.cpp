@@ -16,8 +16,8 @@ Market::Market(Deck &d):
         mktCards[i] = new Card("Camel");
     }
 
-	mktCards[3] = d.getCard();
-	mktCards[4] = d.getCard();
+    mktCards[3] = d.getCard();
+    mktCards[4] = d.getCard();
 }
 
 Market::~Market()
@@ -45,11 +45,11 @@ Card* Market::swapCard(int index, Card* card) {
 }
 
 void Market::printMarket() {
-	std::cout << "Market: ";
-	for (int i = 0; i < 5; i++) {
+    std::cout << "Market: ";
+    for (int i = 0; i < 5; i++) {
                 std::cout << i+1 << ". [" << mktCards[i]->getType() << "] ";
-		//std::cout << i+1 << ". [" << Type.toString(mktCards[i]->getType()) << "] ";
-	}
-	std::cout << std::endl;
+        //std::cout << i+1 << ". [" << Type.toString(mktCards[i]->getType()) << "] ";
+    }
+    std::cout << std::endl;
 }
 

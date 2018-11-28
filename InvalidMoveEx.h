@@ -13,20 +13,20 @@
 
 class InvalidMoveEx: public std::exception
 {
-	const char* errMessage;
+    const char* errMessage;
 public:
-	InvalidMoveEx() {
-		errMessage = "ERROR: Invalid move";
-	}
+    InvalidMoveEx() {
+        errMessage = "ERROR: Invalid move";
+    }
 
-	InvalidMoveEx(const char* str) {
-		errMessage = str;
-	}
+    InvalidMoveEx(const char* str) {
+        errMessage = str;
+    }
 
-	virtual const char* what() const throw()
-	{
-		return errMessage;
-	}
+    virtual const char* what() const throw()
+    {
+        return errMessage;
+    }
 
 };
 #endif

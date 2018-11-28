@@ -23,53 +23,53 @@ using std::endl;
 
 int main()
 {
-	Token* t1 = new Token("Diamond",5);
-	cout << t1->getType() << endl;
-	cout << t1->getValue() << endl;
+    Token* t1 = new Token("Diamond",5);
+    cout << t1->getType() << endl;
+    cout << t1->getValue() << endl;
 
-	Card* c1 = new Card("Silk");
-	cout << c1->getType() << endl;
-	assert(c1->isCamel() == false);
+    Card* c1 = new Card("Silk");
+    cout << c1->getType() << endl;
+    assert(c1->isCamel() == false);
 
-	cout << endl;
-	cout << "Hand Test:" << endl;
+    cout << endl;
+    cout << "Hand Test:" << endl;
 
-	Hand h;
-	h.addCard(c1);
-	h.addCard(new Card("Gold"));
-	h.addCard(new Card("Gold"));
-	h.addCard(new Card("Diamond"));
-	h.addCard(new Card("Leather"));
-	h.addCard(new Card("Gold"));
-	h.addCard(new Card("Silk"));
-	h.addCard(new Card("Silver"));
-	h.addCard(new Card("Silver"));
-	h.addCard(new Card("Camel"));
-	h.addCard(new Card("Camel"));
-	h.printHand();
+    Hand h;
+    h.addCard(c1);
+    h.addCard(new Card("Gold"));
+    h.addCard(new Card("Gold"));
+    h.addCard(new Card("Diamond"));
+    h.addCard(new Card("Leather"));
+    h.addCard(new Card("Gold"));
+    h.addCard(new Card("Silk"));
+    h.addCard(new Card("Silver"));
+    h.addCard(new Card("Silver"));
+    h.addCard(new Card("Camel"));
+    h.addCard(new Card("Camel"));
+    h.printHand();
 
-	cout << endl;
-	Card *temp = h.removeCard(4);
-	Card *htemp = h.getCamel();
-	cout << "Removed " << temp->getType() << endl;
-	cout << "Removed " << htemp->getType() << endl;
-	cout << "printing hand" << endl;
+    cout << endl;
+    Card *temp = h.removeCard(4);
+    Card *htemp = h.getCamel();
+    cout << "Removed " << temp->getType() << endl;
+    cout << "Removed " << htemp->getType() << endl;
+    cout << "printing hand" << endl;
 
-	h.printHand();
+    h.printHand();
 
-	delete t1;
-	delete temp;
-	delete htemp;
+    delete t1;
+    delete temp;
+    delete htemp;
 
-	cout << endl;
-	cout << "Bank Test:" << endl;
-	Bank b;
+    cout << endl;
+    cout << "Bank Test:" << endl;
+    Bank b;
 
-	stack<Token*> test = b.getTokens(Type::GOLD,3);
-	while(!test.empty()) {
-		cout << test.top()->getType() << " ";
-		cout << test.top()->getValue() << endl;
-		delete test.top();
-		test.pop();
-	}
+    stack<Token*> test = b.getTokens(Type::GOLD,3);
+    while(!test.empty()) {
+        cout << test.top()->getType() << " ";
+        cout << test.top()->getValue() << endl;
+        delete test.top();
+        test.pop();
+    }
 }

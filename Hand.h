@@ -14,21 +14,21 @@
 
 class Hand
 {
-	private:
-		std::vector<Card *> hand;
-		std::stack<Card *> herd;
-	public:
-		Hand();
-		~Hand();
-		void clear();
-		bool addCard(Card *);
-		unsigned int handSize();
-		Card* cardAt(int);	//card at given index
-		Card* removeCard(int);
-		void printHand();
-		bool isEmpty();
-		bool isHerdEmpty();
-		Card* getCamel();
-		unsigned int herdSize();
+    private:
+        std::vector<Card *> hand;
+        std::stack<Card *> herd;
+    public:
+        Hand();
+        ~Hand();
+        void clear();
+        bool addCard(Card *);
+        unsigned int handSize();
+        Card* cardAt(int);  //card at given index
+        Card* removeCard(int);
+        void printHand();
+        bool isEmpty();
+        bool isHerdEmpty();
+        Card* getCamel();
+        unsigned int herdSize();
 };
 #endif

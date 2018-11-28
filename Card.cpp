@@ -7,15 +7,15 @@
 #include "Card.h"
 
 Card::Card(std::string s) {
-	type = s;
+    type = s;
 }
 
 std::string Card::getType() {
-	return type;
+    return type;
 }
 
 bool Card::isCamel() {
-	if (type == "Camel")
-		return true;
-	return false;
+    if (type == "Camel")
+        return true;
+    return false;
 }

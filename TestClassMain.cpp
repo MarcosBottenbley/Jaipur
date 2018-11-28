@@ -14,19 +14,19 @@ using std::endl;
 
 int main()
 {
-	std::srand(1151994);
+    std::srand(1151994);
 
-	cout << "Beginning Testing" << endl;
-	TestClass test;
+    cout << "Beginning Testing" << endl;
+    TestClass test;
 
-	test.testDeck();
-	test.testMarket();
-	test.testHand();
-	test.testBank();
-	test.testTake();
-	test.testSell();
-	test.testTrade();
+    test.testDeck();
+    test.testMarket();
+    test.testHand();
+    test.testBank();
+    test.testTake();
+    test.testSell();
+    test.testTrade();
 
-	cout << "All tests completed successfully!" << endl;
-	return 0;
+    cout << "All tests completed successfully!" << endl;
+    return 0;
 }

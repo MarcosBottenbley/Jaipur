@@ -45,7 +45,7 @@ void Player:: printStats()
 void Player:: clear()
 {
     hand.clear();
-	score = 0;
+    score = 0;
 }
 
 void Player:: addCard(Card* card)
@@ -54,7 +54,7 @@ void Player:: addCard(Card* card)
 }
 
 Hand* Player::getHand() {
-	return &hand;
+    return &hand;
 }
 
 void Player:: addPoints(int points)

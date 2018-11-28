@@ -15,13 +15,13 @@
 class AI : public Player {
 
 public:
-	Move* getMove(Market &market, Bank &bank);
-	AI(std::string name);
+    Move* getMove(Market &market, Bank &bank);
+    AI(std::string name);
 private:
-	Move* take(Market& market);
-	Move* sellOne(Market& market, Bank& bank);
-	Move* sellTwo(Market& market, Bank& bank);
-	void pause();
+    Move* take(Market& market);
+    Move* sellOne(Market& market, Bank& bank);
+    Move* sellTwo(Market& market, Bank& bank);
+    void pause();
 };
 
 #endif

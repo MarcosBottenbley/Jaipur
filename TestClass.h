@@ -13,15 +13,15 @@
 
 class TestClass 
 {
-	public:
-		TestClass();
-		~TestClass();
-		void testBank();
-		void testDeck();
-		void testMarket();
-		void testHand();
-		void testTake();
-		void testSell();
-		void testTrade();
+    public:
+        TestClass();
+        ~TestClass();
+        void testBank();
+        void testDeck();
+        void testMarket();
+        void testHand();
+        void testTake();
+        void testSell();
+        void testTrade();
 };
 #endif

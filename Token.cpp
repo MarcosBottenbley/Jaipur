@@ -7,19 +7,19 @@
 #include "Token.h"
 
 Token::Token() {
-	type = "NoType";
-	value = 0;
+    type = "NoType";
+    value = 0;
 }
 
 Token::Token(std::string s, int v) {
-	type = s;
-	value = v;
+    type = s;
+    value = v;
 }
 
 std::string Token::getType() {
-	return type;
+    return type;
 }
 
 int Token::getValue() {
-	return value;
+    return value;
 }

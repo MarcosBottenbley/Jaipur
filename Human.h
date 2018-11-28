@@ -15,12 +15,12 @@
 
 
 class Human : public Player {
-	void sortVector(std::vector<int>);
+    void sortVector(std::vector<int>);
 public:
-	Human();
-	Human(std::string name);
-	virtual ~Human();
-	Move* getMove(Market &market, Bank &bank);
+    Human();
+    Human(std::string name);
+    virtual ~Human();
+    Move* getMove(Market &market, Bank &bank);
 
 private:
     Take* take(Market &market);
