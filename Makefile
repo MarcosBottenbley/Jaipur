@@ -3,28 +3,111 @@
 # dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
 
 CC = g++
-CCFLAGS = -std=c++11 -pedantic -Wall -Wextra -O -g
+
+SRC = ./src/
+
+OBJ = ./obj/
+
+BIN = ./bin/
+
+INCLUDE = $(SRC)include/
+
+SDL_HEADERS = /usr/include/SDL2/
+
+CFLAGS = -std=c++14 -pedantic -Wall -Wextra -O -g
+
 GCOV = -fprofile-arcs -ftest-coverage
 
-all: JaipurMain
+LIBS = -lSDL2 -lm
 
-JaipurMain: JaipurMain.cpp Game.cpp Human.cpp Player.cpp AI.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp
-		$(CC) $(CCFLAGS) JaipurMain.cpp Game.cpp Human.cpp Player.cpp AI.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o JaipurMain
+TARGET = JaipurMain
 
-Test:	Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp
-		$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp -o Test
+all: $(TARGET)
 
-Test2:	Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Deck.cpp Market.cpp Move.cpp Take.cpp Sell.cpp Trade.cpp Test2.cpp
-		$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Deck.cpp Market.cpp Move.cpp Take.cpp Sell.cpp Trade.cpp Test2.cpp -o Test2
+$(TARGET): JaipurMain.o Game.o Human.o Player.o AI.o Hand.o Market.o Card.o Take.o Trade.o Sell.o Move.o Token.o Deck.o Type.o Bank.o
+	$(CC) -o $(TARGET) $(OBJ)JaipurMain.o $(OBJ)Game.o $(OBJ)Human.o $(OBJ)Player.o $(OBJ)AI.o $(OBJ)Hand.o $(OBJ)Market.o $(OBJ)Card.o $(OBJ)Take.o $(OBJ)Trade.o $(OBJ)Sell.o $(OBJ)Move.o $(OBJ)Token.o $(OBJ)Deck.o $(OBJ)Type.o $(OBJ)Bank.o; \
+	mv $(TARGET) $(BIN); \
+	#$(BIN)$(TARGET)
 
-Test3:	Game.cpp Player.cpp Market.cpp Deck.cpp Bank.cpp Human.cpp Card.cpp Token.cpp Hand.cpp Type.cpp Move.cpp Take.cpp Trade.cpp Sell.cpp Test3.cpp
-		$(CC) $(CCFLAGS) Game.cpp Player.cpp Market.cpp Deck.cpp Bank.cpp Human.cpp Card.cpp Token.cpp Hand.cpp Type.cpp Move.cpp Take.cpp Trade.cpp Sell.cpp Test3.cpp -o Test3
+#make .o files here
+JaipurMain.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)JaipurMain.cpp; \
+	mv JaipurMain.o $(OBJ)
+
+Game.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Game.cpp; \
+	mv Game.o $(OBJ)
+
+Human.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Human.cpp; \
+	mv Human.o $(OBJ)
+
+Player.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Player.cpp; \
+	mv Player.o $(OBJ)
+
+AI.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)AI.cpp; \
+	mv AI.o $(OBJ)
+
+Hand.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Hand.cpp; \
+	mv Hand.o $(OBJ)
+
+Market.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Market.cpp; \
+	mv Market.o $(OBJ)
+
+Card.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Card.cpp; \
+	mv Card.o $(OBJ)
+
+Take.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Take.cpp; \
+	mv Take.o $(OBJ)
+
+Trade.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Trade.cpp; \
+	mv Trade.o $(OBJ)
+
+Sell.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Sell.cpp; \
+	mv Sell.o $(OBJ)
+
+Move.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Move.cpp; \
+	mv Move.o $(OBJ)
+
+Token.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Token.cpp; \
+	mv Token.o $(OBJ)
+
+Deck.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Deck.cpp; \
+	mv Deck.o $(OBJ)
+
+Type.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Type.cpp; \
+	mv Type.o $(OBJ)
+
+Bank.o:
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Bank.cpp; \
+	mv Bank.o $(OBJ)
+
+Test: Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp
+	$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp -o Test
+
+Test2: Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Deck.cpp Market.cpp Move.cpp Take.cpp Sell.cpp Trade.cpp Test2.cpp
+	$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Deck.cpp Market.cpp Move.cpp Take.cpp Sell.cpp Trade.cpp Test2.cpp -o Test2
+
+Test3: Game.cpp Player.cpp Market.cpp Deck.cpp Bank.cpp Human.cpp Card.cpp Token.cpp Hand.cpp Type.cpp Move.cpp Take.cpp Trade.cpp Sell.cpp Test3.cpp
+	$(CC) $(CCFLAGS) Game.cpp Player.cpp Market.cpp Deck.cpp Bank.cpp Human.cpp Card.cpp Token.cpp Hand.cpp Type.cpp Move.cpp Take.cpp Trade.cpp Sell.cpp Test3.cpp -o Test3
 
 PlayerTest: HumanTest.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp
-		$(CC) $(CCFLAGS) HumanTest.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o PlayerTest
+	$(CC) $(CCFLAGS) HumanTest.cpp Human.cpp Player.cpp Hand.cpp Market.cpp Card.cpp Take.cpp Trade.cpp Sell.cpp Move.cpp Token.cpp Deck.cpp Type.cpp Bank.cpp -o PlayerTest
 
 MainTest: Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Market.cpp Deck.cpp Move.cpp Take.cpp Sell.cpp Trade.cpp TestClass.cpp TestClassMain.cpp
-		$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Market.cpp Deck.cpp Move.cpp Take.cpp Sell.cpp Trade.cpp TestClass.cpp TestClassMain.cpp -o MainTest
+	$(CC) $(CCFLAGS) Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Market.cpp Deck.cpp Move.cpp Take.cpp Sell.cpp Trade.cpp TestClass.cpp TestClassMain.cpp -o MainTest
 
 clean:
-		rm JaipurMain Test Test2 Test3 PlayerTest
+	rm $(BIN)* $(OBJ)*
