@@ -1,4 +1,4 @@
-/**
+/*
  * Intermediate Programming Final Project
  * David Miller, Syed Hossain, Marcos Bottenbley, Andrew Zhu
  * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
@@ -12,30 +12,26 @@
 #include <ctime>
 #include <climits>
 
-using std::vector;
-using std::string;
-using std::cout;
-using std::endl;
-using std::cerr;
-using std::cin;
-
 /* Constructor */
-Game::Game() {
+Game::Game()
+{
     std::srand(std::time(0));
 }
 
-Game::Game(int rndSeed) {
+Game::Game(int rndSeed)
+{
     std::srand(rndSeed);
 }
 
 /* Class Methods */
-void Game::startGame() {
-    string str;
+void Game::startGame()
+{
+    std::string str;
     int p1, p2;
-    cout << "Welcome to Jaipur!" << endl << "Player 1, Enter your name: ";
-    cin >> str;
-    cout << "Is Player 1 a Human(1) or AI(2)?: ";
-    cin >> p1;
+    std::cout << "Welcome to Jaipur!" << std::endl << "Player 1, Enter your name: ";
+    std::cin >> str;
+    std::cout << "Is Player 1 a Human(1) or AI(2)?: ";
+    std::cin >> p1;
     switch(p1)
     {
         case 1: player1 = new Human(str);
@@ -43,13 +39,11 @@ void Game::startGame() {
         case 2: player1 = new AI(str);
             break;
     }
-    
-    
 
-    cout << "Player 2, Enter your name: ";
-    cin >> str;
-    cout << "Is Player 2 a Human(1) or AI(2)?: ";
-    cin >> p2;
+    std::cout << "Player 2, Enter your name: ";
+    std::cin >> str;
+    std::cout << "Is Player 2 a Human(1) or AI(2)?: ";
+    std::cin >> p2;
     switch(p2)
     {
         case 1: player2 = new Human(str);
@@ -59,7 +53,8 @@ void Game::startGame() {
     }
 }
 
-void Game::startRound() {
+void Game::startRound()
+{
     deck = new Deck();
     market = new Market(*deck);
     bank = new Bank();
@@ -67,13 +62,15 @@ void Game::startRound() {
     deck->deal(player1->hand, player2->hand);
 }
 
-void Game::playGame() {
+void Game::playGame()
+{
     Move* movePtr;
     int retVal;
 
-    cout << "Starting new round!" << endl;
+    std::cout << "Starting new round!" << std::endl;
 
-    while(1) {
+    while(1)
+    {
         movePtr = player1->getMove(*market, *bank);
         retVal = executeMove(movePtr);
         pause();
@@ -83,7 +80,8 @@ void Game::playGame() {
             player1->addPoints(retVal);
         if (checkGameOver())
             break;
-        while (1) {
+        while (1)
+        {
             movePtr = player2->getMove(*market, *bank);
             retVal = executeMove(movePtr);
             pause();
@@ -103,8 +101,8 @@ void Game::pause()
     char ch;
     while(1)
     {
-        cout << endl << "Input C to continue, B to see the board or Q to quit the game: ";
-        cin >> ch;
+        std::cout << std::endl << "Input C to continue, B to see the board or Q to quit the game: ";
+        std::cin >> ch;
 
         if (tolower(ch) == 'c')
             break;
@@ -115,8 +113,8 @@ void Game::pause()
         }
         if (tolower(ch) == 'q')
         {
-            cout << "Do you really want to quit? [Y/N]: ";
-            cin >> ch;
+            std::cout << "Do you really want to quit? [Y/N]: ";
+            std::cin >> ch;
             if (tolower(ch) == 'y')
             {
                 delete bank;
@@ -130,45 +128,50 @@ void Game::pause()
 
 
 // returns -1 on error, points earned if successful
-int Game::executeMove(Move* mp) {
+int Game::executeMove(Move* mp)
+{
     int points;
 
     try {
         points = mp->makeMove();
     } catch (InvalidMoveEx e) {
-        cerr << e.what() << endl;
+        std::cerr << e.what() << std::endl;
         delete mp;
         return -1;
     }
-    
+
     delete mp;
     return points;
 }
 
-bool Game::checkGameOver() {
+bool Game::checkGameOver()
+{
         if (deck->gameOver() || bank->gameOver())
                 return true;
         return false;
 }
 
-void Game::printPlayers() {
+void Game::printPlayers()
+{
     player1->printStats();
-    cout << endl;
+    std::cout << std::endl;
     player2->printStats();
 }
 
-void Game::printBoard() {
-    cout << "Market:" << endl;
+void Game::printBoard()
+{
+    std::cout << "Market:" << std::endl;
     for (int i = 0; i < 5; i++) {
-        cout << "[" << (market->getCard(i))->getType() << "] ";
+        std::cout << "[" << (market->getCard(i))->getType() << "] ";
     }
-    cout << endl << endl;
+    std::cout << std::endl << std::endl;
 
-    cout << "Bank:" << endl;
+    std::cout << "Bank:" << std::endl;
     bank->printBank();
 }
 
-bool Game::endRound() {     //returns true if a player reaches 2 wins, false otherwise
+bool Game::endRound()
+{     //returns true if a player reaches 2 wins, false otherwise
     //Determine Camel Winner
     if ((player1->hand).herdSize() > (player2->hand).herdSize())
         player1->score += 5;
@@ -177,11 +180,11 @@ bool Game::endRound() {     //returns true if a player reaches 2 wins, false oth
 
     if (player1->score > player2->score) {
         player1->wins++;
-        cout << player1->name << " wins the round!" << endl << endl;
+        std::cout << player1->name << " wins the round!" << std::endl << std::endl;
     }
     else if (player2->score > player1->score) {
         player2->wins++;
-        cout << player2->name << " wins the round!" << endl << endl;
+        std::cout << player2->name << " wins the round!" << std::endl << std::endl;
     }
     /*else {        //if score tied...
         if (player1->tokens.size() > player2->tokens.size())
@@ -201,16 +204,17 @@ bool Game::endRound() {     //returns true if a player reaches 2 wins, false oth
     delete bank;
 
     if (player1->wins == 2) {
-        cout << player1->name << " wins the game!" << endl;
+        std::cout << player1->name << " wins the game!" << std::endl;
         return true;
     } else if (player2->wins == 2) {
-        cout << player2->name << " wins the game!" << endl;
+        std::cout << player2->name << " wins the game!" << std::endl;
         return true;
     }
     return false;
 }
 
-void Game::endGame() {
+void Game::endGame()
+{
     delete player1;
     delete player2;
     exit(1);

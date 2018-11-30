@@ -12,57 +12,59 @@
 #include <string>
 
 using std::string;
-using std::endl;
 using std::cerr;
 using std::cin;
 
-Player::Player() {
+Player::Player ()
+{
     name = "Player";
     score = 0;
     wins = 0;
 }
 
-Player::Player(string pname){
+Player::Player (string pname)
+{
     name = pname;
     score = 0;
     wins = 0;
 }
 
-Player::~Player()
+Player::~Player ()
 {}
 
-void Player:: printStats()
+void Player::printStats ()
 {
-    std::cout<< name << "'s Stats" << endl;
+    std::cout<< name << "'s Stats" << std::endl;
 
-    std::cout << "Hand size: " << hand.handSize();
-    std::cout << ", Camels: " << hand.herdSize();
-    std::cout << ", Score: " << getScore();
+    std::cout << "Hand size: " << hand.handSize ();
+    std::cout << ", Camels: " << hand.herdSize ();
+    std::cout << ", Score: " << getScore ();
     std::cout << ", Wins: " << wins << std::endl;
-    hand.printHand();
+    hand.printHand ();
 }
 
-void Player:: clear()
+void Player::clear ()
 {
-    hand.clear();
+    hand.clear ();
     score = 0;
 }
 
-void Player:: addCard(Card* card)
+void Player:: addCard (Card* card)
 {
-    hand.addCard(card);
+    hand.addCard (card);
 }
 
-Hand* Player::getHand() {
+Hand* Player::getHand ()
+{
     return &hand;
 }
 
-void Player:: addPoints(int points)
+void Player:: addPoints (int points)
 {
-    score+=points;
+    score += points;
 }
 
-int Player:: getScore()
+int Player:: getScore ()
 {
     return score;
 }

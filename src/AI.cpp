@@ -14,9 +14,9 @@ using std::endl;
 AI::AI(std::string name) : Player(name) {}
 
 Move* AI::getMove(Market& market, Bank& bank)
-{   
+{
     Move* movePtr;
-    
+
     //printStats();
     //market.printMarket();
     cout << endl;
@@ -28,13 +28,13 @@ Move* AI::getMove(Market& market, Bank& bank)
     else
     {
         movePtr = sellOne(market, bank);
-        
+
         if (movePtr == 0)
             movePtr = sellTwo(market, bank);
     }
     return movePtr;
 }
-    
+
 Move* AI::take(Market& market)
 {
     if(market.getCard(0)->getType() == "Camel")
@@ -51,7 +51,7 @@ Move* AI::sellOne(Market& market, Bank& bank)
     unsigned int i;
     std::string type;
     bool playerCards[7] {0};
-    
+
     for (i = 0; i < hand.handSize(); i++)
     {
         type = hand.cardAt(i)->getType();
@@ -73,17 +73,17 @@ Move* AI::sellTwo(Market& market, Bank& bank)
     unsigned int i,j;
     std::string type1, type2;
     bool playerCards[7] {0};
-    
+
     for (i = 0; i < hand.handSize(); i++)
     {
         for (j = 0; j < hand.handSize(); j++)
         {
             if (i == j)
                 continue;
-                
+
             type1 = hand.cardAt(i)->getType();
             type2 = hand.cardAt(j)->getType();
-            
+
             if(type1 == type2)
             {
                 playerCards[i] = !(playerCards[i]);

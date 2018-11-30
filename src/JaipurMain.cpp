@@ -6,11 +6,13 @@
 
 #include "Game.h"
 
-int main() {
+int main(int argc, char *argv[])
+{
     Game game;
     game.startGame();       //get player names.
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++)
+    {
         game.startRound();
         game.playGame();
         if (game.endRound())
@@ -19,4 +21,3 @@ int main() {
     game.endGame();
     return 0;
 }
-

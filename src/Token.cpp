@@ -6,20 +6,24 @@
 
 #include "Token.h"
 
-Token::Token() {
+Token::Token ()
+{
     type = "NoType";
     value = 0;
 }
 
-Token::Token(std::string s, int v) {
+Token::Token (std::string s, int v)
+{
     type = s;
     value = v;
 }
 
-std::string Token::getType() {
+std::string Token::getType ()
+{
     return type;
 }
 
-int Token::getValue() {
+int Token::getValue ()
+{
     return value;
 }

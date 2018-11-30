@@ -15,8 +15,8 @@ Type::Type(std::string s) : s_type(s)
 
 Type::Enum Type::fromString(std::string s)
 {
-    std::transform(s.begin(), s.end(), s.begin(), toupper);
-    
+    std::transform (s.begin(), s.end(), s.begin(), toupper);
+
     if(s == "DIAMOND")
         return Type::DIAMOND;
     else if(s == "GOLD")
@@ -41,7 +41,7 @@ Type::Enum Type::fromString(std::string s)
 
 std::string Type::toString(Type::Enum t)
 {
-    switch(t)
+    switch (t)
     {
         case Type::DIAMOND: return "Diamond";
         case Type::GOLD: return "Gold";
@@ -57,12 +57,12 @@ std::string Type::toString(Type::Enum t)
     return "INVALIDTYPE";
 }
 
-Type::Enum Type::getEnum()
+Type::Enum Type::getEnum ()
 {
-    return fromString(s_type);
+    return fromString (s_type);
 }
 
-std::string Type::getString()
+std::string Type::getString ()
 {
     return s_type;
 }
@@ -74,7 +74,7 @@ void Type::operator= (const std::string &s)
 
 void Type::operator= (const Type::Enum e)
 {
-    s_type = toString(e);
+    s_type = toString (e);
 }
 
 bool Type::operator== (const std::string &s) const
@@ -84,19 +84,23 @@ bool Type::operator== (const std::string &s) const
 
 bool Type::operator== (const Type::Enum e)
 {
-    return (s_type == toString(e));
+    return (s_type == toString (e));
 }
 
-bool Type::isBonus()
+bool Type::isBonus ()
 {
     if(s_type == "Bonus3" || s_type == "Bonus4" || s_type == "Bonus5")
+    {
         return true;
+    }
     return false;
 }
 
-bool Type::isPrecious()
-{   
+bool Type::isPrecious ()
+{
     if(s_type == "Gold" || s_type == "Silver" || s_type == "Diamond")
+    {
         return true;
+    }
     return false;
 }

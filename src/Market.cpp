@@ -28,28 +28,32 @@ Market::~Market()
     }
 }
 
-Card* Market::getCard(int index) {
+Card* Market::getCard(int index)
+{
         return mktCards[index];
 }
 
-Card* Market::takeCard(int index) {
+Card* Market::takeCard(int index)
+{
         Card* tempCard = mktCards[index];
         mktCards[index] = deck.getCard();
         return tempCard;
 }
 
-Card* Market::swapCard(int index, Card* card) {
+Card* Market::swapCard(int index, Card* card)
+{
         Card* tempCard = mktCards[index];
         mktCards[index] = card;
         return tempCard;
 }
 
-void Market::printMarket() {
+void Market::printMarket()
+{
     std::cout << "Market: ";
-    for (int i = 0; i < 5; i++) {
-                std::cout << i+1 << ". [" << mktCards[i]->getType() << "] ";
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout << i+1 << ". [" << mktCards[i]->getType() << "] ";
         //std::cout << i+1 << ". [" << Type.toString(mktCards[i]->getType()) << "] ";
     }
     std::cout << std::endl;
 }
-
