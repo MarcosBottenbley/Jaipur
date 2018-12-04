@@ -4,8 +4,8 @@
  * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
  */
 
-#ifndef HUMAN_H
-#define HUMAN_H
+#pragma once
+
 #include "Move.h"
 #include "Take.h"
 #include "Trade.h"
@@ -14,20 +14,20 @@
 #include <string>
 
 
-class Human : public Player {
-    void sortVector(std::vector<int>);
+class Human : public Player
+{
 public:
     Human();
     Human(std::string name);
     virtual ~Human();
-    Move* getMove(Market &market, Bank &bank);
 
+    Move* getMove(Market &market, Bank &bank);
+    void sortVector(std::vector<int>);
 private:
     Take* take(Market &market);
     Trade* trade(Market &market);
     Sell* sell(Market &market, Bank &bank);
+
     void printMktSelections(Market& market, bool arr[]);
     void printPlrSelections(bool arr[], int camels);
 };
-
-#endif

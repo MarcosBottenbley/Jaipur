@@ -4,8 +4,7 @@
  * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
  */
 
-#ifndef BANK_H
-#define BANK_H
+#pragma once
 
 #include "Token.h"
 #include "Type.h"
@@ -15,18 +14,18 @@
 
 class Bank
 {
-    private:
-        std::stack<Token*> bank[9];
-        void initBank();
-        void shuffle(int *,int);
-        void addTokens(int *,int,Type);
-    public:
-        Bank();
-        Bank(int);
-        ~Bank();
-        std::stack<Token*> getTokens(Type::Enum,int);
-        void printBank();
-        bool gameOver();
-};
-#endif
+public:
+    Bank();
+    Bank(int);
+    ~Bank();
 
+    std::stack<Token*> getTokens (Type::Enum,int);
+    void printBank ();
+    bool gameOver ();
+private:
+    std::stack<Token*> bank[9];
+private:
+    void initBank ();
+    void shuffle (int *,int);
+    void addTokens (int *,int,Type);
+};

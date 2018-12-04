@@ -26,6 +26,7 @@ Game::Game(int rndSeed)
 /* Class Methods */
 void Game::startGame()
 {
+    //TODO: remove this code and change to GUI
     std::string str;
     int p1, p2;
     std::cout << "Welcome to Jaipur!" << std::endl << "Player 1, Enter your name: ";

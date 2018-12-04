@@ -49,7 +49,7 @@ void Player::clear ()
     score = 0;
 }
 
-void Player:: addCard (Card* card)
+void Player::addCard (Card* card)
 {
     hand.addCard (card);
 }
@@ -59,12 +59,12 @@ Hand* Player::getHand ()
     return &hand;
 }
 
-void Player:: addPoints (int points)
+void Player::addPoints (int points)
 {
     score += points;
 }
 
-int Player:: getScore ()
+int Player::getScore ()
 {
     return score;
 }

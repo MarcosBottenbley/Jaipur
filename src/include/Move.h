@@ -28,4 +28,4 @@ class Move
         virtual int makeMove() = 0;
 };
 #endif
-    
+

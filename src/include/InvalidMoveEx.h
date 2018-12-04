@@ -4,8 +4,7 @@
  * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
  */
 
-#ifndef INVALIDMOVEEX_H
-#define INVALIDMOVEEX_H
+#pragma once
 
 #include <iostream>
 #include <exception>
@@ -15,18 +14,17 @@ class InvalidMoveEx: public std::exception
 {
     const char* errMessage;
 public:
-    InvalidMoveEx() {
+    inline InvalidMoveEx() {
         errMessage = "ERROR: Invalid move";
     }
 
-    InvalidMoveEx(const char* str) {
+    inline InvalidMoveEx(const char* str) {
         errMessage = str;
     }
 
-    virtual const char* what() const throw()
+    inline virtual const char* what() const throw()
     {
         return errMessage;
     }
 
 };
-#endif

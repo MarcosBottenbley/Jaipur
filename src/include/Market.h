@@ -4,18 +4,16 @@
  * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
  */
 
-#ifndef MARKET_H
-#define MARKET_H
+#pragma once
 
 #include "Card.h"
 #include "Deck.h"
 
-class Market {
-
+class Market
+{
 private:
     Card* mktCards[5];
     Deck &deck;
-
 public:
     Market(Deck&);
     ~Market();
@@ -24,6 +22,3 @@ public:
     Card* swapCard(int index, Card* card);//for trades
     void printMarket();
 };
-
-#endif
-

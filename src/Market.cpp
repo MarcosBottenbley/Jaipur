@@ -8,8 +8,7 @@
 #include "Deck.h"
 #include <iostream>
 
-Market::Market(Deck &d):
- deck(d)
+Market::Market(Deck &d) : deck(d)
 {
     for(int i = 0; i < 3; i++)
     {
@@ -49,6 +48,7 @@ Card* Market::swapCard(int index, Card* card)
 
 void Market::printMarket()
 {
+    //TODO: change to display market and connect with GUI
     std::cout << "Market: ";
     for (int i = 0; i < 5; i++)
     {

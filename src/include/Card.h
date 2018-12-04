@@ -4,19 +4,17 @@
  * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
  */
 
-#ifndef CARD_H
-#define CARD_H
+#pragma once
 
 #include <string>
 
 class Card
 {
-    private:
-        std::string type;
-    public:
-        Card(std::string);
-    
-        std::string getType();
-        bool isCamel();
+public:
+    Card (std::string);
+
+    std::string getType ();
+    bool isCamel ();
+private:
+    std::string type;
 };
-#endif
