@@ -5,19 +5,24 @@
  */
 
 #include "Game.h"
+#include "Application.h"
 
 int main(int argc, char *argv[])
 {
     Game game;
     game.startGame();       //get player names.
+    Application::init(800, 600);
 
     for (int i = 0; i < 3; i++)
     {
         game.startRound();
         game.playGame();
         if (game.endRound())
+        {
             break;
+        }
     }
     game.endGame();
+    Application::quit();
     return 0;
 }

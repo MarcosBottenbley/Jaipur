@@ -24,74 +24,78 @@ TARGET = JaipurMain
 
 all: $(TARGET)
 
-$(TARGET): JaipurMain.o Game.o Human.o Player.o AI.o Hand.o Market.o Card.o Take.o Trade.o Sell.o Move.o Token.o Deck.o Type.o Bank.o
-	$(CC) -o $(TARGET) $(OBJ)JaipurMain.o $(OBJ)Game.o $(OBJ)Human.o $(OBJ)Player.o $(OBJ)AI.o $(OBJ)Hand.o $(OBJ)Market.o $(OBJ)Card.o $(OBJ)Take.o $(OBJ)Trade.o $(OBJ)Sell.o $(OBJ)Move.o $(OBJ)Token.o $(OBJ)Deck.o $(OBJ)Type.o $(OBJ)Bank.o; \
+$(TARGET): Application.o JaipurMain.o Game.o Human.o Player.o AI.o Hand.o Market.o Card.o Take.o Trade.o Sell.o Move.o Token.o Deck.o Type.o Bank.o
+	$(CC) -o $(TARGET) $(OBJ)Application.o $(OBJ)JaipurMain.o $(OBJ)Game.o $(OBJ)Human.o $(OBJ)Player.o $(OBJ)AI.o $(OBJ)Hand.o $(OBJ)Market.o $(OBJ)Card.o $(OBJ)Take.o $(OBJ)Trade.o $(OBJ)Sell.o $(OBJ)Move.o $(OBJ)Token.o $(OBJ)Deck.o $(OBJ)Type.o $(OBJ)Bank.o $(LIBS); \
 	mv $(TARGET) $(BIN); \
 	#$(BIN)$(TARGET)
 
 #make .o files here
+Application.o:
+	${CC} -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Application.cpp; \
+	mv Application.o ${OBJ}
+
 JaipurMain.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)JaipurMain.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)JaipurMain.cpp; \
 	mv JaipurMain.o $(OBJ)
 
 Game.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Game.cpp; \
+	$(CC)  -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Game.cpp; \
 	mv Game.o $(OBJ)
 
 Human.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Human.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Human.cpp; \
 	mv Human.o $(OBJ)
 
 Player.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Player.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Player.cpp; \
 	mv Player.o $(OBJ)
 
 AI.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)AI.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)AI.cpp; \
 	mv AI.o $(OBJ)
 
 Hand.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Hand.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Hand.cpp; \
 	mv Hand.o $(OBJ)
 
 Market.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Market.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Market.cpp; \
 	mv Market.o $(OBJ)
 
 Card.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Card.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Card.cpp; \
 	mv Card.o $(OBJ)
 
 Take.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Take.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Take.cpp; \
 	mv Take.o $(OBJ)
 
 Trade.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Trade.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Trade.cpp; \
 	mv Trade.o $(OBJ)
 
 Sell.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Sell.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Sell.cpp; \
 	mv Sell.o $(OBJ)
 
 Move.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Move.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Move.cpp; \
 	mv Move.o $(OBJ)
 
 Token.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Token.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Token.cpp; \
 	mv Token.o $(OBJ)
 
 Deck.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Deck.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Deck.cpp; \
 	mv Deck.o $(OBJ)
 
 Type.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Type.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Type.cpp; \
 	mv Type.o $(OBJ)
 
 Bank.o:
-	$(CC) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Bank.cpp; \
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Bank.cpp; \
 	mv Bank.o $(OBJ)
 
 Test: Token.cpp Card.cpp Hand.cpp Type.cpp Bank.cpp Test.cpp
