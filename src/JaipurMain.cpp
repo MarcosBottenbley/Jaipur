@@ -9,10 +9,19 @@
 
 int main(int argc, char *argv[])
 {
+    if (!Application::init(800, 600))
+    {
+        return EXIT_FAILURE;
+    }
+
+    //Open menu for application
+    //show menu with options for new game, continue or options
+    //begin a new game or continue a game
+    //create a game object and begin a game
+
+    /*
     Game game;
     game.startGame();       //get player names.
-    Application::init(800, 600);
-
     for (int i = 0; i < 3; i++)
     {
         game.startRound();
@@ -23,6 +32,9 @@ int main(int argc, char *argv[])
         }
     }
     game.endGame();
+    */
+    while (true)
+    {}
     Application::quit();
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -23,16 +23,34 @@ Game::Game(int rndSeed)
     std::srand(rndSeed);
 }
 
-/* Class Methods */
+Game::~Game ()
+{
+    if (deck != NULL)
+        delete deck;
+    if (bank != NULL)
+        delete bank;
+    if (market != NULL)
+        delete market;
+    if (player1 != NULL)
+        delete player1;
+    if (player2 != NULL)
+        delete player2;
+}
+
+//TODO: remove function
 void Game::startGame()
 {
-    //TODO: remove this code and change to GUI
     std::string str;
     int p1, p2;
+    //-----------------------------------------------------------------------------
     std::cout << "Welcome to Jaipur!" << std::endl << "Player 1, Enter your name: ";
+    //-----------------------------------------------------------------------------
     std::cin >> str;
+    //-----------------------------------------------------------------------------
     std::cout << "Is Player 1 a Human(1) or AI(2)?: ";
+    //-----------------------------------------------------------------------------
     std::cin >> p1;
+    //-----------------------------------------------------------------------------
     switch(p1)
     {
         case 1: player1 = new Human(str);
@@ -52,6 +70,31 @@ void Game::startGame()
         case 2: player2 = new AI(str);
             break;
     }
+}
+
+bool Game::InitPlayer(std::string name, bool human, int num)
+{
+    if (num == 1)
+    {
+        if (human)
+        {
+            player1 = new Human(name);
+            return true;
+        }
+        player1 = new AI(name);
+        return true;
+    }
+    else if (num == 2)
+    {
+        if (human)
+        {
+            player2 = new Human(name);
+            return true;
+        }
+        player2 = new AI(name);
+        return true;
+    }
+    return false;
 }
 
 void Game::startRound()

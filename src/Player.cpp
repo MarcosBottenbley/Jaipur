@@ -32,6 +32,7 @@ Player::Player (string pname)
 Player::~Player ()
 {}
 
+//TODO: remove
 void Player::printStats ()
 {
     std::cout<< name << "'s Stats" << std::endl;
@@ -41,6 +42,31 @@ void Player::printStats ()
     std::cout << ", Score: " << getScore ();
     std::cout << ", Wins: " << wins << std::endl;
     hand.printHand ();
+}
+
+std::ostream& operator<<(std::ostream& os, const Player& aPlayer)
+{
+    os << aPlayer.name << "'s Stats\n";
+    os << "Hand size: " << aPlayer.hand.handSize ();
+    os << ", Camels: " << aPlayer.hand.herdSize ();
+    os << ", Score: " << aPlayer.getScore ();
+    os << ", Wins: " << aPlayer.wins << std::endl;
+    //hand.printHand ();
+}
+
+int Player::GetHandSize ()
+{
+    return hand.handSize();
+}
+
+int Player::GetHerdSize ()
+{
+    return hand.herdSize ();
+}
+
+int Player::GetNumWins ()
+{
+    return wins;
 }
 
 void Player::clear ()
