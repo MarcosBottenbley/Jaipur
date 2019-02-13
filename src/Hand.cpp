@@ -77,6 +77,7 @@ Card* Hand::removeCard (int index)
     return temp;
 }
 
+//Move this to an overloaded operator
 void Hand::printHand ()
 {
     unsigned int x;

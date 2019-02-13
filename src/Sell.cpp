@@ -10,8 +10,7 @@
 #include <stack>
 #include <iostream>
 
-Sell::Sell (Market &m, Hand &h, Bank &b, bool *p):
- Move (m,h),bank (b)
+Sell::Sell (Market &m, Hand &h, Bank &b, bool *p) : Move (m,h), bank (b)
 {
     pIndexes = getIndexes (p, 7);
 }

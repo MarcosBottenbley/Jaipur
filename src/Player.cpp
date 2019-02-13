@@ -11,10 +11,6 @@
 #include <climits>
 #include <string>
 
-using std::string;
-using std::cerr;
-using std::cin;
-
 Player::Player ()
 {
     name = "Player";
@@ -22,7 +18,7 @@ Player::Player ()
     wins = 0;
 }
 
-Player::Player (string pname)
+Player::Player (std::string pname)
 {
     name = pname;
     score = 0;
@@ -44,6 +40,7 @@ void Player::printStats ()
     hand.printHand ();
 }
 
+/*
 std::ostream& operator<<(std::ostream& os, const Player& aPlayer)
 {
     os << aPlayer.name << "'s Stats\n";
@@ -53,6 +50,7 @@ std::ostream& operator<<(std::ostream& os, const Player& aPlayer)
     os << ", Wins: " << aPlayer.wins << std::endl;
     //hand.printHand ();
 }
+*/
 
 int Player::GetHandSize ()
 {

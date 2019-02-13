@@ -25,6 +25,7 @@ class Player
 {
     friend class Game;
     friend class Move;
+//    friend std::ostream& operator<<(std::ostream& os, const Player& aPlayer);
 protected:
     std::string name;               //the player's name
     Hand hand;                      //all cards held by player; max 7
@@ -40,7 +41,6 @@ public:
     virtual ~Player();
     virtual Move* getMove(Market&, Bank&) = 0;  //the player gets an option to take a card, exchange
     //TODO: remove print stats
-    friend std::ostream& operator<<(ostream& os, const Player& aPlayer);
     void printStats();
 
     int GetHandSize ();

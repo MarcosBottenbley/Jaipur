@@ -12,14 +12,20 @@
 #include <ctime>
 #include <climits>
 
-/* Constructor */
+/* Both constructors initialize the
+ * random number generator.
+ * Which is used
+ */
 Game::Game()
 {
+    //seeds with time
     std::srand(std::time(0));
 }
 
 Game::Game(int rndSeed)
 {
+    //takes in a given seed
+    //mostly used for debugging purposes.
     std::srand(rndSeed);
 }
 
@@ -72,7 +78,14 @@ void Game::startGame()
     }
 }
 
-bool Game::InitPlayer(std::string name, bool human, int num)
+/*
+ * Initializes a player object.
+ * Parameters:
+ * -Name for the name of the player
+ * -Boolean to check if the player is human or AI
+ * -Int the indicates turn order
+ */
+bool Game::initPlayer(std::string name, bool human, int num)
 {
     if (num == 1)
     {
@@ -97,6 +110,11 @@ bool Game::InitPlayer(std::string name, bool human, int num)
     return false;
 }
 
+/*
+ * Initializes all of the objects that are
+ * needed to play the game ie. deck, market, bank
+ * and deals cards to the players
+ */
 void Game::startRound()
 {
     deck = new Deck();
@@ -180,8 +198,7 @@ int Game::executeMove(Move* mp)
         points = mp->makeMove();
     } catch (InvalidMoveEx e) {
         std::cerr << e.what() << std::endl;
-        delete mp;
-        return -1;
+        points = 0;
     }
 
     delete mp;
@@ -190,9 +207,7 @@ int Game::executeMove(Move* mp)
 
 bool Game::checkGameOver()
 {
-        if (deck->gameOver() || bank->gameOver())
-                return true;
-        return false;
+    return (deck->gameOver() || bank->gameOver());
 }
 
 void Game::printPlayers()
@@ -215,7 +230,8 @@ void Game::printBoard()
 }
 
 bool Game::endRound()
-{     //returns true if a player reaches 2 wins, false otherwise
+{
+    //returns true if a player reaches 2 wins, false otherwise
     //Determine Camel Winner
     if ((player1->hand).herdSize() > (player2->hand).herdSize())
         player1->score += 5;
