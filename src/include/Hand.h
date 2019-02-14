@@ -19,14 +19,16 @@ public:
 
     void clear ();
     bool addCard (Card *);
-    unsigned int handSize ();
     Card* cardAt (int);  //card at given index
     Card* removeCard (int);
     void printHand ();
     bool isEmpty ();
     bool isHerdEmpty ();
     Card* getCamel ();
-    unsigned int herdSize ();
+
+    //getters
+    unsigned int getHerdSize () const;
+    unsigned int getHandSize () const;
 private:
     std::vector<Card *> hand;
     std::stack<Card *> herd;

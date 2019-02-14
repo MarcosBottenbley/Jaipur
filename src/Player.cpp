@@ -33,36 +33,35 @@ void Player::printStats ()
 {
     std::cout<< name << "'s Stats" << std::endl;
 
-    std::cout << "Hand size: " << hand.handSize ();
-    std::cout << ", Camels: " << hand.herdSize ();
+    std::cout << "Hand size: " << hand.getHandSize ();
+    std::cout << ", Camels: " << hand.getHerdSize ();
     std::cout << ", Score: " << getScore ();
     std::cout << ", Wins: " << wins << std::endl;
     hand.printHand ();
 }
 
-/*
 std::ostream& operator<<(std::ostream& os, const Player& aPlayer)
 {
     os << aPlayer.name << "'s Stats\n";
-    os << "Hand size: " << aPlayer.hand.handSize ();
-    os << ", Camels: " << aPlayer.hand.herdSize ();
+    os << "Hand size: " << aPlayer.hand.getHandSize ();
+    os << ", Camels: " << aPlayer.hand.getHerdSize ();
     os << ", Score: " << aPlayer.getScore ();
     os << ", Wins: " << aPlayer.wins << std::endl;
-    //hand.printHand ();
+//    aPlayer.hand.printHand ();
+    return os;
 }
-*/
 
-int Player::GetHandSize ()
+int Player::GetHandSize () const
 {
-    return hand.handSize();
+    return hand.getHandSize();
 }
 
-int Player::GetHerdSize ()
+int Player::GetHerdSize () const
 {
-    return hand.herdSize ();
+    return hand.getHerdSize ();
 }
 
-int Player::GetNumWins ()
+int Player::GetNumWins () const
 {
     return wins;
 }
@@ -78,7 +77,7 @@ void Player::addCard (Card* card)
     hand.addCard (card);
 }
 
-Hand* Player::getHand ()
+const Hand* Player::getHand () const
 {
     return &hand;
 }
@@ -88,7 +87,7 @@ void Player::addPoints (int points)
     score += points;
 }
 
-int Player::getScore ()
+int Player::getScore () const
 {
     return score;
 }

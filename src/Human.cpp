@@ -98,7 +98,7 @@ Take* Human::take(Market &market)
             cout << "Invalid entry" << endl;
             continue;
         }
-        if (hand.handSize() == 7 && !(market.getCard(inputI)->isCamel()))
+        if (hand.getHandSize() == 7 && !(market.getCard(inputI)->isCamel()))
         {
             cout << "You've already reached the maximum hand size" << endl;
             continue;
@@ -167,7 +167,7 @@ Trade* Human::trade(Market &market)
             printPlrSelections(plrCards, numCamels);
             continue;
         }
-        if (inputI == 8 && numCamels < (int)hand.herdSize()) {
+        if (inputI == 8 && numCamels < (int)hand.getHerdSize()) {
             numCamels++;
             continue;
         }
@@ -175,7 +175,7 @@ Trade* Human::trade(Market &market)
             numCamels--;
             continue;
         }
-        if (inputI < 0 || inputI > (int)hand.handSize()) {
+        if (inputI < 0 || inputI > (int)hand.getHandSize()) {
             cout << "Invalid input" << endl;
             continue;
         }
@@ -221,7 +221,7 @@ Sell* Human::sell(Market &market, Bank &bank)
             printPlrSelections(plrCards, 0);
             continue;
         }
-        else if (inputI < 0 || inputI > (int)hand.handSize())
+        else if (inputI < 0 || inputI > (int)hand.getHandSize())
         {
             cout << "Invalid input" << endl;
             continue;
@@ -246,7 +246,7 @@ void Human::printMktSelections(Market& market, bool arr[])
 
 void Human::printPlrSelections(bool arr[], int camels)
 {
-    int size = (int)hand.handSize();
+    int size = (int)hand.getHandSize();
     cout << "You've selected these cards from your hand: ";
     for (int i = 0; i < size; i++)
     {

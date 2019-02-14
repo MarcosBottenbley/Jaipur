@@ -11,7 +11,6 @@
 #define PLAYER_H
 
 
-//#include "Game.h"
 #include "Move.h"
 #include "Card.h"
 #include "Token.h"
@@ -20,34 +19,46 @@
 #include <string>
 #include <vector>
 #include <stack>
+#include <iostream>
 
 class Player
 {
     friend class Game;
     friend class Move;
-//    friend std::ostream& operator<<(std::ostream& os, const Player& aPlayer);
 protected:
-    std::string name;               //the player's name
-    Hand hand;                      //all cards held by player; max 7
-    std::vector<Token*> tokens;     //tokens currently owned by player
-    int wins;                       //number of seals of excellence player has
-                                    //the player's herd
+    //the player's name
+    std::string name;
+
+    //all cards held by player; max 7
+    Hand hand;
+
+    //tokens currently owned by player
+    std::vector<Token*> tokens;
+
+    //number of seals of excellence player has
+    int wins;
+
+    //the player's herd
     int score;
 
+    friend std::ostream& operator<<(std::ostream& os, const Player& aPlayer);
 
 public:
     Player();
     Player (std::string name);
     virtual ~Player();
-    virtual Move* getMove(Market&, Bank&) = 0;  //the player gets an option to take a card, exchange
+
+    //the player gets an option to take a card, exchange
+    virtual Move* getMove(Market&, Bank&) = 0;
+
     //TODO: remove print stats
     void printStats();
 
-    int GetHandSize ();
-    int GetHerdSize ();
-    int GetNumWins ();
-    int getScore();
-    Hand* getHand();
+    int GetHandSize () const;
+    int GetHerdSize () const;
+    int GetNumWins () const;
+    int getScore() const;
+    const Hand* getHand() const;
 
     void clear();
     void addCard(Card* card);

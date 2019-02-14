@@ -212,9 +212,8 @@ bool Game::checkGameOver()
 
 void Game::printPlayers()
 {
-    player1->printStats();
-    std::cout << std::endl;
-    player2->printStats();
+    std::cout << *player1 << std::endl;
+    std::cout << *player2 << std:: endl;
 }
 
 void Game::printBoard()
@@ -233,9 +232,9 @@ bool Game::endRound()
 {
     //returns true if a player reaches 2 wins, false otherwise
     //Determine Camel Winner
-    if ((player1->hand).herdSize() > (player2->hand).herdSize())
+    if ((player1->hand).getHerdSize() > (player2->hand).getHerdSize())
         player1->score += 5;
-    else if ((player2->hand).herdSize() > (player1->hand).herdSize())
+    else if ((player2->hand).getHerdSize() > (player1->hand).getHerdSize())
         player2->score += 5;
 
     if (player1->score > player2->score) {

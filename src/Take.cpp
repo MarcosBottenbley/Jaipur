@@ -20,7 +20,7 @@ int Take::makeMove ()
     {
         throw ime1;
     }
-    if(hand.handSize() == 7)
+    if(hand.getHandSize() == 7)
     {
         throw ime2;
     }

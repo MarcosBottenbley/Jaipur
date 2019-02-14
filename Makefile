@@ -20,12 +20,12 @@ GCOV = -fprofile-arcs -ftest-coverage
 
 LIBS = -lSDL2 -lm
 
-TARGET = JaipurMain
+TARGET = jaipur
 
 all: $(TARGET)
 
-$(TARGET): Application.o JaipurMain.o Game.o Human.o Player.o AI.o Hand.o Market.o Card.o Take.o Trade.o Sell.o Move.o Token.o Deck.o Type.o Bank.o
-	$(CC) -o $(TARGET) $(OBJ)Application.o $(OBJ)JaipurMain.o $(OBJ)Game.o $(OBJ)Human.o $(OBJ)Player.o $(OBJ)AI.o $(OBJ)Hand.o $(OBJ)Market.o $(OBJ)Card.o $(OBJ)Take.o $(OBJ)Trade.o $(OBJ)Sell.o $(OBJ)Move.o $(OBJ)Token.o $(OBJ)Deck.o $(OBJ)Type.o $(OBJ)Bank.o $(LIBS); \
+$(TARGET): Application.o Main.o Game.o Human.o Player.o AI.o Hand.o Market.o Card.o Take.o Trade.o Sell.o Move.o Token.o Deck.o Type.o Bank.o
+	$(CC) -o $(TARGET) $(OBJ)Application.o $(OBJ)Main.o $(OBJ)Game.o $(OBJ)Human.o $(OBJ)Player.o $(OBJ)AI.o $(OBJ)Hand.o $(OBJ)Market.o $(OBJ)Card.o $(OBJ)Take.o $(OBJ)Trade.o $(OBJ)Sell.o $(OBJ)Move.o $(OBJ)Token.o $(OBJ)Deck.o $(OBJ)Type.o $(OBJ)Bank.o $(LIBS); \
 	mv $(TARGET) $(BIN); \
 	#$(BIN)$(TARGET)
 
@@ -34,9 +34,9 @@ Application.o:
 	${CC} -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Application.cpp; \
 	mv Application.o ${OBJ}
 
-JaipurMain.o:
-	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)JaipurMain.cpp; \
-	mv JaipurMain.o $(OBJ)
+Main.o:
+	$(CC) -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Main.cpp; \
+	mv Main.o $(OBJ)
 
 Game.o:
 	$(CC)  -I$(SDL_HEADERS) -I$(INCLUDE) $(CFLAGS) -c $(SRC)Game.cpp; \

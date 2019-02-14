@@ -18,7 +18,7 @@ Hand::~Hand ()
 void Hand::clear ()
 {
     unsigned int x;
-    for (x = 0; x < handSize (); x++)
+    for (x = 0; x < getHandSize (); x++)
     {
         delete hand[x];
     }
@@ -51,7 +51,7 @@ bool Hand::addCard (Card *c)
     }
 }
 
-unsigned int Hand::handSize ()
+unsigned int Hand::getHandSize () const
 {
     return hand.size ();
 }
@@ -59,7 +59,7 @@ unsigned int Hand::handSize ()
 Card* Hand::cardAt (int index)
 {
     Card* temp = 0;
-    if (index < 0 || index >= (int) handSize ())
+    if (index < 0 || index >= (int) getHandSize ())
     {
         return temp;
     }
@@ -90,13 +90,13 @@ void Hand::printHand ()
     {
         std::cout << " " << x+1 << ". [" << hand[x]->getType () << "]";
     }
-    if (herdSize () == 1)
+    if (getHerdSize () == 1)
     {
-        std::cout << ", " << herdSize () << " camel in herd." << std::endl;
+        std::cout << ", " << getHerdSize () << " camel in herd." << std::endl;
     }
     else
     {
-        std::cout << ", " << herdSize () << " camels in herd." << std::endl;
+        std::cout << ", " << getHerdSize () << " camels in herd." << std::endl;
     }
 }
 
@@ -121,7 +121,7 @@ Card* Hand::getCamel ()
     return temp;
 }
 
-unsigned int Hand::herdSize ()
+unsigned int Hand::getHerdSize () const
 {
     return herd.size ();
 }

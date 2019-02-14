@@ -33,7 +33,7 @@ int Trade::makeMove ()
     {
         throw ime2;
     }
-    else if (hand.handSize () + camels > 7)
+    else if (hand.getHandSize () + camels > 7)
     {
         throw ime3;
     }

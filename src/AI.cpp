@@ -23,7 +23,7 @@ Move* AI::getMove(Market& market, Bank& bank)
 
     //if hand is not full, take the first card in the market
     //(if the card is a camel, makeMove will take all camels)
-    if(hand.handSize() != 7)
+    if(hand.getHandSize() != 7)
         movePtr =  take(market);
     else
     {
@@ -52,7 +52,7 @@ Move* AI::sellOne(Market& market, Bank& bank)
     std::string type;
     bool playerCards[7] {0};
 
-    for (i = 0; i < hand.handSize(); i++)
+    for (i = 0; i < hand.getHandSize(); i++)
     {
         type = hand.cardAt(i)->getType();
         if (type != "Diamond" && type != "Gold" && type != "Silver")
@@ -74,9 +74,9 @@ Move* AI::sellTwo(Market& market, Bank& bank)
     std::string type1, type2;
     bool playerCards[7] {0};
 
-    for (i = 0; i < hand.handSize(); i++)
+    for (i = 0; i < hand.getHandSize(); i++)
     {
-        for (j = 0; j < hand.handSize(); j++)
+        for (j = 0; j < hand.getHandSize(); j++)
         {
             if (i == j)
                 continue;
