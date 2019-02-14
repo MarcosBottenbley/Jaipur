@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     //create a game object and begin a game
 
     Game game;
-    game.startGame();       //get player names.
+    game.startGame();
     for (int i = 0; i < 3; i++)
     {
         game.startRound();
