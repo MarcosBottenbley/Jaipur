@@ -28,18 +28,6 @@ Player::Player (std::string pname)
 Player::~Player ()
 {}
 
-//TODO: remove
-void Player::printStats ()
-{
-    std::cout<< name << "'s Stats" << std::endl;
-
-    std::cout << "Hand size: " << hand.getHandSize ();
-    std::cout << ", Camels: " << hand.getHerdSize ();
-    std::cout << ", Score: " << getScore ();
-    std::cout << ", Wins: " << wins << std::endl;
-    hand.printHand ();
-}
-
 std::ostream& operator<<(std::ostream& os, const Player& aPlayer)
 {
     os << aPlayer.name << "'s Stats\n";

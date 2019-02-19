@@ -21,17 +21,19 @@ int main(int argc, char *argv[])
     //begin a new game or continue a game
     //create a game object and begin a game
 
+
     Game game;
     game.startGame();
     for (int i = 0; i < 3; i++)
     {
         game.startRound();
-        game.playGame();
+        game.play_game();
         if (game.endRound())
         {
             break;
         }
     }
+
     game.endGame();
     //Application::quit();
     return EXIT_SUCCESS;

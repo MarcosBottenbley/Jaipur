@@ -51,9 +51,6 @@ public:
     //the player gets an option to take a card, exchange
     virtual Move* getMove(Market&, Bank&) = 0;
 
-    //TODO: remove print stats
-    void printStats();
-
     int GetHandSize () const;
     int GetHerdSize () const;
     int GetNumWins () const;

@@ -44,38 +44,26 @@ Game::~Game ()
 }
 
 //TODO: remove function
-void Game::startGame()
+void Game::startGame ()
 {
-    std::string str;
-    int p1, p2;
+    std::string playerName;
+    int playerClass;
     //-----------------------------------------------------------------------------
     std::cout << "Welcome to Jaipur!" << std::endl << "Player 1, Enter your name: ";
     //-----------------------------------------------------------------------------
-    std::cin >> str;
+    std::cin >> playerName;
     //-----------------------------------------------------------------------------
     std::cout << "Is Player 1 a Human(1) or AI(2)?: ";
     //-----------------------------------------------------------------------------
-    std::cin >> p1;
+    std::cin >> playerClass;
     //-----------------------------------------------------------------------------
-    switch(p1)
-    {
-        case 1: player1 = new Human(str);
-            break;
-        case 2: player1 = new AI(str);
-            break;
-    }
+    initPlayer(playerName, (playerClass == 1), 1);
 
     std::cout << "Player 2, Enter your name: ";
-    std::cin >> str;
+    std::cin >> playerName;
     std::cout << "Is Player 2 a Human(1) or AI(2)?: ";
-    std::cin >> p2;
-    switch(p2)
-    {
-        case 1: player2 = new Human(str);
-            break;
-        case 2: player2 = new AI(str);
-            break;
-    }
+    std::cin >> playerClass;
+    initPlayer(playerName, (playerClass == 1), 2);
 }
 
 /*
@@ -87,27 +75,33 @@ void Game::startGame()
  */
 bool Game::initPlayer(std::string name, bool human, int num)
 {
+    if (num != 1 && num != 2)
+    {
+        return false;
+    }
     if (num == 1)
     {
         if (human)
         {
             player1 = new Human(name);
-            return true;
         }
-        player1 = new AI(name);
-        return true;
+        else
+        {
+            player1 = new AI(name);
+        }
     }
     else if (num == 2)
     {
         if (human)
         {
             player2 = new Human(name);
-            return true;
         }
-        player2 = new AI(name);
-        return true;
+        else
+        {
+            player2 = new AI(name);
+        }
     }
-    return false;
+    return true;
 }
 
 /*
@@ -124,7 +118,10 @@ void Game::startRound()
     deck->deal(player1->hand, player2->hand);
 }
 
-void Game::playGame()
+/*
+ * Main game loop
+ */
+void Game::play_game()
 {
     Move* movePtr;
     int retVal;
@@ -133,6 +130,7 @@ void Game::playGame()
 
     while(1)
     {
+        //get player 1's move and perform it
         movePtr = player1->getMove(*market, *bank);
         retVal = executeMove(movePtr);
         pause();
@@ -144,6 +142,7 @@ void Game::playGame()
             break;
         while (1)
         {
+            //get player 2's move and perform it
             movePtr = player2->getMove(*market, *bank);
             retVal = executeMove(movePtr);
             pause();
@@ -158,6 +157,10 @@ void Game::playGame()
     }
 }
 
+/*
+ * Pauses the CLI game to give player a chance
+ * to quit or look at the board
+ */
 void Game::pause()
 {
     char ch;
@@ -198,7 +201,7 @@ int Game::executeMove(Move* mp)
         points = mp->makeMove();
     } catch (InvalidMoveEx e) {
         std::cerr << e.what() << std::endl;
-        points = 0;
+        points = -1;
     }
 
     delete mp;

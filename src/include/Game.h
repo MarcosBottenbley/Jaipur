@@ -39,7 +39,7 @@ public:
     //deals a hand of 5 cards to each player
     void startRound ();
 
-    void playGame ();
+    void play_game ();
     void printBoard ();
     void printPlayers ();
 
