@@ -35,7 +35,7 @@ std::ostream& operator<<(std::ostream& os, const Player& aPlayer)
     os << ", Camels: " << aPlayer.hand.getHerdSize ();
     os << ", Score: " << aPlayer.getScore ();
     os << ", Wins: " << aPlayer.wins << std::endl;
-//    aPlayer.hand.printHand ();
+    os << aPlayer.hand;
     return os;
 }
 

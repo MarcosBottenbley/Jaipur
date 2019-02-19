@@ -41,8 +41,6 @@ protected:
     //the player's herd
     int score;
 
-    friend std::ostream& operator<<(std::ostream& os, const Player& aPlayer);
-
 public:
     Player();
     Player (std::string name);
@@ -60,5 +58,7 @@ public:
     void clear();
     void addCard(Card* card);
     void addPoints(int points);
+
+    friend std::ostream& operator<<(std::ostream& os, const Player& aPlayer);
 };
 #endif

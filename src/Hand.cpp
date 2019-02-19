@@ -77,35 +77,35 @@ Card* Hand::removeCard (int index)
     return temp;
 }
 
-//Move this to an overloaded operator
-void Hand::printHand ()
+std::ostream& operator<<(std::ostream& os, const Hand& aHand)
 {
     unsigned int x;
-    std::cout << "Hand:  ";
-    if  (isEmpty ())
+    os << "Hand:  ";
+    if  (aHand.isEmpty ())
     {
-        std::cout << " No Goods Cards";
+        os << " No Goods Cards";
     }
-    for (x = 0; x < hand.size (); x++)
+    for (x = 0; x < aHand.hand.size (); x++)
     {
-        std::cout << " " << x+1 << ". [" << hand[x]->getType () << "]";
+        os << " " << x+1 << ". [" << aHand.hand[x]->getType () << "]";
     }
-    if (getHerdSize () == 1)
+    if (aHand.getHerdSize () == 1)
     {
-        std::cout << ", " << getHerdSize () << " camel in herd." << std::endl;
+        os << ", " << aHand.getHerdSize () << " camel in herd." << std::endl;
     }
     else
     {
-        std::cout << ", " << getHerdSize () << " camels in herd." << std::endl;
+        os << ", " << aHand.getHerdSize () << " camels in herd." << std::endl;
     }
+    return os;
 }
 
-bool Hand::isEmpty ()
+bool Hand::isEmpty () const
 {
     return hand.empty ();
 }
 
-bool Hand::isHerdEmpty ()
+bool Hand::isHerdEmpty () const
 {
     return herd.empty ();
 }

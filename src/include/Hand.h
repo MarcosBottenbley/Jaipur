@@ -9,6 +9,7 @@
 #include "Card.h"
 #include <vector>
 #include <stack>
+#include <iostream>
 #define MAX_SIZE 7
 
 class Hand
@@ -21,14 +22,15 @@ public:
     bool addCard (Card *);
     Card* cardAt (int);  //card at given index
     Card* removeCard (int);
-    void printHand ();
-    bool isEmpty ();
-    bool isHerdEmpty ();
     Card* getCamel ();
 
     //getters
+    bool isEmpty () const;
+    bool isHerdEmpty () const;
     unsigned int getHerdSize () const;
     unsigned int getHandSize () const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Hand& aHand);
 private:
     std::vector<Card *> hand;
     std::stack<Card *> herd;
