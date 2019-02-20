@@ -6,8 +6,6 @@
 
 class InputManager
 {
-private:
-    static InputManager* instance = NULL;
 public:
     static InputManager* GetInstance();
     static void ReleaseInstance();
@@ -15,6 +13,8 @@ public:
     void GetCommandLineInput(std::string& input);
     void GetCommandLineInput(char& input);
     void GetCommandLineInput(int& input)
+private:
+    static InputManager* instance = NULL;
 private:
     InputManager();
     ~InputManager();

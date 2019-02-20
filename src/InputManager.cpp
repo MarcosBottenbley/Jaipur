@@ -1,5 +1,11 @@
 #include "InputManager.h"
 
+InputManager::InputManager()
+{}
+
+InputManager::~InputManager()
+{}
+
 InputManager* InputManager::GetInstance()
 {
     if (instance == NULL)
@@ -11,15 +17,12 @@ InputManager* InputManager::GetInstance()
 
 void InputManager::ReleaseInstance()
 {
-    delete instance;
+    if (instance)
+    {
+        delete instance;
+    }
     instance = NULL;
 }
-
-InputManager::InputManager()
-{}
-
-InputManager::~InputManager()
-{}
 
 //TODO: use a better way of getting command line input
 //for the different types and check for invalid types
