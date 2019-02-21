@@ -35,7 +35,7 @@ Move* Human::get_move(Market& market, Bank& bank)
         {
             case 'p':
                 market.printMarket();
-                bank.printBank();
+                bank.print_bank();
                 std::cout << std::endl;
                 break;
             std::cout << "Enter -1 at any time to cancel and pick a new move.";

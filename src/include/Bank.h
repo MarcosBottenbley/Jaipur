@@ -19,13 +19,13 @@ public:
     Bank(int);
     ~Bank();
 
-    std::stack<Token*> getTokens (Type::Enum,int);
-    void printBank ();
-    bool gameOver ();
+    std::stack<Token*> get_tokens (Type::Enum,int);
+    void print_bank ();
+    bool game_over ();
 private:
     std::stack<Token*> bank[9];
 private:
-    void initBank ();
+    void init_bank ();
     void shuffle (int *,int);
-    void addTokens (int *,int,Type);
+    void add_tokens (int *,int,Type);
 };

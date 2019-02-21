@@ -24,22 +24,22 @@ void TestClass::testBank()
     cout << "Testing bank" << endl;
     Bank bank;
 
-    stack<Token*> s = bank.getTokens(Type::GOLD,2);
+    stack<Token*> s = bank.get_tokens(Type::GOLD,2);
     assert(s.top()->getValue() == 6);
 
-    stack<Token*> s2 = bank.getTokens(Type::SPICE,3);
+    stack<Token*> s2 = bank.get_tokens(Type::SPICE,3);
     assert(s2.size() == 4);
 
-    stack<Token*> s3 = bank.getTokens(Type::SILVER,2);
+    stack<Token*> s3 = bank.get_tokens(Type::SILVER,2);
     assert(s3.top()->getValue() == 5);
 
-    stack<Token*> s4 = bank.getTokens(Type::LEATHER,9);
+    stack<Token*> s4 = bank.get_tokens(Type::LEATHER,9);
     assert(s4.size() == 10);
 
-    bank.getTokens(Type::DIAMOND, 5);
-    bank.getTokens(Type::CLOTH, 7);
+    bank.get_tokens(Type::DIAMOND, 5);
+    bank.get_tokens(Type::CLOTH, 7);
 
-    assert(bank.gameOver() == true);
+    assert(bank.game_over() == true);
 
     cout << "Bank test completed successfully\n" << endl;
 }
@@ -77,7 +77,7 @@ void TestClass::testDeck()
         deck.getCard();
     }
 
-    assert(deck.gameOver() == true);
+    assert(deck.game_over() == true);
     cout << "Deck testing completed successfully\n" << endl;
 }
 

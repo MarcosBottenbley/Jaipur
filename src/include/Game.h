@@ -71,6 +71,6 @@ private:
     int execute_move(Move*);
 
     //checks the deck and the bank objects to see if the game is over
-    bool check_gameover();
+    bool check_game_over();
     void pause();
 };

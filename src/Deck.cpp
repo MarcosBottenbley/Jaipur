@@ -100,7 +100,7 @@ void Deck::printDeck ()
     std::cout << std::endl << std::endl;
 }
 
-bool Deck::gameOver ()
+bool Deck::game_over ()
 {
     return emptyFlag;
 }

@@ -15,13 +15,13 @@ using std::left;
 
 Bank::Bank ()
 {
-    initBank ();
+    init_bank ();
 }
 
 Bank::Bank (int seed)
 {
     std::srand(seed);
-    initBank();
+    init_bank();
 }
 
 Bank::~Bank ()
@@ -36,48 +36,48 @@ Bank::~Bank ()
     }
 }
 
-void Bank::initBank ()
+void Bank::init_bank ()
 {
     Type t;
 
     int arr1[5] = {5, 5, 5, 7, 7};
     t = "Diamond";
-    addTokens(arr1, 5, t);
+    add_tokens(arr1, 5, t);
 
     int arr2[5] = {5, 5, 5, 6, 6};
     t = "Gold";
-    addTokens(arr2, 5, t);
+    add_tokens(arr2, 5, t);
 
     int arr3[5] = {5, 5, 5, 5, 5};
     t = "Silver";
-    addTokens(arr3, 5, t);
+    add_tokens(arr3, 5, t);
 
     int arr4[7] = {1, 1, 2, 2, 3, 3, 5};
     t = "Cloth";
-    addTokens(arr4, 7, t);
+    add_tokens(arr4, 7, t);
 
     t = "Spice";
-    addTokens(arr4, 7, t);
+    add_tokens(arr4, 7, t);
 
     int arr6[9] = {1, 1, 1, 1, 1, 1, 2, 3, 4};
     t = "Leather";
-    addTokens(arr6, 9, t);
+    add_tokens(arr6, 9, t);
 
     //BONUS TOKENS
     int arr7[7] = {3, 3, 2, 2, 2, 1, 1};
     t = "Bonus3";
-    addTokens(arr7, 7, t);
+    add_tokens(arr7, 7, t);
 
     int arr8[6] = {6, 6, 5, 5, 4, 4};
     t = "Bonus4";
-    addTokens(arr8, 6, t);
+    add_tokens(arr8, 6, t);
 
     int arr9[5] = {10, 10, 9, 8, 8};
     t = "Bonus5";
-    addTokens(arr9, 5, t);
+    add_tokens(arr9, 5, t);
 }
 
-void Bank::addTokens(int *arr, int size, Type t)
+void Bank::add_tokens(int *arr, int size, Type t)
 {
     if (t.isBonus ())
     {
@@ -105,7 +105,7 @@ void Bank::shuffle (int *arr, int size)
     }
 }
 
-std::stack<Token*> Bank::getTokens (Type::Enum t, int num)
+std::stack<Token*> Bank::get_tokens (Type::Enum t, int num)
 {
     std::stack<Token*> tokens;
 
@@ -137,7 +137,7 @@ std::stack<Token*> Bank::getTokens (Type::Enum t, int num)
     return tokens;
 }
 
-void Bank::printBank ()
+void Bank::print_bank ()
 {
     std::stack<Token*> tempStack;
 
@@ -171,7 +171,7 @@ void Bank::printBank ()
 
 
 
-bool Bank::gameOver ()
+bool Bank::game_over ()
 {
     int emptyStacks = 0;
     for (int i = 0; i < 6; i++)

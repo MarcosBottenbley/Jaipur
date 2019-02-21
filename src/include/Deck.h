@@ -20,7 +20,7 @@ public:
     void deal (Hand &,Hand &);
     Card * getCard ();
     void printDeck ();
-    bool gameOver ();
+    bool game_over ();
 private:
     std::stack<Card*> cards;
     bool emptyFlag;

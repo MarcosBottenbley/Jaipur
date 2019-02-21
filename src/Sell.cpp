@@ -43,7 +43,7 @@ int Sell::makeMove ()
 
     //now that everything is checked it gets the tokens
     Type t (initType);
-    std::stack<Token*> tokens = bank.getTokens (t.getEnum (),size);
+    std::stack<Token*> tokens = bank.get_tokens (t.getEnum (),size);
     int points = 0;
     while (!tokens.empty ())
     {

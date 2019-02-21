@@ -65,7 +65,7 @@ int main()
     cout << "Bank Test:" << endl;
     Bank b;
 
-    stack<Token*> test = b.getTokens(Type::GOLD,3);
+    stack<Token*> test = b.get_tokens(Type::GOLD,3);
     while(!test.empty()) {
         cout << test.top()->getType() << " ";
         cout << test.top()->getValue() << endl;

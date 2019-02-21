@@ -138,7 +138,7 @@ void Game::play_game()
             continue;
         else
             player1->add_points(retVal);
-        if (check_gameover())
+        if (check_game_over())
             break;
         while (1)
         {
@@ -150,7 +150,7 @@ void Game::play_game()
                 continue;
             else
                 player2->add_points(retVal);
-            if (check_gameover())
+            if (check_game_over())
                 return;
             break;
         }
@@ -174,7 +174,7 @@ void Game::pause()
         if (tolower(ch) == 'b')
         {
             market->printMarket();
-            bank->printBank();
+            bank->print_bank();
         }
         if (tolower(ch) == 'q')
         {
@@ -208,9 +208,9 @@ int Game::execute_move(Move* mp)
     return points;
 }
 
-bool Game::check_gameover()
+bool Game::check_game_over()
 {
-    return (deck->gameOver() || bank->gameOver());
+    return (deck->game_over() || bank->game_over());
 }
 
 void Game::print_players()
@@ -228,7 +228,7 @@ void Game::print_board()
     std::cout << std::endl << std::endl;
 
     std::cout << "Bank:" << std::endl;
-    bank->printBank();
+    bank->print_bank();
 }
 
 bool Game::end_round()
