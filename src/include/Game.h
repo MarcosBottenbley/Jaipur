@@ -33,26 +33,26 @@ public:
 
     ~Game ();
 
-    void startGame ();
+    void start_game ();
 
     //resets or inits the deck, market, and token piles, and
     //deals a hand of 5 cards to each player
-    void startRound ();
+    void start_round ();
 
     void play_game ();
-    void printBoard ();
-    void printPlayers ();
+    void print_board ();
+    void print_players ();
 
     //initializes a human or AI player and gives it a name
-    bool initPlayer (std::string name, bool human, int num);
+    bool init_player (std::string name, bool human, int num);
 
-    bool endRound ();                //tallies player scores and awards a win to the
-    void endGame ();                 //deallocates all memory used by the current game
+    bool end_round ();                //tallies player scores and awards a win to the
+    void end_game ();                 //deallocates all memory used by the current game
 
 //private variables
 private:
 
-    //both player objects initialized with the initPlayer function
+    //both player objects initialized with the init_player function
     Player* player1;
     Player* player2;
 
@@ -68,9 +68,9 @@ private:
 
 //private functions
 private:
-    int executeMove(Move*);
+    int execute_move(Move*);
 
     //checks the deck and the bank objects to see if the game is over
-    bool checkGameOver();
+    bool check_gameover();
     void pause();
 };

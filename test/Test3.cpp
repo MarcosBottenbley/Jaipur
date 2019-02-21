@@ -14,9 +14,9 @@ int main()
     
 
     Game newGame(600120);
-    newGame.startGame();
-    newGame.startRound();
-    newGame.printBoard();
-    newGame.printPlayers();
-    newGame.playGame();
+    newGame.start_game();
+    newGame.start_round();
+    newGame.print_board();
+    newGame.print_players();
+    newGame.play_game();
 }

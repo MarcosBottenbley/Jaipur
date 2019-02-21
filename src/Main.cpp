@@ -23,18 +23,18 @@ int main(int argc, char *argv[])
 
 
     Game game;
-    game.startGame();
+    game.start_game();
     for (int i = 0; i < 3; i++)
     {
-        game.startRound();
+        game.start_round();
         game.play_game();
-        if (game.endRound())
+        if (game.end_round())
         {
             break;
         }
     }
 
-    game.endGame();
+    game.end_game();
     //Application::quit();
     return EXIT_SUCCESS;
 }

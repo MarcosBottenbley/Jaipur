@@ -44,7 +44,7 @@ Game::~Game ()
 }
 
 //TODO: remove function
-void Game::startGame ()
+void Game::start_game ()
 {
     std::string playerName;
     int playerClass;
@@ -57,13 +57,13 @@ void Game::startGame ()
     //-----------------------------------------------------------------------------
     std::cin >> playerClass;
     //-----------------------------------------------------------------------------
-    initPlayer(playerName, (playerClass == 1), 1);
+    init_player(playerName, (playerClass == 1), 1);
 
     std::cout << "Player 2, Enter your name: ";
     std::cin >> playerName;
     std::cout << "Is Player 2 a Human(1) or AI(2)?: ";
     std::cin >> playerClass;
-    initPlayer(playerName, (playerClass == 1), 2);
+    init_player(playerName, (playerClass == 1), 2);
 }
 
 /*
@@ -73,7 +73,7 @@ void Game::startGame ()
  * -Boolean to check if the player is human or AI
  * -Int the indicates turn order
  */
-bool Game::initPlayer(std::string name, bool human, int num)
+bool Game::init_player(std::string name, bool human, int num)
 {
     if (num != 1 && num != 2)
     {
@@ -109,7 +109,7 @@ bool Game::initPlayer(std::string name, bool human, int num)
  * needed to play the game ie. deck, market, bank
  * and deals cards to the players
  */
-void Game::startRound()
+void Game::start_round()
 {
     deck = new Deck();
     market = new Market(*deck);
@@ -132,25 +132,25 @@ void Game::play_game()
     {
         //get player 1's move and perform it
         movePtr = player1->getMove(*market, *bank);
-        retVal = executeMove(movePtr);
+        retVal = execute_move(movePtr);
         pause();
         if (retVal == -1)   //if invalid move, player1 tries again
             continue;
         else
             player1->addPoints(retVal);
-        if (checkGameOver())
+        if (check_gameover())
             break;
         while (1)
         {
             //get player 2's move and perform it
             movePtr = player2->getMove(*market, *bank);
-            retVal = executeMove(movePtr);
+            retVal = execute_move(movePtr);
             pause();
             if (retVal == -1)   //if invalid move, player2 tries again
                 continue;
             else
                 player2->addPoints(retVal);
-            if (checkGameOver())
+            if (check_gameover())
                 return;
             break;
         }
@@ -185,7 +185,7 @@ void Game::pause()
                 delete bank;
                 delete market;
                 delete deck;
-                endGame();
+                end_game();
             }
         }
     }
@@ -193,7 +193,7 @@ void Game::pause()
 
 
 // returns -1 on error, points earned if successful
-int Game::executeMove(Move* mp)
+int Game::execute_move(Move* mp)
 {
     int points;
 
@@ -208,18 +208,18 @@ int Game::executeMove(Move* mp)
     return points;
 }
 
-bool Game::checkGameOver()
+bool Game::check_gameover()
 {
     return (deck->gameOver() || bank->gameOver());
 }
 
-void Game::printPlayers()
+void Game::print_players()
 {
     std::cout << *player1 << std::endl;
     std::cout << *player2 << std:: endl;
 }
 
-void Game::printBoard()
+void Game::print_board()
 {
     std::cout << "Market:" << std::endl;
     for (int i = 0; i < 5; i++) {
@@ -231,7 +231,7 @@ void Game::printBoard()
     bank->printBank();
 }
 
-bool Game::endRound()
+bool Game::end_round()
 {
     //returns true if a player reaches 2 wins, false otherwise
     //Determine Camel Winner
@@ -275,7 +275,7 @@ bool Game::endRound()
     return false;
 }
 
-void Game::endGame()
+void Game::end_game()
 {
     delete player1;
     delete player2;
