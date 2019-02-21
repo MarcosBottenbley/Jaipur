@@ -21,7 +21,7 @@ public:
     Human(std::string name);
     virtual ~Human();
 
-    Move* getMove(Market &market, Bank &bank);
+    Move* get_move(Market &market, Bank &bank);
     void sortVector(std::vector<int>);
 private:
     Take* take(Market &market);

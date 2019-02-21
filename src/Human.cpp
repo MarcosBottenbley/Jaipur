@@ -16,7 +16,7 @@ Human::Human(std::string hname) : Player(hname)
 Human::~Human()
 {}
 
-Move* Human::getMove(Market& market, Bank& bank)
+Move* Human::get_move(Market& market, Bank& bank)
 {
     char inputC;
     Move* movePtr = 0;

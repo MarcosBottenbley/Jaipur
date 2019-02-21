@@ -13,7 +13,7 @@ int main() {
     std::srand (std::time(0));
 
     Human human ("Calvin");
-    human.printStats ();
+    std::cout << human << std::endl;
     std::cout << std::endl; 
 
     Human human2 ("Hobbes");
@@ -25,9 +25,9 @@ int main() {
     deck.deal (*(human.getHand()), *(human2.getHand()));
     Market market(deck);
 
-    movePtr = human.getMove(market, bank);
+    movePtr = human.get_move(market, bank);
     movePtr->makeMove();
-    human.printStats();
+    std::cout << human << std::endl;
     market.printMarket();
 
     return 0;

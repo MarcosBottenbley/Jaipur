@@ -131,7 +131,7 @@ void Game::play_game()
     while(1)
     {
         //get player 1's move and perform it
-        movePtr = player1->getMove(*market, *bank);
+        movePtr = player1->get_move(*market, *bank);
         retVal = execute_move(movePtr);
         pause();
         if (retVal == -1)   //if invalid move, player1 tries again
@@ -143,7 +143,7 @@ void Game::play_game()
         while (1)
         {
             //get player 2's move and perform it
-            movePtr = player2->getMove(*market, *bank);
+            movePtr = player2->get_move(*market, *bank);
             retVal = execute_move(movePtr);
             pause();
             if (retVal == -1)   //if invalid move, player2 tries again

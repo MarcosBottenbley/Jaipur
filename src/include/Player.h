@@ -47,7 +47,7 @@ public:
     virtual ~Player();
 
     //the player gets an option to take a card, exchange
-    virtual Move* getMove(Market&, Bank&) = 0;
+    virtual Move* get_move(Market&, Bank&) = 0;
 
     int GetHandSize () const;
     int GetHerdSize () const;

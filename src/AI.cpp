@@ -13,7 +13,7 @@ using std::endl;
 
 AI::AI(std::string name) : Player(name) {}
 
-Move* AI::getMove(Market& market, Bank& bank)
+Move* AI::get_move(Market& market, Bank& bank)
 {
     Move* movePtr;
 
@@ -27,10 +27,10 @@ Move* AI::getMove(Market& market, Bank& bank)
         movePtr =  take(market);
     else
     {
-        movePtr = sellOne(market, bank);
+        movePtr = sell_one(market, bank);
 
         if (movePtr == 0)
-            movePtr = sellTwo(market, bank);
+            movePtr = sell_two(market, bank);
     }
     return movePtr;
 }
@@ -46,7 +46,7 @@ Move* AI::take(Market& market)
 
 //if hand is full, go through the hand and sell the first card
 //you find that isn't a valuable card (gold, silver, diamond)
-Move* AI::sellOne(Market& market, Bank& bank)
+Move* AI::sell_one(Market& market, Bank& bank)
 {
     unsigned int i;
     std::string type;
@@ -68,7 +68,7 @@ Move* AI::sellOne(Market& market, Bank& bank)
 //this code will only execute if the AI has a full hand of only valuables,
 //it loops through every combination of two cards until it finds a valid one
 //and sells them
-Move* AI::sellTwo(Market& market, Bank& bank)
+Move* AI::sell_two(Market& market, Bank& bank)
 {
     unsigned int i,j;
     std::string type1, type2;

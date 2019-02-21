@@ -17,11 +17,11 @@ class AI : public Player
 public:
     AI (std::string name);
 
-    Move* getMove (Market &market, Bank &bank);
+    Move* get_move (Market &market, Bank &bank);
 private:
     Move* take(Market& market);
-    Move* sellOne(Market& market, Bank& bank);
-    Move* sellTwo(Market& market, Bank& bank);
+    Move* sell_one(Market& market, Bank& bank);
+    Move* sell_two(Market& market, Bank& bank);
 
     void pause();
 };
