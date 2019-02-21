@@ -42,7 +42,7 @@ int Trade::makeMove ()
 
     for (int x = size2-1; x >= 0; x--)
     {
-        temp = hand.removeCard (pIndexes[x]);        //remove backmost hand card
+        temp = hand.remove_card (pIndexes[x]);        //remove backmost hand card
         temp = market.swapCard (mIndexes[x+camels], temp);   //put in market and take out market card
         hand.add_card (temp);         //add market card to player's hand
 
@@ -50,7 +50,7 @@ int Trade::makeMove ()
 
     for (int i = 0; i < camels; i++)
     {
-        temp = hand.getCamel ();
+        temp = hand.get_camel ();
         temp = market.swapCard (mIndexes[i], temp);
         hand.add_card (temp);
     }

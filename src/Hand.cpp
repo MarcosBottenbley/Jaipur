@@ -25,7 +25,7 @@ void Hand::clear ()
 
     hand.clear ();
 
-    while (!isHerdEmpty ())
+    while (!is_herd_empty ())
     {
         delete herd.top ();
         herd.pop ();
@@ -56,7 +56,7 @@ unsigned int Hand::get_hand_size () const
     return hand.size ();
 }
 
-Card* Hand::cardAt (int index)
+Card* Hand::card_at (int index)
 {
     Card* temp = 0;
     if (index < 0 || index >= (int) get_hand_size ())
@@ -66,10 +66,10 @@ Card* Hand::cardAt (int index)
     return hand[index];
 }
 
-Card* Hand::removeCard (int index)
+Card* Hand::remove_card (int index)
 {
     Card * temp = 0;
-    if (!isEmpty ())
+    if (!is_empty ())
     {
         temp = hand[index];
         hand.erase (hand.begin () + index);
@@ -81,7 +81,7 @@ std::ostream& operator<<(std::ostream& os, const Hand& aHand)
 {
     unsigned int x;
     os << "Hand:  ";
-    if  (aHand.isEmpty ())
+    if  (aHand.is_empty ())
     {
         os << " No Goods Cards";
     }
@@ -100,20 +100,20 @@ std::ostream& operator<<(std::ostream& os, const Hand& aHand)
     return os;
 }
 
-bool Hand::isEmpty () const
+bool Hand::is_empty () const
 {
     return hand.empty ();
 }
 
-bool Hand::isHerdEmpty () const
+bool Hand::is_herd_empty () const
 {
     return herd.empty ();
 }
 
-Card* Hand::getCamel ()
+Card* Hand::get_camel ()
 {
     Card *temp = 0;
-    if (!isHerdEmpty ())
+    if (!is_herd_empty ())
     {
         temp = herd.top ();
         herd.pop ();

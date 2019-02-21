@@ -16,11 +16,11 @@ public:
     Deck ();
     ~Deck ();
 
-    void initDeck ();
+    void init_deck ();
     void deal (Hand &,Hand &);
-    Card * getCard ();
-    void printDeck ();
-    bool game_over ();
+    Card * get_card ();
+    void print_deck ();
+    bool gameover ();
 private:
     std::stack<Card*> cards;
     bool emptyFlag;

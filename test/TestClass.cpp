@@ -39,7 +39,7 @@ void TestClass::testBank()
     bank.get_tokens(Type::DIAMOND, 5);
     bank.get_tokens(Type::CLOTH, 7);
 
-    assert(bank.game_over() == true);
+    assert(bank.gameover() == true);
 
     cout << "Bank test completed successfully\n" << endl;
 }
@@ -52,7 +52,7 @@ void TestClass::testDeck()
     Hand hand2;
 
     cout << "Printing the deck" << endl;
-    deck.printDeck();
+    deck.print_deck();
     cout << "Dealing cards to the hands" << endl;
     deck.deal(hand1,hand2);
     assert(hand1.herdSize() == 1);
@@ -61,23 +61,23 @@ void TestClass::testDeck()
     assert(hand2.herdSize() == 1);
     assert(hand2.handSize() == 4);
 
-    assert(hand1.cardAt(0)->get_type() == "Spice");
-    assert(hand1.cardAt(1)->get_type() == "Silver");
-    assert(hand1.cardAt(2)->get_type() == "Leather");
-    assert(hand1.cardAt(3)->get_type() == "Spice");
+    assert(hand1.card_at(0)->get_type() == "Spice");
+    assert(hand1.card_at(1)->get_type() == "Silver");
+    assert(hand1.card_at(2)->get_type() == "Leather");
+    assert(hand1.card_at(3)->get_type() == "Spice");
 
-    assert(hand2.cardAt(0)->get_type() == "Gold");
-    assert(hand2.cardAt(1)->get_type() == "Cloth");
-    assert(hand2.cardAt(2)->get_type() == "Diamond");
-    assert(hand2.cardAt(3)->get_type() == "Leather");
+    assert(hand2.card_at(0)->get_type() == "Gold");
+    assert(hand2.card_at(1)->get_type() == "Cloth");
+    assert(hand2.card_at(2)->get_type() == "Diamond");
+    assert(hand2.card_at(3)->get_type() == "Leather");
 
-    assert(deck.getCard()->get_type() == "Camel");
+    assert(deck.get_card()->get_type() == "Camel");
     
     for(int x = 0; x < 42; x++) {
-        deck.getCard();
+        deck.get_card();
     }
 
-    assert(deck.game_over() == true);
+    assert(deck.gameover() == true);
     cout << "Deck testing completed successfully\n" << endl;
 }
 
@@ -86,19 +86,19 @@ void TestClass::testMarket()
     cout << "Testing Market" << endl;
     Deck deck;
     cout << "Printing Deck" << endl;
-    deck.printDeck();
+    deck.print_deck();
 
     Market market(deck);
 
-    assert(market.getCard(0)->get_type() == "Camel");
-    assert(market.getCard(1)->get_type() == "Camel");
-    assert(market.getCard(2)->get_type() == "Camel");
-    assert(market.getCard(3)->get_type() == "Leather");
+    assert(market.get_card(0)->get_type() == "Camel");
+    assert(market.get_card(1)->get_type() == "Camel");
+    assert(market.get_card(2)->get_type() == "Camel");
+    assert(market.get_card(3)->get_type() == "Leather");
     assert(market.takeCard(4)->get_type() == "Camel");
 
-    assert(market.getCard(4)->get_type() == "Cloth");
+    assert(market.get_card(4)->get_type() == "Cloth");
     assert(market.swapCard(3,new Card("Gold"))->get_type() == "Leather");
-    assert(market.getCard(3)->get_type() == "Gold");
+    assert(market.get_card(3)->get_type() == "Gold");
 
     cout << "Printing Market" << endl;
     market.printMarket();
@@ -110,7 +110,7 @@ void TestClass::testHand()
 {
     Hand hand;
 
-    assert(hand.isEmpty() == true);
+    assert(hand.is_empty() == true);
 
     assert(hand.add_card(new Card("Gold")) == true);
     assert(hand.add_card(new Card("Gold")) == true);
@@ -119,8 +119,8 @@ void TestClass::testHand()
     assert(hand.handSize() == 3);
     assert(hand.herdSize() == 0);
 
-    assert(hand.isEmpty() == false);
-    assert(hand.isHerdEmpty() == true);
+    assert(hand.is_empty() == false);
+    assert(hand.is_herd_empty() == true);
 
     assert(hand.add_card(new Card("Gold")) == true);
     assert(hand.add_card(new Card("Gold")) == true);
@@ -136,19 +136,19 @@ void TestClass::testHand()
 
     hand.printHand();
 
-    assert(hand.isHerdEmpty() == false);
+    assert(hand.is_herd_empty() == false);
 
-    assert(hand.removeCard(6)->get_type() == "Diamond");
+    assert(hand.remove_card(6)->get_type() == "Diamond");
     
     for(int y = 5; y >= 0; y--)
-        assert(hand.removeCard(y)->get_type() == "Gold");
+        assert(hand.remove_card(y)->get_type() == "Gold");
 
-    assert(hand.isEmpty() == true);
-    assert(hand.isHerdEmpty() == false);
+    assert(hand.is_empty() == true);
+    assert(hand.is_herd_empty() == false);
 
     for(int x = 0; x < 4; x++)
-        assert(hand.getCamel()->get_type() == "Camel");
-    assert(hand.isHerdEmpty() == true);
+        assert(hand.get_camel()->get_type() == "Camel");
+    assert(hand.is_herd_empty() == true);
 
     cout << "Hand test completed successfully\n" << endl;
 }
@@ -275,11 +275,11 @@ void TestClass::testTrade()
     Trade t1(market,hand1,parr0,marr0,0);
     t1.makeMove();
 
-    assert(market.getCard(0)->get_type() == "Diamond");
-    assert(market.getCard(1)->get_type() == "Cloth");
+    assert(market.get_card(0)->get_type() == "Diamond");
+    assert(market.get_card(1)->get_type() == "Cloth");
 
-    assert(hand1.cardAt(3)->get_type() == "Gold");
-    assert(hand1.cardAt(4)->get_type() == "Leather");
+    assert(hand1.card_at(3)->get_type() == "Gold");
+    assert(hand1.card_at(4)->get_type() == "Leather");
 
     cout << "\nTrade 1 made" << endl;
     market.printMarket();
@@ -292,11 +292,11 @@ void TestClass::testTrade()
     market.printMarket();
     hand1.printHand();
 
-    assert(market.getCard(3)->get_type() == "Camel");
-    assert(market.getCard(4)->get_type() == "Diamond");
+    assert(market.get_card(3)->get_type() == "Camel");
+    assert(market.get_card(4)->get_type() == "Diamond");
 
-    assert(hand1.cardAt(3)->get_type() == "Leather");
-    assert(hand1.cardAt(4)->get_type() == "Spice");
+    assert(hand1.card_at(3)->get_type() == "Leather");
+    assert(hand1.card_at(4)->get_type() == "Spice");
 
     Take h2(market,hand2,3);
     h2.makeMove();
@@ -308,11 +308,11 @@ void TestClass::testTrade()
     market.printMarket();
     hand2.printHand();
 
-    assert(market.getCard(0)->get_type() == "Camel");
-    assert(market.getCard(3)->get_type() == "Camel");
+    assert(market.get_card(0)->get_type() == "Camel");
+    assert(market.get_card(3)->get_type() == "Camel");
 
-    assert(hand2.cardAt(4)->get_type() == "Diamond");
-    assert(hand2.cardAt(5)->get_type() == "Diamond");
+    assert(hand2.card_at(4)->get_type() == "Diamond");
+    assert(hand2.card_at(5)->get_type() == "Diamond");
 
     cout << "\nError Testing" << endl;
     market.printMarket();

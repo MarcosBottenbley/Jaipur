@@ -35,7 +35,7 @@ int main() {
     Hand h2;
 
 
-    d->printDeck();
+    d->print_deck();
     m->printMarket();
 
     d->deal(h1,h2);

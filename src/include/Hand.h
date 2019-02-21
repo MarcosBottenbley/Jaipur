@@ -20,13 +20,13 @@ public:
 
     void clear ();
     bool add_card (Card *);
-    Card* cardAt (int);  //card at given index
-    Card* removeCard (int);
-    Card* getCamel ();
+    Card* card_at (int);  //card at given index
+    Card* remove_card (int);
+    Card* get_camel ();
 
     //getters
-    bool isEmpty () const;
-    bool isHerdEmpty () const;
+    bool is_empty () const;
+    bool is_herd_empty () const;
     unsigned int get_herd_size () const;
     unsigned int get_hand_size () const;
 

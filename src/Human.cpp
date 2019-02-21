@@ -90,7 +90,7 @@ Take* Human::take(Market &market)
             std::cout << "Invalid entry" << std::endl;
             continue;
         }
-        if (hand.get_hand_size() == 7 && !(market.getCard(inputI)->is_camel()))
+        if (hand.get_hand_size() == 7 && !(market.get_card(inputI)->is_camel()))
         {
             std::cout << "You've already reached the maximum hand size" << std::endl;
             continue;
@@ -123,14 +123,14 @@ Trade* Human::trade(Market &market)
             break;
         if (inputI == 9) {
             market.printMarket();
-            printMktSelections(market, mktCards);
+            print_market_selections(market, mktCards);
             continue;
         }
         else if (inputI < -1 || inputI > 5) {
             std::cout << "Invalid input" << std::endl;
             continue;
         }
-        if (market.getCard(inputI-1)->is_camel()) {
+        if (market.get_card(inputI-1)->is_camel()) {
             std::cout << "You cannot exchange for camels from the market." << std::endl;
             continue;
         }
@@ -155,8 +155,8 @@ Trade* Human::trade(Market &market)
             break;
         if (inputI == 9) {
             std::cout << hand << std::endl;
-            printMktSelections(market, mktCards);
-            printPlrSelections(plrCards, numCamels);
+            print_market_selections(market, mktCards);
+            print_player_selections(plrCards, numCamels);
             continue;
         }
         if (inputI == 8 && numCamels < (int)hand.get_herd_size()) {
@@ -210,7 +210,7 @@ Sell* Human::sell(Market &market, Bank &bank)
         if (inputI == 9)
         {
             std::cout << hand << std::endl;
-            printPlrSelections(plrCards, 0);
+            print_player_selections(plrCards, 0);
             continue;
         }
         else if (inputI < 0 || inputI > (int)hand.get_hand_size())
@@ -223,20 +223,20 @@ Sell* Human::sell(Market &market, Bank &bank)
     return new Sell(market, hand, bank, plrCards);
 }
 
-void Human::printMktSelections(Market& market, bool arr[])
+void Human::print_market_selections(Market& market, bool arr[])
 {
     std::cout << "You've selected these market cards: ";
     for (int i = 0; i < 5; i++)
     {
         if (arr[i])
         {
-            std::cout << "[" << market.getCard(i)->get_type() << "] ";
+            std::cout << "[" << market.get_card(i)->get_type() << "] ";
         }
     }
     std::cout << std::endl;
 }
 
-void Human::printPlrSelections(bool arr[], int camels)
+void Human::print_player_selections(bool arr[], int camels)
 {
     int size = (int)hand.get_hand_size();
     std::cout << "You've selected these cards from your hand: ";
@@ -244,7 +244,7 @@ void Human::printPlrSelections(bool arr[], int camels)
     {
         if (arr[i])
         {
-            std::cout << "[" << hand.cardAt(i)->get_type() << "] ";
+            std::cout << "[" << hand.card_at(i)->get_type() << "] ";
         }
     }
     if (camels != 0)

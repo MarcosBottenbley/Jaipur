@@ -25,11 +25,11 @@ int Take::makeMove ()
         throw ime2;
     }
 
-    if (market.getCard(index)->is_camel())
+    if (market.get_card(index)->is_camel())
     {
         for (int x = 0; x < 5; x++)
         {
-            if (market.getCard(x)->is_camel())
+            if (market.get_card(x)->is_camel())
             {
                 hand.add_card(market.takeCard(x));   //take camel from market
             }

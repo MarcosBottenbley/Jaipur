@@ -22,12 +22,12 @@ public:
     virtual ~Human();
 
     Move* get_move(Market &market, Bank &bank);
-    void sortVector(std::vector<int>);
+    void sort_vector(std::vector<int>);
 private:
     Take* take(Market &market);
     Trade* trade(Market &market);
     Sell* sell(Market &market, Bank &bank);
 
-    void printMktSelections(Market& market, bool arr[]);
-    void printPlrSelections(bool arr[], int camels);
+    void print_market_selections(Market& market, bool arr[]);
+    void print_player_selections(bool arr[], int camels);
 };

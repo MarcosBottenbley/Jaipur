@@ -49,8 +49,8 @@ int main()
     h.printHand();
 
     cout << endl;
-    Card *temp = h.removeCard(4);
-    Card *htemp = h.getCamel();
+    Card *temp = h.remove_card(4);
+    Card *htemp = h.get_camel();
     cout << "Removed " << temp->get_type() << endl;
     cout << "Removed " << htemp->get_type() << endl;
     cout << "printing hand" << endl;

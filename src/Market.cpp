@@ -15,8 +15,8 @@ Market::Market(Deck &d) : deck(d)
         mktCards[i] = new Card("Camel");
     }
 
-    mktCards[3] = d.getCard();
-    mktCards[4] = d.getCard();
+    mktCards[3] = d.get_card();
+    mktCards[4] = d.get_card();
 }
 
 Market::~Market()
@@ -27,7 +27,7 @@ Market::~Market()
     }
 }
 
-Card* Market::getCard(int index)
+Card* Market::get_card(int index)
 {
         return mktCards[index];
 }
@@ -35,7 +35,7 @@ Card* Market::getCard(int index)
 Card* Market::takeCard(int index)
 {
         Card* tempCard = mktCards[index];
-        mktCards[index] = deck.getCard();
+        mktCards[index] = deck.get_card();
         return tempCard;
 }
 

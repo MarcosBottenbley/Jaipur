@@ -138,7 +138,7 @@ void Game::play_game()
             continue;
         else
             player1->add_points(retVal);
-        if (check_game_over())
+        if (check_gameover())
             break;
         while (1)
         {
@@ -150,7 +150,7 @@ void Game::play_game()
                 continue;
             else
                 player2->add_points(retVal);
-            if (check_game_over())
+            if (check_gameover())
                 return;
             break;
         }
@@ -208,9 +208,9 @@ int Game::execute_move(Move* mp)
     return points;
 }
 
-bool Game::check_game_over()
+bool Game::check_gameover()
 {
-    return (deck->game_over() || bank->game_over());
+    return (deck->gameover() || bank->gameover());
 }
 
 void Game::print_players()
@@ -223,7 +223,7 @@ void Game::print_board()
 {
     std::cout << "Market:" << std::endl;
     for (int i = 0; i < 5; i++) {
-        std::cout << "[" << (market->getCard(i))->get_type() << "] ";
+        std::cout << "[" << (market->get_card(i))->get_type() << "] ";
     }
     std::cout << std::endl << std::endl;
 

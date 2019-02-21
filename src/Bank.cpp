@@ -171,7 +171,7 @@ void Bank::print_bank ()
 
 
 
-bool Bank::game_over ()
+bool Bank::gameover ()
 {
     int emptyStacks = 0;
     for (int i = 0; i < 6; i++)

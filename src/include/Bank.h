@@ -21,7 +21,7 @@ public:
 
     std::stack<Token*> get_tokens (Type::Enum,int);
     void print_bank ();
-    bool game_over ();
+    bool gameover ();
 private:
     std::stack<Token*> bank[9];
 private:

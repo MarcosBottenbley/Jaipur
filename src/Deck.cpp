@@ -5,13 +5,13 @@
  */
 
 #include <cstdlib>
-#include <iostream> //just for printDeck
+#include <iostream> //just for print_deck
 #include "Deck.h"
 #include "Market.h"
 
 Deck::Deck ()
 {
-    initDeck ();
+    init_deck ();
     emptyFlag = false;
 }
 
@@ -24,7 +24,7 @@ Deck::~Deck ()
     }
 }
 
-void Deck::initDeck ()
+void Deck::init_deck ()
 {
     Card* tempDeck[52];
     int i;
@@ -64,12 +64,12 @@ void Deck::deal (Hand &h1, Hand &h2)
     int i;
     for (i = 0; i < 5; i++)
     {
-        h1.add_card (getCard ());
-        h2.add_card (getCard ());
+        h1.add_card (get_card ());
+        h2.add_card (get_card ());
     }
 }
 
-Card* Deck::getCard ()
+Card* Deck::get_card ()
 {
     if (cards.empty ())
     {
@@ -83,7 +83,7 @@ Card* Deck::getCard ()
 }
 
 //temporary method for testing
-void Deck::printDeck ()
+void Deck::print_deck ()
 {
     std::stack<Card*> tempStack;
     for (int i = cards.size (); i > 0; i--)
@@ -100,7 +100,7 @@ void Deck::printDeck ()
     std::cout << std::endl << std::endl;
 }
 
-bool Deck::game_over ()
+bool Deck::gameover ()
 {
     return emptyFlag;
 }
