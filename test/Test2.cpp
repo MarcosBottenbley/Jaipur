@@ -36,7 +36,7 @@ int main() {
 
 
     d->print_deck();
-    m->printMarket();
+    m->print_market();
 
     d->deal(h1,h2);
 
@@ -52,19 +52,19 @@ int main() {
     cout << endl;
 
     Take t(*m,h1,0);
-    t.makeMove();
+    t.make_move();
 
     h1.printHand();
-    m->printMarket();
+    m->print_market();
 
     cout << endl;
     cout << "move 2 " << endl;
     cout << endl;
     Take t2(*m,h1,1);
-    t2.makeMove();
+    t2.make_move();
 
     h1.printHand();
-    m->printMarket();
+    m->print_market();
 
     cout << endl;
     cout << "Trade test" << endl;
@@ -73,10 +73,10 @@ int main() {
     bool parr[7] = {false,true,false,false,false,false,false};
     bool marr[5] = {false,false,false,true,true};
     Trade td(*m,h2,parr,marr,1);
-    td.makeMove();
+    td.make_move();
 
     h2.printHand();
-    m->printMarket();
+    m->print_market();
 
     cout << endl;
     cout << "Sell test" << endl;
@@ -85,9 +85,9 @@ int main() {
     int points;
     bool sarr[7] = {true,false,true,true,true,false,false};
     Sell s(*m,h2,b,sarr);
-    points = s.makeMove();
+    points = s.make_move();
 
     h2.printHand();
     cout << "Points earned: " << points << endl;
-    m->printMarket();
+    m->print_market();
 }

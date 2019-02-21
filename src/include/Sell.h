@@ -20,6 +20,6 @@ class Sell : public Move
         Sell();
         Sell(Market &, Hand &, Bank &, bool *);
         virtual ~Sell();
-        int makeMove();
+        int make_move();
 };
 #endif

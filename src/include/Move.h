@@ -21,11 +21,11 @@ class Move
     protected:
         Market &market;
         Hand &hand;
-        vector<int> getIndexes(bool *, int);
+        vector<int> get_indexes(bool *, int);
     public:
         Move(Market &,Hand &);
         virtual ~Move();
-        virtual int makeMove() = 0;
+        virtual int make_move() = 0;
 };
 #endif
 

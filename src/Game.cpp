@@ -173,7 +173,7 @@ void Game::pause()
             break;
         if (tolower(ch) == 'b')
         {
-            market->printMarket();
+            market->print_market();
             bank->print_bank();
         }
         if (tolower(ch) == 'q')
@@ -198,9 +198,9 @@ int Game::execute_move(Move* mp)
     int points;
 
     try {
-        points = mp->makeMove();
+        points = mp->make_move();
     } catch (InvalidMoveEx e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << e.message() << std::endl;
         points = -1;
     }
 

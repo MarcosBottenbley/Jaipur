@@ -25,13 +25,13 @@ void TestClass::testBank()
     Bank bank;
 
     stack<Token*> s = bank.get_tokens(Type::GOLD,2);
-    assert(s.top()->getValue() == 6);
+    assert(s.top()->get_value() == 6);
 
     stack<Token*> s2 = bank.get_tokens(Type::SPICE,3);
     assert(s2.size() == 4);
 
     stack<Token*> s3 = bank.get_tokens(Type::SILVER,2);
-    assert(s3.top()->getValue() == 5);
+    assert(s3.top()->get_value() == 5);
 
     stack<Token*> s4 = bank.get_tokens(Type::LEATHER,9);
     assert(s4.size() == 10);
@@ -94,14 +94,14 @@ void TestClass::testMarket()
     assert(market.get_card(1)->get_type() == "Camel");
     assert(market.get_card(2)->get_type() == "Camel");
     assert(market.get_card(3)->get_type() == "Leather");
-    assert(market.takeCard(4)->get_type() == "Camel");
+    assert(market.take_card(4)->get_type() == "Camel");
 
     assert(market.get_card(4)->get_type() == "Cloth");
-    assert(market.swapCard(3,new Card("Gold"))->get_type() == "Leather");
+    assert(market.swap_card(3,new Card("Gold"))->get_type() == "Leather");
     assert(market.get_card(3)->get_type() == "Gold");
 
     cout << "Printing Market" << endl;
-    market.printMarket();
+    market.print_market();
 
     cout << "Market testing completed successfully\n" << endl;
 }
@@ -162,39 +162,39 @@ void TestClass::testTake()
     Hand hand2;
     deck.deal(hand1,hand2);
 
-    market.printMarket();
+    market.print_market();
     hand1.printHand();
 
     Take t1(market,hand1,1);
-    t1.makeMove();
+    t1.make_move();
 
     assert(hand1.herdSize() == 3);
 
     Take t2(market,hand1,4);
-    t2.makeMove();
+    t2.make_move();
 
     assert(hand1.handSize() == 6);
     assert(hand1.herdSize() == 3);
 
     Take t3(market,hand1,3);
-    t3.makeMove();
+    t3.make_move();
 
     assert(hand1.handSize() == 7);
 
-    market.printMarket();
+    market.print_market();
 
     Take t4(market,hand1,1);
     try {
-        t4.makeMove();
+        t4.make_move();
     } catch (InvalidMoveEx e) {
-        std::cerr << e.what() << endl;
+        std::cerr << e.message() << endl;
     }
 
     Take t5(market,hand1,5);
     try {
-        t5.makeMove();
+        t5.make_move();
     } catch (InvalidMoveEx e) {
-        std::cerr << e.what() << endl;
+        std::cerr << e.message() << endl;
     }
 
     cout << "Take test completed successfully\n" << endl;
@@ -219,23 +219,23 @@ void TestClass::testSell()
     bool arr3[7] = {true,true,false,false,false,false,false};
 
     Sell s1(market,hand1,bank,arr0);
-    assert(s1.makeMove() > 0);
+    assert(s1.make_move() > 0);
 
     Sell s2(market,hand2,bank,arr1);
-    assert(s2.makeMove() > 0);
+    assert(s2.make_move() > 0);
 
     Sell s3(market,hand1,bank,arr2);
     try {
-        s3.makeMove();
+        s3.make_move();
     } catch (InvalidMoveEx e) {
-        std::cerr << e.what() << endl;
+        std::cerr << e.message() << endl;
     }
 
     Sell s4(market,hand2,bank,arr3);
     try {
-        s4.makeMove();
+        s4.make_move();
     } catch (InvalidMoveEx e) {
-        std::cerr << e.what() << endl;
+        std::cerr << e.message() << endl;
     }
 
     cout << "Sell test completed successfully\n" << endl;
@@ -251,9 +251,9 @@ void TestClass::testTrade()
     Hand hand2;
     deck.deal(hand1,hand2);
     Take t(market,hand1,0);
-    t.makeMove();
+    t.make_move();
 
-    market.printMarket();
+    market.print_market();
     hand1.printHand();
 
     bool marr0[5] = {true,true,false,false,false};
@@ -273,7 +273,7 @@ void TestClass::testTrade()
 
 
     Trade t1(market,hand1,parr0,marr0,0);
-    t1.makeMove();
+    t1.make_move();
 
     assert(market.get_card(0)->get_type() == "Diamond");
     assert(market.get_card(1)->get_type() == "Cloth");
@@ -282,14 +282,14 @@ void TestClass::testTrade()
     assert(hand1.card_at(4)->get_type() == "Leather");
 
     cout << "\nTrade 1 made" << endl;
-    market.printMarket();
+    market.print_market();
     hand1.printHand();
 
     Trade t2(market,hand1,parr1,marr1,1);
-    t2.makeMove();
+    t2.make_move();
 
     cout << "\nTrade 2 made" << endl;
-    market.printMarket();
+    market.print_market();
     hand1.printHand();
 
     assert(market.get_card(3)->get_type() == "Camel");
@@ -299,13 +299,13 @@ void TestClass::testTrade()
     assert(hand1.card_at(4)->get_type() == "Spice");
 
     Take h2(market,hand2,3);
-    h2.makeMove();
+    h2.make_move();
 
     Trade t3(market,hand2,parr2,marr2,2);
-    t3.makeMove();
+    t3.make_move();
 
     cout << "\nTrade 3 made" << endl;
-    market.printMarket();
+    market.print_market();
     hand2.printHand();
 
     assert(market.get_card(0)->get_type() == "Camel");
@@ -315,7 +315,7 @@ void TestClass::testTrade()
     assert(hand2.card_at(5)->get_type() == "Diamond");
 
     cout << "\nError Testing" << endl;
-    market.printMarket();
+    market.print_market();
     hand1.printHand();
     cout << endl;
 
@@ -324,24 +324,24 @@ void TestClass::testTrade()
     Trade t6(market,hand1,parr5,marr5,2);
 
     try {
-        t4.makeMove();
+        t4.make_move();
     } catch (InvalidMoveEx e) {
-        cout << e.what() << endl;
+        cout << e.message() << endl;
     }
 
     try {
-        t5.makeMove();
+        t5.make_move();
     } catch (InvalidMoveEx e) {
-        cout << e.what() << endl;
+        cout << e.message() << endl;
     }
 
     try {
-        t6.makeMove();
+        t6.make_move();
     } catch (InvalidMoveEx e) {
-        cout << e.what() << endl;
+        cout << e.message() << endl;
     }
 
-    market.printMarket();
+    market.print_market();
     hand1.printHand();
 
     cout << "Trade test completed successfully\n" << endl;

@@ -18,6 +18,6 @@ class Trade : public Move
     public:
         Trade(Market &, Hand &, bool *, bool *, int);
         virtual ~Trade();
-        int makeMove();
+        int make_move();
 };
 #endif

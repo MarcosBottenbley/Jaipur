@@ -26,9 +26,9 @@ int main() {
     Market market(deck);
 
     movePtr = human.get_move(market, bank);
-    movePtr->makeMove();
+    movePtr->make_move();
     std::cout << human << std::endl;
-    market.printMarket();
+    market.print_market();
 
     return 0;
 }

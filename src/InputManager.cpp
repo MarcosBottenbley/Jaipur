@@ -6,7 +6,7 @@ InputManager::InputManager()
 InputManager::~InputManager()
 {}
 
-InputManager* InputManager::GetInstance()
+InputManager* InputManager::get_instance()
 {
     if (instance == NULL)
     {
@@ -15,7 +15,7 @@ InputManager* InputManager::GetInstance()
     return instance;
 }
 
-void InputManager::ReleaseInstance()
+void InputManager::release_instance()
 {
     if (instance)
     {
@@ -26,17 +26,17 @@ void InputManager::ReleaseInstance()
 
 //TODO: use a better way of getting command line input
 //for the different types and check for invalid types
-void GetCommandLineInput(std::string& input)
+void get_commandline_input(std::string& input)
 {
     std::cin >> input;
 }
 
-void GetCommandLineInput(char& input)
+void get_commandline_input(char& input)
 {
     std::cin >> input;
 }
 
-void GetCommandLineInput(int& input)
+void get_commandline_input(int& input)
 {
     std::cin >> input;
 }

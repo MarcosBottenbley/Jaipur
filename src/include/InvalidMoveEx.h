@@ -22,7 +22,7 @@ public:
         errMessage = str;
     }
 
-    inline virtual const char* what() const throw()
+    inline virtual const char* message() const throw()
     {
         return errMessage;
     }

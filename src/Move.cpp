@@ -12,7 +12,7 @@ Move::Move (Market &m,Hand &h): market(m), hand(h)
 Move::~Move ()
 {}
 
-vector<int> Move::getIndexes(bool *arr, int size)
+vector<int> Move::get_indexes(bool *arr, int size)
 {
     vector<int> indexes;
     for (int i = 0; i < size; i++)

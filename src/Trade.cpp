@@ -8,14 +8,14 @@
 
 Trade::Trade (Market &m, Hand &h, bool *pc, bool *mc, int c) : Move (m,h), camels (c)
 {
-    pIndexes = getIndexes (pc, 7);
-    mIndexes = getIndexes (mc, 5);
+    pIndexes = get_indexes (pc, 7);
+    mIndexes = get_indexes (mc, 5);
 }
 
 Trade::~Trade ()
 {}
 
-int Trade::makeMove ()
+int Trade::make_move ()
 {
     InvalidMoveEx ime1 ("ERROR: Did not pick an equal amount of cards from the market and the hand\n");
     InvalidMoveEx ime2 ("ERROR: You must trade at least two cards\n");
@@ -43,7 +43,7 @@ int Trade::makeMove ()
     for (int x = size2-1; x >= 0; x--)
     {
         temp = hand.remove_card (pIndexes[x]);        //remove backmost hand card
-        temp = market.swapCard (mIndexes[x+camels], temp);   //put in market and take out market card
+        temp = market.swap_card (mIndexes[x+camels], temp);   //put in market and take out market card
         hand.add_card (temp);         //add market card to player's hand
 
     }
@@ -51,7 +51,7 @@ int Trade::makeMove ()
     for (int i = 0; i < camels; i++)
     {
         temp = hand.get_camel ();
-        temp = market.swapCard (mIndexes[i], temp);
+        temp = market.swap_card (mIndexes[i], temp);
         hand.add_card (temp);
     }
 

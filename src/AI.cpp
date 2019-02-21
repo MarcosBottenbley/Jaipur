@@ -18,11 +18,11 @@ Move* AI::get_move(Market& market, Bank& bank)
     Move* movePtr;
 
     //printStats();
-    //market.printMarket();
+    //market.print_market();
     cout << endl;
 
     //if hand is not full, take the first card in the market
-    //(if the card is a camel, makeMove will take all camels)
+    //(if the card is a camel, make_move will take all camels)
     if(hand.get_hand_size() != 7)
         movePtr =  take(market);
     else

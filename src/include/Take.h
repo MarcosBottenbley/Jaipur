@@ -17,6 +17,6 @@ class Take : public Move
     public:
         Take(Market &, Hand &, unsigned int);
         virtual ~Take();
-        int makeMove();
+        int make_move();
 };
 #endif

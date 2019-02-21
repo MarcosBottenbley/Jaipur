@@ -12,13 +12,13 @@
 
 Sell::Sell (Market &m, Hand &h, Bank &b, bool *p) : Move (m,h), bank (b)
 {
-    pIndexes = getIndexes (p, 7);
+    pIndexes = get_indexes (p, 7);
 }
 
 Sell::~Sell ()
 {}
 
-int Sell::makeMove ()
+int Sell::make_move ()
 {
     InvalidMoveEx ime1 ("ERROR: You must sell at least two of a precious metal\n");
     InvalidMoveEx ime2 ("ERROR: All cards you sell must be of the same type\n");
@@ -43,11 +43,11 @@ int Sell::makeMove ()
 
     //now that everything is checked it gets the tokens
     Type t (initType);
-    std::stack<Token*> tokens = bank.get_tokens (t.getEnum (),size);
+    std::stack<Token*> tokens = bank.get_tokens (t.get_enum (),size);
     int points = 0;
     while (!tokens.empty ())
     {
-        points += tokens.top ()->getValue ();
+        points += tokens.top ()->get_value ();
         delete tokens.top ();
         tokens.pop ();
     }

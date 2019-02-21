@@ -18,7 +18,8 @@ public:
     Market(Deck&);
     ~Market();
     Card* get_card(int index);//checks card at index
-    Card* takeCard(int index);//automatically replaces card
-    Card* swapCard(int index, Card* card);//for trades
-    void printMarket();
+    Card* take_card(int index);//automatically replaces card
+    Card* swap_card(int index, Card* card);//for trades
+    //TODO: replace with operator overload
+    void print_market();
 };

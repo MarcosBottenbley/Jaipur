@@ -31,10 +31,10 @@ class Type
         Type();
         Type(std::string);
         
-        Enum getEnum();
-        std::string getString();
-        bool isBonus();
-        bool isPrecious();
+        Enum get_enum();
+        std::string get_string();
+        bool is_bonus();
+        bool is_precious();
         
         //overloaded assignment operator
         void operator= (const std::string &);
@@ -45,7 +45,7 @@ class Type
         bool operator== (const Enum);
         
     private:
-        Enum fromString(std::string);
-        std::string toString(Enum);
+        Enum from_string(std::string);
+        std::string to_string(Enum);
 };
 #endif

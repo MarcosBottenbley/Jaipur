@@ -23,7 +23,7 @@ Move* Human::get_move(Market& market, Bank& bank)
 
     std::cout << std::endl;
     std::cout << hand << std::endl;
-    market.printMarket();
+    market.print_market();
 
     while (1)
     {
@@ -34,7 +34,7 @@ Move* Human::get_move(Market& market, Bank& bank)
         switch (inputC)
         {
             case 'p':
-                market.printMarket();
+                market.print_market();
                 bank.print_bank();
                 std::cout << std::endl;
                 break;
@@ -122,7 +122,7 @@ Trade* Human::trade(Market &market)
         if (inputI == 0)
             break;
         if (inputI == 9) {
-            market.printMarket();
+            market.print_market();
             print_market_selections(market, mktCards);
             continue;
         }

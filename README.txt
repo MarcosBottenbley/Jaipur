@@ -23,9 +23,9 @@ between the other classes. There are Bank, Deck and Market classes to hold Cards
 Player has two subclasses, AI and Human to implement the two types of players. Our use of separate classes
 allows us to cut down on repeated code and keep files relatively small and indepedent. The get_move() method
 in Player is called to receive a Move from any player, and Move's are standardized by making a Move class
-with the subclasses Take, Trade and Sell. makeMove() is then able to execute the changes in the board state
+with the subclasses Take, Trade and Sell. make_move() is then able to execute the changes in the board state
 after a move without having to be specific about which Move is taking place since each subclass implements
-its own version of makeMove().
+its own version of make_move().
 
 	The Type class provides an enumeration to the different types of goods in the game. The type class
 was written to easily convert "types" in the game from strings to their resepctive values. This is used

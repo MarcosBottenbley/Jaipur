@@ -7,12 +7,12 @@
 class InputManager
 {
 public:
-    static InputManager* GetInstance();
-    static void ReleaseInstance();
+    static InputManager* get_instance();
+    static void release_instance();
 
-    void GetCommandLineInput(std::string& input);
-    void GetCommandLineInput(char& input);
-    void GetCommandLineInput(int& input)
+    void get_commandline_input(std::string& input);
+    void get_commandline_input(char& input);
+    void get_commandline_input(int& input)
 private:
     static InputManager* instance = NULL;
 private:

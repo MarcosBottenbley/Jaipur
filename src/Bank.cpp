@@ -79,14 +79,14 @@ void Bank::init_bank ()
 
 void Bank::add_tokens(int *arr, int size, Type t)
 {
-    if (t.isBonus ())
+    if (t.is_bonus ())
     {
         shuffle (arr, size);
     }
 
     for (int x = 0; x < size; x++)
     {
-        bank[t.getEnum ()].push (new Token (t.getString (), arr[x]));
+        bank[t.get_enum ()].push (new Token (t.get_string (), arr[x]));
     }
 }
 
@@ -152,7 +152,7 @@ void Bank::print_bank ()
         for (int j = bank[i].size (); j > 0; j--)
         {  //print a pile of tokens
             tempStack.push (bank[i].top ());
-            std::cout << tempStack.top ()->getValue () << " ";
+            std::cout << tempStack.top ()->get_value () << " ";
             bank[i].pop ();
         }
 

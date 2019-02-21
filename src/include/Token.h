@@ -23,6 +23,6 @@ public:
     Token();
     Token(std::string, int);                //constructor for Token
     std::string get_type();          //returns type
-    int getValue();                 //returns the rupee value of the token
+    int get_value();                 //returns the rupee value of the token
 };
 #endif

@@ -23,7 +23,7 @@ std::string Token::get_type ()
     return type;
 }
 
-int Token::getValue ()
+int Token::get_value ()
 {
     return value;
 }
