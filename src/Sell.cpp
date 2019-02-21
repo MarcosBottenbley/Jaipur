@@ -25,7 +25,7 @@ int Sell::makeMove ()
     //checks: if "precious metal" that there are at least 2 cards
     int size = pIndexes.size ();
 
-    std::string initType = hand.cardAt (pIndexes[0])->getType ();
+    std::string initType = hand.cardAt (pIndexes[0])->get_type ();
     if (initType == "Gold" || initType == "Silver" || initType == "Diamond")
     {
         if (size < 2)
@@ -36,7 +36,7 @@ int Sell::makeMove ()
     std::string currType;
     for (int x = 1; x < size; x++)
     {
-        currType = hand.cardAt (pIndexes[x])->getType ();
+        currType = hand.cardAt (pIndexes[x])->get_type ();
         if (currType != initType)
             throw ime2;
     }

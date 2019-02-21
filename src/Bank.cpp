@@ -146,7 +146,7 @@ void Bank::print_bank ()
     {
         if (bank[i].size () != 0)
         {
-            std::cout << setw (10) << left << bank[i].top ()->getType();
+            std::cout << setw (10) << left << bank[i].top ()->get_type();
         }
 
         for (int j = bank[i].size (); j > 0; j--)

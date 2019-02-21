@@ -34,7 +34,7 @@ void Hand::clear ()
 
 bool Hand::add_card (Card *c)
 {
-    if (c->getType () == "Camel")
+    if (c->get_type () == "Camel")
     {
         herd.push (c);
         return true;
@@ -87,7 +87,7 @@ std::ostream& operator<<(std::ostream& os, const Hand& aHand)
     }
     for (x = 0; x < aHand.hand.size (); x++)
     {
-        os << " " << x+1 << ". [" << aHand.hand[x]->getType () << "]";
+        os << " " << x+1 << ". [" << aHand.hand[x]->get_type () << "]";
     }
     if (aHand.get_herd_size () == 1)
     {

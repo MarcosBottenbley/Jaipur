@@ -37,10 +37,10 @@ Move* AI::get_move(Market& market, Bank& bank)
 
 Move* AI::take(Market& market)
 {
-    if(market.getCard(0)->getType() == "Camel")
+    if(market.getCard(0)->get_type() == "Camel")
         cout << name << " takes the camels." << endl;
     else
-        cout << name << " takes a " << market.getCard(0)->getType() << " card." << endl;
+        cout << name << " takes a " << market.getCard(0)->get_type() << " card." << endl;
     return new Take(market, hand, 0);
 }
 
@@ -54,7 +54,7 @@ Move* AI::sell_one(Market& market, Bank& bank)
 
     for (i = 0; i < hand.get_hand_size(); i++)
     {
-        type = hand.cardAt(i)->getType();
+        type = hand.cardAt(i)->get_type();
         if (type != "Diamond" && type != "Gold" && type != "Silver")
         {
             playerCards[i] = !(playerCards[i]);
@@ -81,8 +81,8 @@ Move* AI::sell_two(Market& market, Bank& bank)
             if (i == j)
                 continue;
 
-            type1 = hand.cardAt(i)->getType();
-            type2 = hand.cardAt(j)->getType();
+            type1 = hand.cardAt(i)->get_type();
+            type2 = hand.cardAt(j)->get_type();
 
             if(type1 == type2)
             {

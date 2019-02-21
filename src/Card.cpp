@@ -11,12 +11,12 @@ Card::Card (std::string s)
     type = s;
 }
 
-std::string Card::getType ()
+std::string Card::get_type ()
 {
     return type;
 }
 
-bool Card::isCamel ()
+bool Card::is_camel ()
 {
     if (type == "Camel")
         return true;

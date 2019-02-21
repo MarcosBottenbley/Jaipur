@@ -24,12 +24,12 @@ using std::endl;
 int main()
 {
     Token* t1 = new Token("Diamond",5);
-    cout << t1->getType() << endl;
+    cout << t1->get_type() << endl;
     cout << t1->getValue() << endl;
 
     Card* c1 = new Card("Silk");
-    cout << c1->getType() << endl;
-    assert(c1->isCamel() == false);
+    cout << c1->get_type() << endl;
+    assert(c1->is_camel() == false);
 
     cout << endl;
     cout << "Hand Test:" << endl;
@@ -51,8 +51,8 @@ int main()
     cout << endl;
     Card *temp = h.removeCard(4);
     Card *htemp = h.getCamel();
-    cout << "Removed " << temp->getType() << endl;
-    cout << "Removed " << htemp->getType() << endl;
+    cout << "Removed " << temp->get_type() << endl;
+    cout << "Removed " << htemp->get_type() << endl;
     cout << "printing hand" << endl;
 
     h.printHand();
@@ -67,7 +67,7 @@ int main()
 
     stack<Token*> test = b.get_tokens(Type::GOLD,3);
     while(!test.empty()) {
-        cout << test.top()->getType() << " ";
+        cout << test.top()->get_type() << " ";
         cout << test.top()->getValue() << endl;
         delete test.top();
         test.pop();

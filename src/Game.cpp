@@ -223,7 +223,7 @@ void Game::print_board()
 {
     std::cout << "Market:" << std::endl;
     for (int i = 0; i < 5; i++) {
-        std::cout << "[" << (market->getCard(i))->getType() << "] ";
+        std::cout << "[" << (market->getCard(i))->get_type() << "] ";
     }
     std::cout << std::endl << std::endl;
 

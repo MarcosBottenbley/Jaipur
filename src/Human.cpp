@@ -90,7 +90,7 @@ Take* Human::take(Market &market)
             std::cout << "Invalid entry" << std::endl;
             continue;
         }
-        if (hand.get_hand_size() == 7 && !(market.getCard(inputI)->isCamel()))
+        if (hand.get_hand_size() == 7 && !(market.getCard(inputI)->is_camel()))
         {
             std::cout << "You've already reached the maximum hand size" << std::endl;
             continue;
@@ -130,7 +130,7 @@ Trade* Human::trade(Market &market)
             std::cout << "Invalid input" << std::endl;
             continue;
         }
-        if (market.getCard(inputI-1)->isCamel()) {
+        if (market.getCard(inputI-1)->is_camel()) {
             std::cout << "You cannot exchange for camels from the market." << std::endl;
             continue;
         }
@@ -230,7 +230,7 @@ void Human::printMktSelections(Market& market, bool arr[])
     {
         if (arr[i])
         {
-            std::cout << "[" << market.getCard(i)->getType() << "] ";
+            std::cout << "[" << market.getCard(i)->get_type() << "] ";
         }
     }
     std::cout << std::endl;
@@ -244,7 +244,7 @@ void Human::printPlrSelections(bool arr[], int camels)
     {
         if (arr[i])
         {
-            std::cout << "[" << hand.cardAt(i)->getType() << "] ";
+            std::cout << "[" << hand.cardAt(i)->get_type() << "] ";
         }
     }
     if (camels != 0)

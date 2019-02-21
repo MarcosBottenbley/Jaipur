@@ -13,8 +13,8 @@ class Card
 public:
     Card (std::string);
 
-    std::string getType ();
-    bool isCamel ();
+    std::string get_type ();
+    bool is_camel ();
 private:
     std::string type;
 };

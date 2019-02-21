@@ -88,7 +88,7 @@ void Deck::printDeck ()
     std::stack<Card*> tempStack;
     for (int i = cards.size (); i > 0; i--)
     {
-        std::cout << (cards.top ())->getType () << std::endl;
+        std::cout << (cards.top ())->get_type () << std::endl;
         tempStack.push (cards.top ());
         cards.pop ();
     }

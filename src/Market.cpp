@@ -52,8 +52,8 @@ void Market::printMarket()
     std::cout << "Market: ";
     for (int i = 0; i < 5; i++)
     {
-        std::cout << i+1 << ". [" << mktCards[i]->getType() << "] ";
-        //std::cout << i+1 << ". [" << Type.toString(mktCards[i]->getType()) << "] ";
+        std::cout << i+1 << ". [" << mktCards[i]->get_type() << "] ";
+        //std::cout << i+1 << ". [" << Type.toString(mktCards[i]->get_type()) << "] ";
     }
     std::cout << std::endl;
 }

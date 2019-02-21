@@ -18,7 +18,7 @@ Token::Token (std::string s, int v)
     value = v;
 }
 
-std::string Token::getType ()
+std::string Token::get_type ()
 {
     return type;
 }
