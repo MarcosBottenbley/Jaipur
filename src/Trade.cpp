@@ -33,7 +33,7 @@ int Trade::makeMove ()
     {
         throw ime2;
     }
-    else if (hand.getHandSize () + camels > 7)
+    else if (hand.get_hand_size () + camels > 7)
     {
         throw ime3;
     }
@@ -44,7 +44,7 @@ int Trade::makeMove ()
     {
         temp = hand.removeCard (pIndexes[x]);        //remove backmost hand card
         temp = market.swapCard (mIndexes[x+camels], temp);   //put in market and take out market card
-        hand.addCard (temp);         //add market card to player's hand
+        hand.add_card (temp);         //add market card to player's hand
 
     }
 
@@ -52,7 +52,7 @@ int Trade::makeMove ()
     {
         temp = hand.getCamel ();
         temp = market.swapCard (mIndexes[i], temp);
-        hand.addCard (temp);
+        hand.add_card (temp);
     }
 
     return 0;

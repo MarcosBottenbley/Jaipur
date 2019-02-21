@@ -112,9 +112,9 @@ void TestClass::testHand()
 
     assert(hand.isEmpty() == true);
 
-    assert(hand.addCard(new Card("Gold")) == true);
-    assert(hand.addCard(new Card("Gold")) == true);
-    assert(hand.addCard(new Card("Gold")) == true);
+    assert(hand.add_card(new Card("Gold")) == true);
+    assert(hand.add_card(new Card("Gold")) == true);
+    assert(hand.add_card(new Card("Gold")) == true);
 
     assert(hand.handSize() == 3);
     assert(hand.herdSize() == 0);
@@ -122,14 +122,14 @@ void TestClass::testHand()
     assert(hand.isEmpty() == false);
     assert(hand.isHerdEmpty() == true);
 
-    assert(hand.addCard(new Card("Gold")) == true);
-    assert(hand.addCard(new Card("Gold")) == true);
-    assert(hand.addCard(new Card("Gold")) == true);
-    assert(hand.addCard(new Card("Diamond")) == true);
-    assert(hand.addCard(new Card("Gold")) == false);
+    assert(hand.add_card(new Card("Gold")) == true);
+    assert(hand.add_card(new Card("Gold")) == true);
+    assert(hand.add_card(new Card("Gold")) == true);
+    assert(hand.add_card(new Card("Diamond")) == true);
+    assert(hand.add_card(new Card("Gold")) == false);
 
     for(int i = 0; i < 4; i++)
-        assert(hand.addCard(new Card("Camel")) == true);
+        assert(hand.add_card(new Card("Camel")) == true);
 
     assert(hand.herdSize() == 4);
     assert(hand.handSize() == 7);

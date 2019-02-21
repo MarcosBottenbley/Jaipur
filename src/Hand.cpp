@@ -18,7 +18,7 @@ Hand::~Hand ()
 void Hand::clear ()
 {
     unsigned int x;
-    for (x = 0; x < getHandSize (); x++)
+    for (x = 0; x < get_hand_size (); x++)
     {
         delete hand[x];
     }
@@ -32,7 +32,7 @@ void Hand::clear ()
     }
 }
 
-bool Hand::addCard (Card *c)
+bool Hand::add_card (Card *c)
 {
     if (c->getType () == "Camel")
     {
@@ -51,7 +51,7 @@ bool Hand::addCard (Card *c)
     }
 }
 
-unsigned int Hand::getHandSize () const
+unsigned int Hand::get_hand_size () const
 {
     return hand.size ();
 }
@@ -59,7 +59,7 @@ unsigned int Hand::getHandSize () const
 Card* Hand::cardAt (int index)
 {
     Card* temp = 0;
-    if (index < 0 || index >= (int) getHandSize ())
+    if (index < 0 || index >= (int) get_hand_size ())
     {
         return temp;
     }
@@ -89,13 +89,13 @@ std::ostream& operator<<(std::ostream& os, const Hand& aHand)
     {
         os << " " << x+1 << ". [" << aHand.hand[x]->getType () << "]";
     }
-    if (aHand.getHerdSize () == 1)
+    if (aHand.get_herd_size () == 1)
     {
-        os << ", " << aHand.getHerdSize () << " camel in herd." << std::endl;
+        os << ", " << aHand.get_herd_size () << " camel in herd." << std::endl;
     }
     else
     {
-        os << ", " << aHand.getHerdSize () << " camels in herd." << std::endl;
+        os << ", " << aHand.get_herd_size () << " camels in herd." << std::endl;
     }
     return os;
 }
@@ -121,7 +121,7 @@ Card* Hand::getCamel ()
     return temp;
 }
 
-unsigned int Hand::getHerdSize () const
+unsigned int Hand::get_herd_size () const
 {
     return herd.size ();
 }

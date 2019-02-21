@@ -35,17 +35,17 @@ int main()
     cout << "Hand Test:" << endl;
 
     Hand h;
-    h.addCard(c1);
-    h.addCard(new Card("Gold"));
-    h.addCard(new Card("Gold"));
-    h.addCard(new Card("Diamond"));
-    h.addCard(new Card("Leather"));
-    h.addCard(new Card("Gold"));
-    h.addCard(new Card("Silk"));
-    h.addCard(new Card("Silver"));
-    h.addCard(new Card("Silver"));
-    h.addCard(new Card("Camel"));
-    h.addCard(new Card("Camel"));
+    h.add_card(c1);
+    h.add_card(new Card("Gold"));
+    h.add_card(new Card("Gold"));
+    h.add_card(new Card("Diamond"));
+    h.add_card(new Card("Leather"));
+    h.add_card(new Card("Gold"));
+    h.add_card(new Card("Silk"));
+    h.add_card(new Card("Silver"));
+    h.add_card(new Card("Silver"));
+    h.add_card(new Card("Camel"));
+    h.add_card(new Card("Camel"));
     h.printHand();
 
     cout << endl;

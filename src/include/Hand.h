@@ -19,7 +19,7 @@ public:
     ~Hand();
 
     void clear ();
-    bool addCard (Card *);
+    bool add_card (Card *);
     Card* cardAt (int);  //card at given index
     Card* removeCard (int);
     Card* getCamel ();
@@ -27,8 +27,8 @@ public:
     //getters
     bool isEmpty () const;
     bool isHerdEmpty () const;
-    unsigned int getHerdSize () const;
-    unsigned int getHandSize () const;
+    unsigned int get_herd_size () const;
+    unsigned int get_hand_size () const;
 
     friend std::ostream& operator<<(std::ostream& os, const Hand& aHand);
 private:

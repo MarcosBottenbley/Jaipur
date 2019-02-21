@@ -22,7 +22,7 @@ int main() {
 
     Deck deck;
     Bank bank;
-    deck.deal (*(human.getHand()), *(human2.getHand()));
+    deck.deal (*(human.get_hand()), *(human2.get_hand()));
     Market market(deck);
 
     movePtr = human.get_move(market, bank);

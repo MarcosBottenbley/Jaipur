@@ -137,7 +137,7 @@ void Game::play_game()
         if (retVal == -1)   //if invalid move, player1 tries again
             continue;
         else
-            player1->addPoints(retVal);
+            player1->add_points(retVal);
         if (check_gameover())
             break;
         while (1)
@@ -149,7 +149,7 @@ void Game::play_game()
             if (retVal == -1)   //if invalid move, player2 tries again
                 continue;
             else
-                player2->addPoints(retVal);
+                player2->add_points(retVal);
             if (check_gameover())
                 return;
             break;
@@ -235,9 +235,9 @@ bool Game::end_round()
 {
     //returns true if a player reaches 2 wins, false otherwise
     //Determine Camel Winner
-    if ((player1->hand).getHerdSize() > (player2->hand).getHerdSize())
+    if ((player1->hand).get_herd_size() > (player2->hand).get_herd_size())
         player1->score += 5;
-    else if ((player2->hand).getHerdSize() > (player1->hand).getHerdSize())
+    else if ((player2->hand).get_herd_size() > (player1->hand).get_herd_size())
         player2->score += 5;
 
     if (player1->score > player2->score) {

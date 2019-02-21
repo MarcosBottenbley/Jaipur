@@ -7,8 +7,7 @@
 /*  The Player class is used to store all the data related to
     one of the game's players. (# of wins, cards in hand, etc.)
 */
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 
 #include "Move.h"
@@ -49,16 +48,15 @@ public:
     //the player gets an option to take a card, exchange
     virtual Move* get_move(Market&, Bank&) = 0;
 
-    int GetHandSize () const;
-    int GetHerdSize () const;
-    int GetNumWins () const;
-    int getScore() const;
-    const Hand* getHand() const;
+    int get_hand_size () const;
+    int get_herd_size () const;
+    int get_num_wins () const;
+    int get_score() const;
+    const Hand* get_hand() const;
 
     void clear();
-    void addCard(Card* card);
-    void addPoints(int points);
+    void add_card(Card* card);
+    void add_points(int points);
 
     friend std::ostream& operator<<(std::ostream& os, const Player& aPlayer);
 };
-#endif

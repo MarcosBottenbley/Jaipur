@@ -31,25 +31,25 @@ Player::~Player ()
 std::ostream& operator<<(std::ostream& os, const Player& aPlayer)
 {
     os << aPlayer.name << "'s Stats\n";
-    os << "Hand size: " << aPlayer.hand.getHandSize ();
-    os << ", Camels: " << aPlayer.hand.getHerdSize ();
-    os << ", Score: " << aPlayer.getScore ();
+    os << "Hand size: " << aPlayer.hand.get_hand_size ();
+    os << ", Camels: " << aPlayer.hand.get_herd_size ();
+    os << ", Score: " << aPlayer.get_score ();
     os << ", Wins: " << aPlayer.wins << std::endl;
     os << aPlayer.hand;
     return os;
 }
 
-int Player::GetHandSize () const
+int Player::get_hand_size () const
 {
-    return hand.getHandSize();
+    return hand.get_hand_size();
 }
 
-int Player::GetHerdSize () const
+int Player::get_herd_size () const
 {
-    return hand.getHerdSize ();
+    return hand.get_herd_size ();
 }
 
-int Player::GetNumWins () const
+int Player::get_num_wins () const
 {
     return wins;
 }
@@ -60,22 +60,22 @@ void Player::clear ()
     score = 0;
 }
 
-void Player::addCard (Card* card)
+void Player::add_card (Card* card)
 {
-    hand.addCard (card);
+    hand.add_card (card);
 }
 
-const Hand* Player::getHand () const
+const Hand* Player::get_hand () const
 {
     return &hand;
 }
 
-void Player::addPoints (int points)
+void Player::add_points (int points)
 {
     score += points;
 }
 
-int Player::getScore () const
+int Player::get_score () const
 {
     return score;
 }

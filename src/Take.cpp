@@ -20,7 +20,7 @@ int Take::makeMove ()
     {
         throw ime1;
     }
-    if(hand.getHandSize() == 7)
+    if(hand.get_hand_size() == 7)
     {
         throw ime2;
     }
@@ -31,13 +31,13 @@ int Take::makeMove ()
         {
             if (market.getCard(x)->isCamel())
             {
-                hand.addCard(market.takeCard(x));   //take camel from market
+                hand.add_card(market.takeCard(x));   //take camel from market
             }
         }
         return 0;
     }
 
-    hand.addCard (market.takeCard (index));
+    hand.add_card (market.takeCard (index));
 
     return 0;
 }

@@ -64,8 +64,8 @@ void Deck::deal (Hand &h1, Hand &h2)
     int i;
     for (i = 0; i < 5; i++)
     {
-        h1.addCard (getCard ());
-        h2.addCard (getCard ());
+        h1.add_card (getCard ());
+        h2.add_card (getCard ());
     }
 }
 
