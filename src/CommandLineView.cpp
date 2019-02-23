@@ -34,15 +34,23 @@ void CommandLineView::release_instance()
  */
 void CommandLineView::display_game_begin()
 {
-    std::cout << "Welcome to Jaipur!" << std::endl << "Player 1, Enter your name: ";
-    //wait for controller
-    std::cout << "Is Player 1 a Human(1) or AI(2)?: ";
-    //wait for controller
-    //repeat for player 2
+    std::cout << "Welcome to Jaipur!" << std::endl;
+}
+
+void CommandLineView::display_name_input(int playerNum)
+{
+    std::cout << "Player " << playerNum << ", Enter your name: ";
+}
+
+void CommandLineView::display_human_selection(int playerNum)
+{
+    std::cout << "Is Player " << playerNum << "a Human(1) or AI(2)?: ";
 }
 
 void CommandLineView::display_round_begin()
-{}
+{
+    std::cout << "Starting new round!" << std::endl;
+}
 
 void CommandLineView::display_pause()
 {}

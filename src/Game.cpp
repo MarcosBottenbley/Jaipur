@@ -20,6 +20,7 @@ Game::Game()
 {
     //seeds with time
     std::srand(std::time(0));
+    viewInstance = CommandLineView::get_instance();
 }
 
 Game::Game(int rndSeed)
@@ -27,6 +28,7 @@ Game::Game(int rndSeed)
     //takes in a given seed
     //mostly used for debugging purposes.
     std::srand(rndSeed);
+    viewInstance = CommandLineView::get_instance();
 }
 
 Game::~Game ()
@@ -48,20 +50,26 @@ void Game::start_game ()
 {
     std::string playerName;
     int playerClass;
-    //-----------------------------------------------------------------------------
-    std::cout << "Welcome to Jaipur!" << std::endl << "Player 1, Enter your name: ";
-    //-----------------------------------------------------------------------------
+
+    //TODO: move to a manager class displays command line prompts
+    //Init both players
+    //enter name for player 1
+    viewInstance->display_game_begin();
+    viewInstance->display_name_input(1);
     std::cin >> playerName;
-    //-----------------------------------------------------------------------------
-    std::cout << "Is Player 1 a Human(1) or AI(2)?: ";
-    //-----------------------------------------------------------------------------
+
+    //enter whether human or not for player 1
+    viewInstance->display_human_selection(1);
     std::cin >> playerClass;
-    //-----------------------------------------------------------------------------
     init_player(playerName, (playerClass == 1), 1);
 
-    std::cout << "Player 2, Enter your name: ";
+    //init player 2
+    //enter name for player 2
+    viewInstance->display_name_input(2);
     std::cin >> playerName;
-    std::cout << "Is Player 2 a Human(1) or AI(2)?: ";
+
+    //enter whether human or not for player 2
+    viewInstance->display_human_selection(2);
     std::cin >> playerClass;
     init_player(playerName, (playerClass == 1), 2);
 }

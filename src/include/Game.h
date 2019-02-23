@@ -18,6 +18,7 @@
 #include "Bank.h"
 #include "Market.h"
 #include "Deck.h"
+#include "CommandLineView.h"
 
 class Game
 {
@@ -51,6 +52,8 @@ public:
 
 //private variables
 private:
+    // for displaying text (will change later)
+    CommandLineView* viewInstance;
 
     //both player objects initialized with the init_player function
     Player* player1;

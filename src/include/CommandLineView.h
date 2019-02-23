@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 
@@ -16,6 +17,8 @@ public:
 
     //game displays
     void display_game_begin();
+    void display_name_input(int playerNum);
+    void display_human_selection(int playerNum);
     void display_round_begin();
     void display_pause();
     void display_board();
@@ -33,7 +36,7 @@ public:
     void display_hand(Hand& hand);
     void display_bank(Bank& bank);
 private:
-    static CommandLineView* instance = NULL;
+    static CommandLineView* instance;
 private:
     CommandLineView();
     ~CommandLineView();
