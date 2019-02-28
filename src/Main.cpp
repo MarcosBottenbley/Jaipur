@@ -6,6 +6,7 @@
 
 #include "Game.h"
 #include "Application.h"
+#include "StateMachineFactory.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,13 +15,11 @@ int main(int argc, char *argv[])
     {
         return EXIT_FAILURE;
     }
-    */
 
-    //Open menu for application
-    //show menu with options for new game, continue or options
-    //begin a new game or continue a game
-    //create a game object and begin a game
-
+    Open menu for application
+    show menu with options for new game, continue or options
+    begin a new game or continue a game
+    create a game object and begin a game
 
     Game game;
     game.start_game();
@@ -35,6 +34,13 @@ int main(int argc, char *argv[])
     }
 
     game.end_game();
-    //Application::quit();
+    Application::quit();
+    */
+
+
+    StateMachineFactory factory;
+    StateMachine* machine = factory.create_statemachine('c');
+    machine->load_state();
+    machine->run_state();
     return EXIT_SUCCESS;
 }

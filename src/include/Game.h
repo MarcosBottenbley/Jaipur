@@ -41,20 +41,19 @@ public:
     void start_round ();
 
     void play_game ();
+
+    bool execute_player_turn(Player* player);
     void print_board ();
     void print_players ();
 
     //initializes a human or AI player and gives it a name
     bool init_player (std::string name, bool human, int num);
 
-    bool end_round ();                //tallies player scores and awards a win to the
-    void end_game ();                 //deallocates all memory used by the current game
+    void end_round ();                //tallies player scores and awards a win to the
+    bool end_game ();                 //determines if the game has been won
 
 //private variables
 private:
-    // for displaying text (will change later)
-    CommandLineView* viewInstance;
-
     //both player objects initialized with the init_player function
     Player* player1;
     Player* player2;
@@ -74,6 +73,8 @@ private:
     int execute_move(Move*);
 
     //checks the deck and the bank objects to see if the game is over
+    void determine_camel_winner();
+    void reset_game();
     bool check_gameover();
     void pause();
 };

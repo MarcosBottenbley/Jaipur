@@ -12,8 +12,9 @@
 class CommandLineView
 {
 public:
-    static CommandLineView* get_instance();
-    static void release_instance();
+    //error messages
+    void display_int_input_error();
+    void display_char_input_error();
 
     //game displays
     void display_game_begin();
@@ -35,9 +36,4 @@ public:
     void display_market(Market& market);
     void display_hand(Hand& hand);
     void display_bank(Bank& bank);
-private:
-    static CommandLineView* instance;
-private:
-    CommandLineView();
-    ~CommandLineView();
 };

@@ -1,32 +1,20 @@
 #include "CommandLineView.h"
 
 /*
- * constructors and instance
- * managment
- * constructors are private
+ * Error messages
  */
-CommandLineView::CommandLineView()
-{}
-
-CommandLineView::~CommandLineView()
-{}
-
-CommandLineView* CommandLineView::get_instance()
+void CommandLineView::display_int_input_error()
 {
-    if (!instance)
-    {
-        instance = new CommandLineView();
-    }
-    return instance;
+    std::cout << "Please enter a valid number" << std::endl;
+    std::cin.clear();
+    std::cin.ignore(100, '\n');
 }
 
-void CommandLineView::release_instance()
+void CommandLineView::display_char_input_error()
 {
-    if (instance)
-    {
-        delete instance;
-    }
-    instance = NULL;
+    std::cout << "Please enter a valid character" << std::endl;
+    std::cin.clear();
+    std::cin.ignore(100, '\n');
 }
 
 /*

@@ -4,8 +4,7 @@
  * dmill118@jhu.edi, shossai8@jhu.edu, mbotten1@jhu.edu, azhu8@jhu.edu
  */
 
-#ifndef SELL_H
-#define SELL_H
+#pragma once
 
 #include "Move.h"
 #include "Bank.h"
@@ -13,13 +12,12 @@
 
 class Sell : public Move
 {
-    private:
-        std::vector<int> pIndexes;
-        Bank &bank;
-    public:
-        Sell();
-        Sell(Market &, Hand &, Bank &, bool *);
-        virtual ~Sell();
-        int make_move();
+public:
+    Sell();
+    Sell(Market &, Hand &, Bank &, bool *);
+    virtual ~Sell();
+    int make_move();
+private:
+    std::vector<int> pIndexes;
+    Bank &bank;
 };
-#endif

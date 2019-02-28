@@ -20,7 +20,6 @@ Game::Game()
 {
     //seeds with time
     std::srand(std::time(0));
-    viewInstance = CommandLineView::get_instance();
 }
 
 Game::Game(int rndSeed)
@@ -28,7 +27,6 @@ Game::Game(int rndSeed)
     //takes in a given seed
     //mostly used for debugging purposes.
     std::srand(rndSeed);
-    viewInstance = CommandLineView::get_instance();
 }
 
 Game::~Game ()
@@ -54,22 +52,17 @@ void Game::start_game ()
     //TODO: move to a manager class displays command line prompts
     //Init both players
     //enter name for player 1
-    viewInstance->display_game_begin();
-    viewInstance->display_name_input(1);
     std::cin >> playerName;
 
     //enter whether human or not for player 1
-    viewInstance->display_human_selection(1);
     std::cin >> playerClass;
     init_player(playerName, (playerClass == 1), 1);
 
     //init player 2
     //enter name for player 2
-    viewInstance->display_name_input(2);
     std::cin >> playerName;
 
     //enter whether human or not for player 2
-    viewInstance->display_human_selection(2);
     std::cin >> playerClass;
     init_player(playerName, (playerClass == 1), 2);
 }
@@ -166,8 +159,29 @@ void Game::play_game()
 }
 
 /*
+ * New method for doing a turn for the player since
+ * the loop has been taken out of game
+ * and put into the statemachine
+ */
+bool Game::execute_player_turn(Player* player)
+{
+    Move* playerMove;
+    int movePoints = 0;
+
+    playerMove = player->get_move(*market, *bank);
+    movePoints = execute_move(playerMove);
+    if (movePoints > 0)
+    {
+        player->add_points(movePoints);
+        return true;
+    }
+    return false;
+}
+
+/*
  * Pauses the CLI game to give player a chance
  * to quit or look at the board
+ * TODO: turn into State
  */
 void Game::pause()
 {
@@ -239,14 +253,10 @@ void Game::print_board()
     bank->print_bank();
 }
 
-bool Game::end_round()
+//returns true if a player reaches 2 wins, false otherwise
+void Game::end_round()
 {
-    //returns true if a player reaches 2 wins, false otherwise
-    //Determine Camel Winner
-    if ((player1->hand).get_herd_size() > (player2->hand).get_herd_size())
-        player1->score += 5;
-    else if ((player2->hand).get_herd_size() > (player1->hand).get_herd_size())
-        player2->score += 5;
+    determine_camel_winner();
 
     if (player1->score > player2->score) {
         player1->wins++;
@@ -256,23 +266,33 @@ bool Game::end_round()
         player2->wins++;
         std::cout << player2->name << " wins the round!" << std::endl << std::endl;
     }
-    /*else {        //if score tied...
-        if (player1->tokens.size() > player2->tokens.size())
-            player1->wins++;
-        else if (player2->tokens.size() > player1->tokens.size())
-            player2->wins++;
-        else {
-            //result in draw
-        }
-    }*/
+    reset_game();
+}
 
+void Game::reset_game()
+{
     player1->clear();
     player2->clear();
 
     delete deck;
     delete market;
     delete bank;
+}
 
+void Game::determine_camel_winner()
+{
+    if ((player1->hand).get_herd_size() > (player2->hand).get_herd_size())
+    {
+        player1->score += 5;
+    }
+    else if ((player2->hand).get_herd_size() > (player1->hand).get_herd_size())
+    {
+        player2->score += 5;
+    }
+}
+
+bool Game::end_game()
+{
     if (player1->wins == 2) {
         std::cout << player1->name << " wins the game!" << std::endl;
         return true;
@@ -281,11 +301,4 @@ bool Game::end_round()
         return true;
     }
     return false;
-}
-
-void Game::end_game()
-{
-    delete player1;
-    delete player2;
-    exit(1);
 }
