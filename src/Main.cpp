@@ -41,6 +41,6 @@ int main(int argc, char *argv[])
     StateMachineFactory factory;
     StateMachine* machine = factory.create_statemachine('c');
     machine->load_state();
-    machine->run_state();
+    delete machine;
     return EXIT_SUCCESS;
 }

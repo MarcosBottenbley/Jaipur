@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Human.h"
 #include "AI.h"
+#include "Game.h"
 
 class CommandLineIntro : public State
 {
@@ -13,6 +14,7 @@ public:
     void start();
     void update(float dt);
     void draw();
+private:
     void stop();
 private:
     std::string player1Name, player2Name;

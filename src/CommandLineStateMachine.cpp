@@ -31,6 +31,9 @@ void CommandLineStateMachine::run_state()
         currentState->update(0);
     }
     while(!currentState->stopped());
-    //currentState = currentState->get_next();
+    State* next;
+    next = currentState->get_next();
+    delete currentState;
+    currentState = next;
     load_state();
 }

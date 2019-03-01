@@ -4,8 +4,6 @@ void CommandLineIntro::init(CommandLineView* view, CommandLineController* contro
 {
     this->view = view;
     this->controller = controller;
-    //set next state here
-    //this->next =
 }
 
 void CommandLineIntro::start()
@@ -71,23 +69,11 @@ void CommandLineIntro::draw()
 
 void CommandLineIntro::stop()
 {
-    Player* player1, *player2;
-    if (player1Type == 1)
-    {
-        player1 = new Human(player1Name);
-    }
-    else
-    {
-        player1 = new AI(player1Name);
-    }
-
-    if (player2Type == 1)
-    {
-        player2 = new Human(player2Name);
-    }
-    else
-    {
-        player2 = new AI(player2Name);
-    }
+    Player* p1, *p2;
+    player1Type == 1 ? p1 = new Human(player1Name) : p1 = new AI(player1Name);
+    player2Type == 1 ? p2 = new Human(player2Name) : p2 = new AI(player2Name);
     //init next state with the initiated players
+    terminated = true;
+    State* game = new Game(p1,p2);
+    next = game;
 }

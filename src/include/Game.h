@@ -18,36 +18,37 @@
 #include "Bank.h"
 #include "Market.h"
 #include "Deck.h"
-#include "CommandLineView.h"
+#include "State.h"
 
-class Game
+class CommandLineView;
+class CommandLineController;
+
+class Game : public State
 {
 friend class Move;
 
 //public functions
 public:
     //constructs game with RNG seeded to time
-    Game ();
+    Game (Player*, Player*);
 
     //takes a seed for the RNG
-    Game (int rndSeed);
+    Game (Player*, Player*, int rndSeed);
 
     ~Game ();
 
-    void start_game ();
-
     //resets or inits the deck, market, and token piles, and
     //deals a hand of 5 cards to each player
-    void start_round ();
+    void init(CommandLineView* v, CommandLineController* c);
+    void start();
+    void update(float dt);
+    void draw();
 
     void play_game ();
 
     bool execute_player_turn(Player* player);
     void print_board ();
     void print_players ();
-
-    //initializes a human or AI player and gives it a name
-    bool init_player (std::string name, bool human, int num);
 
     void end_round ();                //tallies player scores and awards a win to the
     bool end_game ();                 //determines if the game has been won
@@ -68,8 +69,12 @@ private:
     //Object with a stack for the deck of cards
     Deck* deck;
 
+    CommandLineView* view;
+    CommandLineController* controller;
+
 //private functions
 private:
+    void stop();
     int execute_move(Move*);
 
     //checks the deck and the bank objects to see if the game is over

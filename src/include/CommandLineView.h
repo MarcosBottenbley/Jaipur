@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-#include "Game.h"
 #include "Player.h"
 #include "Market.h"
 #include "Bank.h"

@@ -32,7 +32,7 @@ void CommandLineView::display_name_input(int playerNum)
 
 void CommandLineView::display_human_selection(int playerNum)
 {
-    std::cout << "Is Player " << playerNum << "a Human(1) or AI(2)?: ";
+    std::cout << "Is Player " << playerNum << " a Human(1) or AI(2)?: ";
 }
 
 void CommandLineView::display_round_begin()

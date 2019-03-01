@@ -1,5 +1,8 @@
 #include "State.h"
 
+State::~State()
+{}
+
 bool State::stopped()
 {
     return terminated;

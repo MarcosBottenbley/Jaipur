@@ -16,14 +16,19 @@
  * random number generator.
  * Which is used
  */
-Game::Game()
+Game::Game(Player* p1, Player* p2)
 {
+    player1 = p1;
+    player2 = p2;
     //seeds with time
     std::srand(std::time(0));
 }
 
-Game::Game(int rndSeed)
+Game::Game(Player* p1, Player* p2, int rndSeed)
 {
+    player1 = p1;
+    player2 = p2;
+
     //takes in a given seed
     //mostly used for debugging purposes.
     std::srand(rndSeed);
@@ -31,78 +36,11 @@ Game::Game(int rndSeed)
 
 Game::~Game ()
 {
-    if (deck != NULL)
-        delete deck;
-    if (bank != NULL)
-        delete bank;
-    if (market != NULL)
-        delete market;
-    if (player1 != NULL)
-        delete player1;
-    if (player2 != NULL)
-        delete player2;
-}
-
-//TODO: remove function
-void Game::start_game ()
-{
-    std::string playerName;
-    int playerClass;
-
-    //TODO: move to a manager class displays command line prompts
-    //Init both players
-    //enter name for player 1
-    std::cin >> playerName;
-
-    //enter whether human or not for player 1
-    std::cin >> playerClass;
-    init_player(playerName, (playerClass == 1), 1);
-
-    //init player 2
-    //enter name for player 2
-    std::cin >> playerName;
-
-    //enter whether human or not for player 2
-    std::cin >> playerClass;
-    init_player(playerName, (playerClass == 1), 2);
-}
-
-/*
- * Initializes a player object.
- * Parameters:
- * -Name for the name of the player
- * -Boolean to check if the player is human or AI
- * -Int the indicates turn order
- */
-bool Game::init_player(std::string name, bool human, int num)
-{
-    if (num != 1 && num != 2)
-    {
-        return false;
-    }
-    if (num == 1)
-    {
-        if (human)
-        {
-            player1 = new Human(name);
-        }
-        else
-        {
-            player1 = new AI(name);
-        }
-    }
-    else if (num == 2)
-    {
-        if (human)
-        {
-            player2 = new Human(name);
-        }
-        else
-        {
-            player2 = new AI(name);
-        }
-    }
-    return true;
+    if (deck) delete deck;
+    if (bank) delete bank;
+    if (market) delete market;
+    if (player1) delete player1;
+    if (player2) delete player2;
 }
 
 /*
@@ -110,13 +48,37 @@ bool Game::init_player(std::string name, bool human, int num)
  * needed to play the game ie. deck, market, bank
  * and deals cards to the players
  */
-void Game::start_round()
+void Game::init(CommandLineView* view, CommandLineController* controller)
 {
+    this->view = view;
+    this->controller = controller;
+
     deck = new Deck();
     market = new Market(*deck);
     bank = new Bank();
+}
 
+void Game::start()
+{
+    //TODO: change to view
+    std::cout << "Starting new round!" << std::endl;
     deck->deal(player1->hand, player2->hand);
+}
+
+void Game::update(float dt)
+{
+    //TODO:move play_game function to here
+    std::cout << "This will play the game" << std::endl;
+    stop();
+}
+
+void Game::draw()
+{}
+
+void Game::stop()
+{
+    terminated = true;
+    next = nullptr;
 }
 
 /*
@@ -126,8 +88,6 @@ void Game::play_game()
 {
     Move* movePtr;
     int retVal;
-
-    std::cout << "Starting new round!" << std::endl;
 
     while(1)
     {
